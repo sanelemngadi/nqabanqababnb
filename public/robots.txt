@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://www.nqabanqaba.netlify.app
+
+# Sitemaps
+Sitemap: https://www.nqabanqaba.netlify.app/sitemap.xml
