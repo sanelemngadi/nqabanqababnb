@@ -1,9 +1,20 @@
-import React from 'react';
+import React, { FC } from 'react';
 import Box from "@mui/material/Box";
 import InnerTab from '../../organisms/innerTab';
 import TabHeading from '../../atoms/sections/TabHeading';
+import InnerDiv from '../../organisms/innerTab/InnerDiv';
 
-const WhatsAround = () => {
+import { ImageFeatures, SurroundingFeatures } from "../.././../interfaces"
+
+interface Props {
+    head: string,
+    subHead: string,
+    type: string,
+    details: SurroundingFeatures[] | ImageFeatures
+}
+
+const WhatsAround: FC<Props> = ({ head, subHead, type, details }) => {
+
     return (
         <Box
             sx={{
@@ -20,16 +31,24 @@ const WhatsAround = () => {
                 }}
             >
                 <TabHeading
-                    head="Check all the Property sorroundings *"
-                    subHead="All distances are measured in straight lines. Actual travel distances may vary."
+                    head={head}
+                    subHead={subHead}
                 />
             </Box>
             <Box
                 sx={{
                     flex: "1",
                     padding: { xs: "2px", sm: "4px", md: "16px" },
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center"
                 }}>
-                <InnerTab />
+                {
+                    type === "tab" ?
+                        <InnerTab innerCats={details} />
+                        :
+                        <InnerDiv props={!Array.isArray(details) ? details : undefined} />
+                }
             </Box>
         </Box >
     )

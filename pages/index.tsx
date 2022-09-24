@@ -12,7 +12,7 @@ const Home: NextPage = () => {
       <MetaData
         title='nqabanqaba | homepage'
         subtitle='The best guesthouse in Richards Bay that offers more than quality sleep'
-        image='https://www.nqabanqaba.netlify.app/images/im300.jpg' />
+        image='https://nqabanqaba.netlify.app/images/im300.jpg' />
       <main>
         <Hero />
         <ChooseStay />

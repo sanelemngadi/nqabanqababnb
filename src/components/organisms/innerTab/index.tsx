@@ -1,53 +1,30 @@
-import React, { FC } from 'react';
+import React, { FC, useEffect, useState } from 'react';
 import Box from "@mui/material/Box"
 import Container from "@mui/material/Container"
 
 import Tabs, { tabsClasses } from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 
-interface TabPanelProps {
-    children?: React.ReactNode;
-    index: number;
-    value: number;
-}
+import Table from '@mui/material/Table';
+import TableBody from '@mui/material/TableBody';
+import TableCell from '@mui/material/TableCell';
+import TableRow from '@mui/material/TableRow';
 
-function TabPanel(props: TabPanelProps) {
-    const { children, value, index, ...other } = props;
+import { SurroundingFeatures, ImageFeatures } from "../../../interfaces";
 
-    return (
-        <div
-            role="tabpanel"
-            hidden={value !== index}
-            id={`simple-tabpanel-${index}`}
-            aria-labelledby={`simple-tab-${index}`}
-            {...other}
-        >
-            {value === index && (
-                <Box sx={{ p: 3 }}>{children}</Box>
-            )}
-        </div>
-    );
-}
+import { TabPanel, a11yProps } from "../../../utils";
 
-function a11yProps(index: number) {
-    return {
-        id: `simple-tab-${index}`,
-        'aria-controls': `simple-tabpanel-${index}`,
-    };
-}
-
-const InnerTab: FC = () => {
+const InnerTab: FC<{ innerCats: SurroundingFeatures[] | ImageFeatures }> = ({ innerCats }) => {
     const [value, setValue] = React.useState(0);
 
     const handleChange = (event: React.SyntheticEvent, newValue: number) => {
         setValue(newValue);
     };
+
+    console.log("tab rendered");
+
     return (
-        <Box
-            sx={{
-                minHeight: "320px"
-            }}
-        >
+        <Box >
             <Container
                 sx={{
                     width: "100%",
@@ -57,7 +34,6 @@ const InnerTab: FC = () => {
                 <Box sx={{
                     width: "100%",
                     maxWidth: '500px',
-                    minHeight: "320px",
                 }}>
                     <Container
                         sx={{
@@ -84,26 +60,15 @@ const InnerTab: FC = () => {
                             }}
 
                         >
-                            <Tab label="What's nearby" {...a11yProps(0)}
-                                sx={{
-                                    fontSize: "12px",
-                                }}
-                            />
-                            <Tab label="Nature beauty" {...a11yProps(1)}
-                                sx={{
-                                    fontSize: "12px",
-                                }}
-                            />
-                            <Tab label="Closest airpots" {...a11yProps(2)}
-                                sx={{
-                                    fontSize: "12px",
-                                }}
-                            />
-                            <Tab label="Resturents and cafes" {...a11yProps(3)}
-                                sx={{
-                                    fontSize: "12px",
-                                }}
-                            />
+                            {Array.isArray(innerCats) && innerCats.map((item, idx) => {
+                                return (
+                                    <Tab key={"i2-" + idx} label={item.name} {...a11yProps(idx)}
+                                        sx={{
+                                            fontSize: "12px",
+                                        }}
+                                    />
+                                )
+                            })}
                         </Tabs>
                     </Container>
                     <Box
@@ -112,24 +77,38 @@ const InnerTab: FC = () => {
                             borderBottomLeftRadius: { xs: "8px", sm: "16px", md: "32px" },
                             borderBottomRightRadius: { xs: "8px", sm: "16px", md: "32px" },
                             padding: { xs: "0px", sm: "16px", md: "32px" },
-                            minHeight: "calc(300px - 48px)",
                         }}
                     >
-                        <TabPanel value={value} index={0}>
-                            hello
-                        </TabPanel>
-                        <TabPanel value={value} index={1}>
-                            hi
-                        </TabPanel>
-                        <TabPanel value={value} index={2}>
-                            amenities
-                        </TabPanel>
-                        <TabPanel value={value} index={3}>
-                            location
-                        </TabPanel>
-                        <TabPanel value={value} index={4}>
-                            rules
-                        </TabPanel>
+
+                        {Array.isArray(innerCats) && innerCats.map((item, idx) => (
+                            // there is a possibility that innercats is an array and an object and I want to only thruegh items only if its an array
+                            <TabPanel key={"i3-" + idx} value={value} index={idx}>
+                                <Box>
+
+
+                                    <Table size="small" aria-label="a dense table">
+                                        <TableBody>
+                                            {item.features.map((feat, index) => (
+                                                <TableRow
+                                                    key={"index-" + index}
+                                                    sx={{ '&:last-child td, &:last-child th': { border: 0 }, color: "white" }}
+                                                >
+                                                    <TableCell sx={{ color: "#adadad", fontSize: { xs: "12px", md: "12px" } }}>
+                                                        {feat.item}
+                                                    </TableCell>
+                                                    <TableCell sx={{
+                                                        color: "#adadad",
+                                                        fontSize: { xs: "12px", md: "12px" }
+                                                    }}
+                                                        align="right">{feat.distance}</TableCell>
+                                                </TableRow>
+                                            ))}
+
+                                        </TableBody>
+                                    </Table>
+                                </Box>
+                            </TabPanel>
+                        ))}
                     </Box>
                 </Box>
             </Container>

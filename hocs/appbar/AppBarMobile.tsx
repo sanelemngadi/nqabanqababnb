@@ -28,7 +28,12 @@ const AppBarMobile = () => {
                 sx={{ justifyContent: "space-between !important" }}>
                 <AppBarMobileLogo>
                     <Button color="primary" component="a">
-                        <Image src={"/vectors/logo.svg"} width={128} height={32} layout="fixed" alt="nqabanqaba logo" />
+                        <Image
+                            src="/vectors/logo.svg"
+                            width={128} height={32}
+                            layout="fixed"
+                            alt="nqabanqaba logo"
+                        />
                     </Button>
                 </AppBarMobileLogo>
                 <AppBarMenu>

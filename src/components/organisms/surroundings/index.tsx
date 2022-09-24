@@ -6,41 +6,9 @@ import { projectColors } from '../../../styles/theme';
 import Tabs, { tabsClasses } from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import WhatsAround from '../../molecules/whatsaround';
-import OverVeiws from '../../molecules/overviews';
-import Amenities from '../../molecules/amenities';
-import Location from '../../molecules/location';
-import HouseRules from '../../molecules/houserules';
 
-interface TabPanelProps {
-    children?: React.ReactNode;
-    index: number;
-    value: number;
-}
-
-function TabPanel(props: TabPanelProps) {
-    const { children, value, index, ...other } = props;
-
-    return (
-        <div
-            role="tabpanel"
-            hidden={value !== index}
-            id={`simple-tabpanel-${index}`}
-            aria-labelledby={`simple-tab-${index}`}
-            {...other}
-        >
-            {value === index && (
-                <Box sx={{ p: 3 }}>{children}</Box>
-            )}
-        </div>
-    );
-}
-
-function a11yProps(index: number) {
-    return {
-        id: `simple-tab-${index}`,
-        'aria-controls': `simple-tabpanel-${index}`,
-    };
-}
+import { arounds } from "../../../../data";
+import { TabPanel, a11yProps } from "../../../utils";
 
 const Surroundings: FC = () => {
     const [value, setValue] = React.useState(0);
@@ -51,7 +19,7 @@ const Surroundings: FC = () => {
     return (
         <Box
             sx={{
-                backgroundColor: projectColors.bgsecondary,
+                background: `linear-gradient(180deg, ${projectColors.bgsecondary} 65%, #fff 70%)`,
                 marginTop: { xs: "-6rem", md: "-2rem" },
                 paddingBottom: "64px"
             }}
@@ -82,12 +50,11 @@ const Surroundings: FC = () => {
                             }}
 
                         >
-                            <Tab label="What's around?" {...a11yProps(0)}
-                            />
-                            <Tab label="Overview" {...a11yProps(1)} />
-                            <Tab label="Facilities/ammenities" {...a11yProps(2)} />
-                            <Tab label="Location" {...a11yProps(3)} />
-                            <Tab label="Policies and house rules" {...a11yProps(4)} />
+
+                            {arounds.map((item, idx) => (
+                                <Tab key={"i-" + idx} label={item.category} {...a11yProps(idx)}
+                                />
+                            ))}
                         </Tabs>
                     </Container>
                     <Box
@@ -98,21 +65,16 @@ const Surroundings: FC = () => {
                             padding: { xs: "0px", sm: "16px", md: "32px" }
                         }}
                     >
-                        <TabPanel value={value} index={0}>
-                            <WhatsAround />
-                        </TabPanel>
-                        <TabPanel value={value} index={1}>
-                            <OverVeiws />
-                        </TabPanel>
-                        <TabPanel value={value} index={2}>
-                            <Amenities />
-                        </TabPanel>
-                        <TabPanel value={value} index={3}>
-                            <Location />
-                        </TabPanel>
-                        <TabPanel value={value} index={4}>
-                            <HouseRules />
-                        </TabPanel>
+                        {arounds.map((item, idx) => (
+                            <TabPanel key={"i-" + idx} value={value} index={idx}>
+                                <WhatsAround
+                                    head={item.details.head}
+                                    subHead={item.details.description}
+                                    details={item.details.innerCategories}
+                                    type={item.details.type}
+                                />
+                            </TabPanel>
+                        ))}
                     </Box>
                 </Box>
             </Container>
