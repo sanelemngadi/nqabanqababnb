@@ -6,24 +6,18 @@ import { projectFonts } from '../../../styles/theme';
 
 interface Props {
     head: string,
-    subHead: string,
-    raised?: boolean
+    subHead: string
 }
 
-const Wrapper = styled(Box) <{ raised: number }>`
+const Wrapper = styled(Box)`
     max-width: 738px;
     margin: 1rem auto;
-    transform:  ${({ raised }) => raised ? "translateY(-5rem)" : "translateY(0)"};
-    
-    @media (max-width: 992px) {
-        transform:  ${({ raised }) => raised ? "translateY(-8rem)" : "translateY(0)"};
-    }
 `
-const SectionHeading: FC<Props> = ({ head, subHead, raised = false }) => {
+const SectionHeading: FC<Props> = ({ head, subHead }) => {
 
 
     return (
-        <Wrapper raised={raised ? 1 : 0}>
+        <Wrapper>
             <Typography
                 variant="h3"
                 component="h1"

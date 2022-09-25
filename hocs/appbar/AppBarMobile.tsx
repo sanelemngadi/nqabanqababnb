@@ -1,6 +1,6 @@
 import Image from 'next/image'
 import React from 'react'
-import { AppBarContainer, AppBarLogo } from '../../src/styles/appbar';
+import { AppBarContainer } from '../../src/styles/appbar';
 import MenuIcon from '@mui/icons-material/Menu';
 import styled from "@emotion/styled";
 
@@ -21,11 +21,14 @@ const AppBarMobile = () => {
                 position: "sticky !important",
                 top: 0,
                 left: 0,
-                zIndex: '1999',
+                zIndex: '1999'
             }}
         >
             <AppBarContainer
-                sx={{ justifyContent: "space-between !important" }}>
+                sx={{
+                    justifyContent: "space-between !important",
+                    height: "48px !important"
+                }}>
                 <AppBarMobileLogo>
                     <Button color="primary" component="a">
                         <Image

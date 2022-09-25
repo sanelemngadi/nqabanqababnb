@@ -16,3 +16,12 @@ export interface ImageFeatures {
     width: number,
     height: number
 }
+
+export interface ReviewI {
+    title: string,
+    author: string,
+    good: string,
+    bad: string,
+    date: string,
+    rate: string
+}

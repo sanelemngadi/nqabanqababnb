@@ -5,8 +5,10 @@ import ChooseStay from '../src/components/templates/chooseStay';
 import Hero from '../src/components/templates/hero';
 import Ratings from '../src/components/organisms/reviews';
 import MetaData from '../meta';
+import FAQs from '../src/components/organisms/faqs';
 
 const Home: NextPage = () => {
+
   return (
     <>
       <MetaData
@@ -19,6 +21,7 @@ const Home: NextPage = () => {
         <Pricing />
         <Surroundings />
         <Ratings />
+        <FAQs />
       </main>
     </>
   )

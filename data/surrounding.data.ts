@@ -157,7 +157,8 @@ const arounds = [
             innerCategories: {
                 src: "/images/service1.jpg",
                 width: 289,
-                height: 296,
+                height: 233.47,
+                // height: 296,
             }
         }
     },

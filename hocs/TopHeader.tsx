@@ -8,6 +8,7 @@ import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
 import EmailBox from '../src/components/molecules/EmailBox';
 import SocialIcons from '../src/components/molecules/SocialIcons';
+import { projectColors } from '../src/styles/theme';
 
 
 const TopHeader = () => {
@@ -17,32 +18,36 @@ const TopHeader = () => {
     return (
         <Box
             sx={{
-                backgroundColor: "black",
+                backgroundColor: projectColors.dark,
             }}
         >
             <Container
                 maxWidth="lg"
                 sx={{
-                    backgroundColor: "black",
+                    backgroundColor: projectColors.dark,
                     height: "40px",
                     display: "flex",
-                    alignItems: "center"
+                    alignItems: "center",
                 }}>
                 <EmailBox small={matches} />
                 <Typography
-                    variant="h6"
+                    variant="caption"
                     component="p"
-                    marginLeft={"32px"}
                     fontSize="13px"
 
                     sx={{
-                        color: "white"
+                        color: "#D9D9D9",
+                        paddingLeft: { md: "32px" },
+                        width: "100%",
+                        textAlign: { xs: "center", md: "left" }
+                        // margin: "0 auto"
                     }}
                 >
                     Check in at 14h00 and check out at 9h00
                 </Typography>
                 <Box
                     sx={{
+                        display: { xs: "none", md: "block" },
                         marginLeft: "auto",
                         width: "104px",
                     }}
@@ -50,7 +55,7 @@ const TopHeader = () => {
                     <SocialIcons small={matches} />
                 </Box>
             </Container>
-        </Box>
+        </Box >
     )
 }
 

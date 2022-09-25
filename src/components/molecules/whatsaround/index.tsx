@@ -24,10 +24,11 @@ const WhatsAround: FC<Props> = ({ head, subHead, type, details }) => {
         >
             <Box
                 sx={{
-                    flex: "1",
+                    flex: 1,
                     padding: { xs: "2px", sm: "4px", md: "16px" },
                     display: "flex",
                     alignItems: "center",
+                    // background: "red",
                 }}
             >
                 <TabHeading
@@ -37,11 +38,12 @@ const WhatsAround: FC<Props> = ({ head, subHead, type, details }) => {
             </Box>
             <Box
                 sx={{
-                    flex: "1",
+                    flex: 1,
                     padding: { xs: "2px", sm: "4px", md: "16px" },
                     display: "flex",
                     justifyContent: "center",
-                    alignItems: "center"
+                    alignItems: "center",
+                    overflow: "hidden"
                 }}>
                 {
                     type === "tab" ?

@@ -7,9 +7,10 @@ export const projectColors = {
     secondary: "#F6B47D",
     tertiary: "#4F55E3",
     grey: "#9A9A9A",
+    grayD9: "#D9D9D9",
     bgsecondary: "#D7DDF2",
     light: "#fff",
-    dark: "#000"
+    dark: "#000",
 }
 
 export const projectFonts = {

@@ -9,8 +9,19 @@ const InnerDiv: FC<{ props?: ImageFeatures }> = ({ props }) => {
     const { src, width, height } = props ? props : { src: "", width: 0, height: 0 };
 
     return (
-        <Box>
-            {props && <Image src={src} width={width} height={height} style={{ borderRadius: "16px" }} />}
+        <Box
+            sx={{
+                p: 0
+            }}
+        >
+            {
+                props && <Image
+                    src={src}
+                    width={width}
+                    height={height}
+                    style={{ borderRadius: "16px" }}
+                />
+            }
         </Box>
     )
 }

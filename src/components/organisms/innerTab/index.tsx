@@ -1,4 +1,4 @@
-import React, { FC, useEffect, useState } from 'react';
+import React, { FC } from 'react';
 import Box from "@mui/material/Box"
 import Container from "@mui/material/Container"
 
@@ -13,6 +13,7 @@ import TableRow from '@mui/material/TableRow';
 import { SurroundingFeatures, ImageFeatures } from "../../../interfaces";
 
 import { TabPanel, a11yProps } from "../../../utils";
+import { projectColors } from '../../../styles/theme';
 
 const InnerTab: FC<{ innerCats: SurroundingFeatures[] | ImageFeatures }> = ({ innerCats }) => {
     const [value, setValue] = React.useState(0);
@@ -24,16 +25,24 @@ const InnerTab: FC<{ innerCats: SurroundingFeatures[] | ImageFeatures }> = ({ in
     console.log("tab rendered");
 
     return (
-        <Box >
+        <Box
+            sx={{
+                width: "100%",
+                maxWidth: "100%"
+            }}
+        >
             <Container
                 sx={{
                     width: "100%",
                     padding: "0px",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    p: { xs: 0, sm: 0 }
                 }}
             >
                 <Box sx={{
                     width: "100%",
-                    maxWidth: '500px',
                 }}>
                     <Container
                         sx={{
@@ -43,7 +52,10 @@ const InnerTab: FC<{ innerCats: SurroundingFeatures[] | ImageFeatures }> = ({ in
                             height: { xs: "40px", md: "48px" },
                             borderTopLeftRadius: { xs: "8px", sm: "16px", md: "32px" },
                             borderTopRightRadius: { xs: "8px", sm: "16px", md: "32px" },
-                            padding: "0px"
+                            padding: "0px",
+                            ['.css-8s2xe4-MuiTabs-indicator']: {
+                                backgroundColor: projectColors.light
+                            }
                         }}
 
                     >
@@ -91,7 +103,10 @@ const InnerTab: FC<{ innerCats: SurroundingFeatures[] | ImageFeatures }> = ({ in
                                             {item.features.map((feat, index) => (
                                                 <TableRow
                                                     key={"index-" + index}
-                                                    sx={{ '&:last-child td, &:last-child th': { border: 0 }, color: "white" }}
+                                                    sx={{
+                                                        '&:last-child td, &:last-child th': { border: 0 },
+                                                        color: "white"
+                                                    }}
                                                 >
                                                     <TableCell sx={{ color: "#adadad", fontSize: { xs: "12px", md: "12px" } }}>
                                                         {feat.item}
@@ -112,7 +127,7 @@ const InnerTab: FC<{ innerCats: SurroundingFeatures[] | ImageFeatures }> = ({ in
                     </Box>
                 </Box>
             </Container>
-        </Box>
+        </Box >
     )
 }
 

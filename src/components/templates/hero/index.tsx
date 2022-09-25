@@ -73,12 +73,13 @@ const Hero = () => {
                     <Stack direction="row"
                         component="form"
                         sx={{
-                            display: "flex",
+                            // display: "flex",/
                             alignItems: "center",
                             justifyContent: "space-around",
                             flexDirection: { xs: "column", sm: "row" },
                             maxWidth: "256px",
-                            margin: "2rem auto"
+                            margin: "2rem auto",
+                            display: { xs: "none", md: "flex" }
                         }}
                     >
                         <Box>
@@ -95,7 +96,7 @@ const Hero = () => {
                                 fontSize="16px"
                                 sx={{
                                     backgroundColor: "transparent",
-                                    color: "#7B88FF",
+                                    color: "#7B88FF"
                                 }}
                             >I am Travelling for work</TextShadow>
                         </Box>
@@ -125,7 +126,8 @@ const Hero = () => {
                                 sx={{
                                     marginBottom: { xs: "1rem", sm: "0" },
                                     width: "100%",
-                                    height: { xs: "48px", md: "54px" }
+                                    height: { xs: "48px", md: "54px" },
+                                    display: { xs: "none", md: "block" }
                                 }}
                             />
                         </Box>
@@ -151,7 +153,8 @@ const Hero = () => {
                             textAlign: "center",
                             color: projectColors.bgsecondary,
                             fontSize: "14px",
-                            fontFamily: projectFonts.primary
+                            fontFamily: projectFonts.primary,
+                            display: { xs: "none", md: "block" }
                         }}
                     >Click the box above to enter your info to check availability.</TextShadow>
                 </Box>

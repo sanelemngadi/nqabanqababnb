@@ -10,7 +10,11 @@ const ChooseStay = () => {
     const matches = useMediaQuery(theme.breakpoints.down('sm'));
 
     return (
-        <Box>
+        <Box
+            sx={{
+                margin: { xs: "64px auto", sm: "96px auto" }
+            }}
+        >
             <Container
                 maxWidth="md"
                 sx={{
@@ -18,8 +22,7 @@ const ChooseStay = () => {
                     justifyContent: "center",
                     alignItems: "center",
                     flexDirection: "column",
-                    margin: "2rem auto",
-                    paddingTop: { xs: "32", sm: "64px", md: "96px", lg: "128px" }
+                    margin: "0rem auto",
                 }}
             >
                 <Box>
@@ -37,7 +40,6 @@ const ChooseStay = () => {
                 </Box>
                 <Box>
                     <Image src="/vectors/bed.svg" alt="the bed" width={384} height={95} />
-
                 </Box>
 
             </Container>
