@@ -2,7 +2,7 @@ import React, { FC } from 'react';
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Container from "@mui/material/Container";
-import { projectColors } from '../../../styles/theme';
+import { projectColors, projectFonts } from '../../../styles/theme';
 
 import Icon from '@mui/material/Icon';
 import Typography from '@mui/material/Typography';
@@ -25,7 +25,9 @@ const ReviewsTab: FC = () => {
         <Box
             sx={{
                 marginTop: { xs: "1rem", md: "2rem" },
-                paddingBottom: "64px"
+                paddingBottom: { md: "24px" },
+                // background: "black",
+                paddingTop: "1rem"
             }}
         >
             <Container
@@ -34,12 +36,15 @@ const ReviewsTab: FC = () => {
                 <Box sx={{
                     width: '100%',
                     ['.css-1sm2odq-MuiButtonBase-root-MuiTab-root.Mui-selected']: {
-                        background: projectColors.grayD9,
-                        color: projectColors.tertiary,
+                        background: projectColors.dark,
+                        color: projectColors.light,
 
                     },
                     ['.css-1sm2odq-MuiButtonBase-root-MuiTab-root']: {
-                        borderRadius: "16px"
+                        borderRadius: "16px",
+                        padding: "8px 12px",
+                        fontSize: "12px",
+                        fontFamily: projectFonts.primary
                     },
                     ['.css-8s2xe4-MuiTabs-indicator']: {
                         backgroundColor: "transparent"

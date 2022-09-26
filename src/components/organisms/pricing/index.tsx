@@ -1,15 +1,46 @@
 import React, { FC } from 'react';
-import Grid from '@mui/material/Grid';
 import Container from '@mui/material/Container';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import { projectColors } from '../../../styles/theme';
 import PricingCard from '../PricingCard';
 import { rooms } from '../../../../data';
+import styled from '@emotion/styled';
+import { Swiper, SwiperSlide } from "swiper/react";
 
+// Import Swiper styles
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
+
+import { Navigation, Pagination } from "swiper";
+import { useScreenSize } from '../../../hooks';
+
+
+const SwipperWrapper = styled(Swiper)`
+
+    .swiper-button-next,.swiper-button-prev{
+        color: ${projectColors.light};
+    }
+
+    .swiper-pagination{
+        transform: translateY(.5rem);
+    }
+
+    /* .swiper-pagination-bullet{
+    } */
+`
 
 
 const Pricing: FC = () => {
+    const sm = useScreenSize('sm');
+    const md = useScreenSize('md');
+
+    const handlePageSize = (): number => {
+        if (sm) return 1;
+        if (md) return 2;
+        return 3;
+    }
     return (
         <Box
             sx={{
@@ -20,28 +51,31 @@ const Pricing: FC = () => {
             <Container
                 maxWidth="lg"
                 sx={{
-                    padding: "0px 1rem",
+                    padding: "0px 0.35rem",
                     backgroundImage: "url(/vectors/bgGrid.svg)",
                     backgroundRepeat: "repeat",
                     backgroundSize: "cover",
                     backgroundPosition: "center",
                 }}
             >
-                <Grid container spacing={2}>
+                <SwipperWrapper
+                    navigation={!md}
+                    modules={[Pagination, Navigation]}
+                    className="mySwiper"
+                    slidesPerView={handlePageSize()}
+                    spaceBetween={30}
+                    pagination={{
+                        clickable: true,
+                    }}
+                >
                     {rooms.length > 0 ? rooms.map((room, idx) => (
-                        <Grid item xs={12} sm={6} md={4} key={"i" + idx}
-                            sx={{
-                                display: "flex",
-                                alignItems: "center",
-                                justifyContent: "center",
-                            }}
+                        <SwiperSlide key={"i" + idx}
+                            style={{ paddingBottom: "32px" }}
                         >
                             <PricingCard {...room} />
-                        </Grid>
+                        </SwiperSlide>
                     )) : <Typography variant="h3">No Available Room At the moment</Typography>}
-
-
-                </Grid>
+                </SwipperWrapper>
             </Container>
         </Box>
     )

@@ -38,7 +38,7 @@ const InnerTab: FC<{ innerCats: SurroundingFeatures[] | ImageFeatures }> = ({ in
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
-                    p: { xs: 0, sm: 0 }
+                    p: { xs: 1, md: 0 }
                 }}
             >
                 <Box sx={{

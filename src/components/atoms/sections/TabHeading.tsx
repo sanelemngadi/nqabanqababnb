@@ -7,13 +7,14 @@ import { projectColors, projectFonts } from '../../../styles/theme';
 interface Props {
     head: string,
     subHead: string,
+    color?: string
 }
 
 const Wrapper = styled(Box)`
     max-width: 768px;
     margin: 0 auto;
 `
-const TabHeading: FC<Props> = ({ head, subHead }) => {
+const TabHeading: FC<Props> = ({ head, subHead, color }) => {
 
 
     return (
@@ -44,14 +45,12 @@ const TabHeading: FC<Props> = ({ head, subHead }) => {
                 sx={{
                     px: "8px",
                     fontFamily: projectFonts.primary,
-                    fontSize: { xs: "16px", md: "20px" },
+                    fontSize: { xs: "14px", md: "20px" },
                     textAlign: { xs: "center", md: "left" },
-                    color: projectColors.tertiary,
+                    color: color ? color : projectColors.tertiary,
                     fontWeight: "normal",
                     maxWidth: { xs: "350px", md: "576px" },
                     margin: "0px auto",
-                    // background: "white",
-                    height: "72px",
                     display: "flex",
                     alignItems: "center"
                 }}

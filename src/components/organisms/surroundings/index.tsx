@@ -21,7 +21,7 @@ const Surroundings: FC = () => {
             sx={{
                 background: `linear-gradient(180deg, ${projectColors.bgsecondary} 65%, #fff 70%)`,
                 paddingBottom: { xs: "0px", sm: "40px", md: "54px" },
-                paddingTop: "16px"
+                paddingTop: "8px"
             }}
         >
             <Box>

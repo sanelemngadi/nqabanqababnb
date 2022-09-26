@@ -14,11 +14,12 @@ import ArrowOutwardIcon from '@mui/icons-material/ArrowOutward';
 
 import styled from "@emotion/styled";
 import { projectColors, projectFonts } from '../../src/styles/theme';
+import { slugify } from '../../src/utils';
 
 
-const slugify = (word: string): string => {
-    return word.trim().toLowerCase().replaceAll(" ", '-');
-};
+// const slugify = (word: string): string => {
+//     return word.trim().toLowerCase().replaceAll(" ", '-');
+// };
 
 const links = [
     "Home", "Pricing", "About Us", "Contact Us"

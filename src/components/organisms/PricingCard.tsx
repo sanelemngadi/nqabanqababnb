@@ -1,11 +1,14 @@
 import React, { FC } from 'react';
 import Card from '@mui/material/Card';
-import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
+import Box from '@mui/material/Box';
 import CardMedia from '@mui/material/CardMedia';
-import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
-import { projectColors } from '../../styles/theme';
+import { projectColors, projectFonts } from '../../styles/theme';
+import RoomRating from '../molecules/ratings';
+import Link from 'next/link';
+import ArrowRightAltIcon from '@mui/icons-material/ArrowRightAlt';
+import styled from '@emotion/styled';
 
 interface Props {
     image: string,
@@ -13,40 +16,66 @@ interface Props {
     description: string,
     max: string
 }
+
+const CardLink = styled.a`
+    border: 1px solid rgba(0,0,0,0.05);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    padding: 4px 16px;
+    font-family: ${projectFonts.primary};
+    color: ${projectColors.primary};
+
+    &:hover{
+        color: "blue"
+    }
+`
 const PricingCard: FC<Props> = ({ image, label, description, max }) => {
     return (
-        <Card sx={{ maxWidth: 345, border: "1px solid rgba(0,0,0,0.12)" }} >
-            <CardActions>
-                <Button size="small">Share</Button>
-                <Button size="small">Learn More</Button>
-                <Typography variant="body1" component="div" color="secondary"
-                    sx={{
-                        display: "flex",
-                        alignItems: "center",
-                        justifyContent: "center",
-                        marginLeft: "1rem"
-                    }}
-                >
-                    {max}
-                </Typography>
-            </CardActions>
+        <Card sx={{
+            width: { xs: "100%", sm: 345 },
+        }} >
             <CardMedia
                 component="img"
-                height="140"
+                height="216"
                 image={image}
                 alt={label}
             />
             <CardContent
                 sx={{
-                    backgroundColor: projectColors.primary
+                    backgroundColor: projectColors.light
                 }}
             >
-                <Typography gutterBottom variant="h6" component="div" color="secondary">
+                <Typography gutterBottom variant="h6"
+                    sx={{
+                        color: projectColors.dark,
+                        fontFamily: projectFonts.primary,
+                        fontWeight: "700",
+                        fontSize: "18px"
+                    }}>
                     {label}
                 </Typography>
-                <Typography variant="body2" sx={{ color: projectColors.bgsecondary }}>
-                    {description}
+                <Box>
+                    <RoomRating max={max} />
+                </Box>
+                <Typography variant="body2" sx={{
+                    color: projectColors.primary,
+                    fontFamily: projectFonts.primary
+                }}>
+                    {description.slice(0, 100) + "..."}
                 </Typography>
+
+                <Box
+                    sx={{
+                        marginY: "1rem",
+                        // width: "50%",
+                    }}
+                >
+                    <Link href="#" passHref>
+                        <CardLink>Read more <ArrowRightAltIcon /></CardLink>
+                    </Link>
+                </Box>
             </CardContent>
         </Card>
     )

@@ -18,6 +18,7 @@ const TabHeadings: FC<Props> = ({ value, handleChange, items }) => {
                 borderBottom: 0, borderColor: 'divider',
                 flexGrow: 1,
                 maxWidth: { xs: "100%", sm: "95%", md: "80%" },
+                px: 0
             }}
 
         >
@@ -37,7 +38,7 @@ const TabHeadings: FC<Props> = ({ value, handleChange, items }) => {
                     flexDiection: "column",
                     ['& .css-heg063-MuiTabs-flexContainer']: {
                         justifyContent: { md: "center" },
-                    }
+                    },
                 }}
 
             >

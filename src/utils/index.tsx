@@ -30,3 +30,7 @@ export const a11yProps = (index: number) => {
         'aria-controls': `simple-tabpanel-${index}`,
     };
 }
+
+export const slugify = (word: string): string => {
+    return word.trim().toLowerCase().replaceAll(" ", '-');
+};

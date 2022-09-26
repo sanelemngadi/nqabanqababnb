@@ -1,5 +1,5 @@
 import React, { FunctionComponent } from 'react';
-import theme from '../../styles/theme';
+import theme, { projectFonts } from '../../styles/theme';
 
 //material ui components
 import Typography from "@mui/material/Typography";
@@ -11,16 +11,18 @@ import styled from "@emotion/styled";
 import MailOutlinedIcon from '@mui/icons-material/MailOutlined';
 
 interface Props {
-    small: boolean
+    small?: boolean,
+    bg?: string,
+    color?: string
 }
 
-const EmailBoxStyled = styled(Paper)`
-    background-color: #fff;
+const EmailBoxStyled = styled(Paper) <{ bg: string }>`
+    background-color: ${({ bg }) => bg};
 `
 
-const EmailBox: FunctionComponent<Props> = ({ small }) => {
+const EmailBox: FunctionComponent<Props> = ({ small, color, bg }) => {
     return (
-        <EmailBoxStyled
+        <EmailBoxStyled bg={bg ? bg : "#fff"}
             sx={{
                 display: small ? "none" : "flex",
                 width: "224px",
@@ -35,13 +37,14 @@ const EmailBox: FunctionComponent<Props> = ({ small }) => {
                     alignItems: "center",
                     fontSize: "12px"
                 }}>
-                <MailOutlinedIcon />
+                <MailOutlinedIcon sx={{ color: color ? color : theme.palette.primary.main }} />
             </Box>
             <Typography>
                 <a href="mailto:admin@nqabanqaba.co.za"
                     style={{
-                        color: theme.palette.primary.main,
-                        fontSize: "14px"
+                        color: color ? color : theme.palette.primary.main,
+                        fontSize: "14px",
+                        fontFamily: projectFonts.primary
                     }}>admin@nqabanqaba.co.za</a>
             </Typography>
         </EmailBoxStyled>

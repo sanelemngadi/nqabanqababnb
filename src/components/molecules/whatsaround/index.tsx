@@ -5,6 +5,7 @@ import TabHeading from '../../atoms/sections/TabHeading';
 import InnerDiv from '../../organisms/innerTab/InnerDiv';
 
 import { ImageFeatures, SurroundingFeatures } from "../.././../interfaces"
+import { projectColors } from '../../../styles/theme';
 
 interface Props {
     head: string,
@@ -20,6 +21,8 @@ const WhatsAround: FC<Props> = ({ head, subHead, type, details }) => {
             sx={{
                 display: "flex",
                 flexDirection: { xs: "column", md: "row" },
+                // background: "black",
+                borderRadius: "1rem"
             }}
         >
             <Box
@@ -34,6 +37,7 @@ const WhatsAround: FC<Props> = ({ head, subHead, type, details }) => {
                 <TabHeading
                     head={head}
                     subHead={subHead}
+                    color={projectColors.grayD9}
                 />
             </Box>
             <Box
@@ -43,7 +47,7 @@ const WhatsAround: FC<Props> = ({ head, subHead, type, details }) => {
                     display: "flex",
                     justifyContent: "center",
                     alignItems: "center",
-                    overflow: "hidden"
+                    overflow: "hidden",
                 }}>
                 {
                     type === "tab" ?

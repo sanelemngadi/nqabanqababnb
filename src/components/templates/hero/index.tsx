@@ -73,7 +73,7 @@ const Hero = () => {
                     <Stack direction="row"
                         component="form"
                         sx={{
-                            // display: "flex",/
+                            // display: "flex",
                             alignItems: "center",
                             justifyContent: "space-around",
                             flexDirection: { xs: "column", sm: "row" },

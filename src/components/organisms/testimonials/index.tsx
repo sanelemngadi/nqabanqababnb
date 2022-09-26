@@ -29,6 +29,10 @@ const SwipperWrapper = styled(Swiper)`
         color: ${projectColors.light};
     }
 
+    .swiper-pagination{
+        background-color: "#000";
+    }
+
     /* .swiper-button-next */
 `
 
@@ -54,8 +58,9 @@ const Testimonials: FC<{ reviews: ReviewI[] }> = ({ reviews }) => {
         >
             <SwipperWrapper
                 navigation={!matches}
-                pagination={true}
+                // pagination={true}
                 modules={[Pagination, Navigation]}
+                pagination={{ clickable: true }}
                 className="mySwiper"
             >
                 {

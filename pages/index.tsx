@@ -6,6 +6,7 @@ import Hero from '../src/components/templates/hero';
 import Ratings from '../src/components/organisms/reviews';
 import MetaData from '../meta';
 import FAQs from '../src/components/organisms/faqs';
+import Footer from '../hocs/footer';
 
 const Home: NextPage = () => {
 
@@ -23,6 +24,7 @@ const Home: NextPage = () => {
         <Ratings />
         <FAQs />
       </main>
+      <Footer />
     </>
   )
 }

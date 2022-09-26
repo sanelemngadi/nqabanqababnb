@@ -17,7 +17,7 @@ interface MyAppProps extends AppProps {
 }
 
 
-
+// <meta name="author" content="Mfaniseni Bukhosini">
 const App = (props: MyAppProps) => {
   const { Component, emotionCache = clientSideEmotionCache, pageProps } = props;
 

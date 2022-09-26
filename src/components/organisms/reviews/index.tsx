@@ -10,7 +10,8 @@ const Ratings = () => {
         <Box>
             <Container
                 sx={{
-                    paddingTop: { xs: "32px", md: "64px" }
+                    paddingTop: { xs: "32px", md: "64px" },
+                    px: 0
                 }}
             >
                 <SectionHeading

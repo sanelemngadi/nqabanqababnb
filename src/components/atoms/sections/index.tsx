@@ -6,14 +6,15 @@ import { projectFonts } from '../../../styles/theme';
 
 interface Props {
     head: string,
-    subHead: string
+    subHead: string,
+    side?: boolean
 }
 
 const Wrapper = styled(Box)`
     max-width: 738px;
     margin: 1rem auto;
 `
-const SectionHeading: FC<Props> = ({ head, subHead }) => {
+const SectionHeading: FC<Props> = ({ head, subHead, side }) => {
 
 
     return (
@@ -22,10 +23,11 @@ const SectionHeading: FC<Props> = ({ head, subHead }) => {
                 variant="h3"
                 component="h1"
                 sx={{
+                    padding: "0 1rem",
                     fontWeight: "700",
                     fontFamily: projectFonts.secondary,
                     fontSize: { xs: "24px", sm: "36px" },
-                    textAlign: "center"
+                    textAlign: { xs: "left", md: side ? "left" : "center" }
                 }}
             >
                 {head}
@@ -38,7 +40,7 @@ const SectionHeading: FC<Props> = ({ head, subHead }) => {
                     color: "#8D91B4",
                     fontFamily: projectFonts.secondary,
                     fontSize: { xs: "16px", sm: "24px" },
-                    textAlign: "center",
+                    textAlign: { xs: "left", md: side ? "left" : "center" },
                     marginTop: { xs: "8px", md: "16px" }
                 }}
             >
