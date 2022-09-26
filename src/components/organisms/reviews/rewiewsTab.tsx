@@ -32,6 +32,11 @@ const ReviewsTab: FC = () => {
         >
             <Container
                 maxWidth="lg"
+
+                sx={{
+                    // background: "black",
+                    px: 0
+                }}
             >
                 <Box sx={{
                     width: '100%',
@@ -50,18 +55,24 @@ const ReviewsTab: FC = () => {
                         backgroundColor: "transparent"
                     }
                 }}>
-                    <TabHeadings
-                        value={value}
-                        handleChange={handleChange}
-                        items={reviews.map(i => i.category)}
-                    />
+                    <Box
+                        sx={{
+                            paddingX: { xs: "1rem" }
+                        }}
+                    >
+                        <TabHeadings
+                            value={value}
+                            handleChange={handleChange}
+                            items={reviews.map(i => i.category)}
+                        />
+                    </Box>
                     <Box
                         sx={{
                             backgroundColor: projectColors.tertiary,
                             backgroundImage: "url('/vectors/bgGrid.svg')",
                             marginTop: "1rem",
-                            borderRadius: { xs: "8px", sm: "16px", md: "32px" },
-                            padding: { xs: "0px", sm: "16px", md: "32px" },
+                            borderRadius: { xs: "0px", sm: "16px", md: "32px" },
+                            padding: { xs: "12px", sm: "16px", md: "32px" },
                         }}
                     >
                         {reviews.map((item, idx) => (
@@ -82,7 +93,9 @@ const ReviewsTab: FC = () => {
                     margin: "1rem auto"
                 }}
             >
-                <Button variant="contained"
+                <Button
+                    variant="contained"
+                    disableElevation
                     color="secondary"
                     sx={{
                         backgroundColor: projectColors.bgsecondary,

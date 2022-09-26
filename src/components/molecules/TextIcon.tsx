@@ -23,7 +23,7 @@ const TextIconStyled = styled(Paper) <{ bg: string }>`
 
 const TextIcon: FunctionComponent<Props> = ({ color, bg, label, elem }) => {
     return (
-        <TextIconStyled bg={bg ? bg : "#fff"}
+        <TextIconStyled elevation={0} bg={bg ? bg : "#fff"}
             sx={{
                 display: "flex",
                 width: "224px",

@@ -25,7 +25,7 @@ const CardLink = styled.a`
     font-weight: 600;
     padding: 4px 16px;
     font-family: ${projectFonts.primary};
-    color: ${projectColors.primary};
+    color: ${projectColors.tertiary};
 
     &:hover{
         color: "blue"

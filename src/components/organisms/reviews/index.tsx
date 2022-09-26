@@ -7,11 +7,12 @@ import ReviewsTab from './rewiewsTab';
 
 const Ratings = () => {
     return (
-        <Box>
+        <Box
+        >
             <Container
                 sx={{
                     paddingTop: { xs: "32px", md: "64px" },
-                    px: 0
+                    px: 0,
                 }}
             >
                 <SectionHeading

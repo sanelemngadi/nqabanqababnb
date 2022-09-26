@@ -77,6 +77,7 @@ const InnerTab: FC<{ innerCats: SurroundingFeatures[] | ImageFeatures }> = ({ in
                                     <Tab key={"i2-" + idx} label={item.name} {...a11yProps(idx)}
                                         sx={{
                                             fontSize: "12px",
+                                            color: projectColors.secondary
                                         }}
                                     />
                                 )
@@ -85,10 +86,11 @@ const InnerTab: FC<{ innerCats: SurroundingFeatures[] | ImageFeatures }> = ({ in
                     </Container>
                     <Box
                         sx={{
-                            backgroundColor: "#153852",
+                            backgroundColor: "#225566",
+                            // backgroundColor: "#153852",
                             borderBottomLeftRadius: { xs: "8px", sm: "16px", md: "32px" },
                             borderBottomRightRadius: { xs: "8px", sm: "16px", md: "32px" },
-                            padding: { xs: "0px", sm: "16px", md: "32px" },
+                            padding: { xs: "1rem", md: "32px" }
                         }}
                     >
 

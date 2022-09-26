@@ -9,6 +9,10 @@ import FAQs from '../src/components/organisms/faqs';
 import Footer from '../hocs/footer';
 
 const Home: NextPage = () => {
+  const ts = process.env.NEXT_TEST_VARIABLE;
+
+  console.log("testing: ", ts);
+
 
   return (
     <>
@@ -25,6 +29,7 @@ const Home: NextPage = () => {
         <FAQs />
       </main>
       <Footer />
+      {/* <FaqsDrawer /> */}
     </>
   )
 }

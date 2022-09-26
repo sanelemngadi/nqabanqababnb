@@ -14,7 +14,8 @@ export interface SurroundingFeatures {
 export interface ImageFeatures {
     src: string,
     width: number,
-    height: number
+    height: number,
+    alt: string
 }
 
 export interface ReviewI {

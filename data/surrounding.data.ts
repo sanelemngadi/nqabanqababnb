@@ -158,6 +158,7 @@ const arounds = [
                 src: "/images/service1.jpg",
                 width: 289,
                 height: 233.47,
+                alt: "the services"
                 // height: 296,
             }
         }

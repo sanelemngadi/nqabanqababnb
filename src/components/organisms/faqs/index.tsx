@@ -9,7 +9,11 @@ import SectionHeading from '../../atoms/sections';
 const FAQs: FC = () => {
     return (
         <Box>
-            <Container>
+            <Container
+                sx={{
+                    px: { xs: 0, md: 2 }
+                }}
+            >
                 <SectionHeading
                     head='Frequently Asked Questions'
                     subHead='Just in case you had the same questions that has previously been asked.'

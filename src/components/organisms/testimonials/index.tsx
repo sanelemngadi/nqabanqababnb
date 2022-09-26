@@ -23,7 +23,7 @@ import { ReviewI } from '../../../interfaces';
 
 const SwipperWrapper = styled(Swiper)`
     border-radius: 1rem;
-    background-color: ${projectColors.tertiary};
+    /* background-color: ${projectColors.tertiary}; */
 
     .swiper-button-next,.swiper-button-prev{
         color: ${projectColors.light};
@@ -100,7 +100,8 @@ const Testimonials: FC<{ reviews: ReviewI[] }> = ({ reviews }) => {
                                             textAlign: { xs: "center", md: "left" },
                                             lineHeight: "1.2",
                                             marginBottom: "16px",
-                                            fontFamily: projectFonts.secondary
+                                            fontFamily: projectFonts.secondary,
+                                            color: projectColors.light
                                         }}
                                     >
                                         {review.title}

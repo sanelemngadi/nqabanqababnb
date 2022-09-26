@@ -1,0 +1,182 @@
+import React, { FC } from 'react';
+import Box from '@mui/material/Box';
+import Drawer from '@mui/material/Drawer';
+import Button from '@mui/material/Button';
+import List from '@mui/material/List';
+import Divider from '@mui/material/Divider';
+import ListItem from '@mui/material/ListItem';
+import ListItemButton from '@mui/material/ListItemButton';
+import ListItemIcon from '@mui/material/ListItemIcon';
+import ListItemText from '@mui/material/ListItemText';
+import { LinkItems } from '../../../styles/appbar';
+import Link from 'next/link';
+import { slugify } from '../../../utils';
+import { projectColors, projectFonts } from '../../../styles/theme';
+import { Headings } from '../../../styles/footer';
+import EmailBox from '../../molecules/EmailBox';
+import TextIcon from '../../molecules/TextIcon';
+import LocationOnIcon from '@mui/icons-material/LocationOn';
+import PhoneEnabledIcon from '@mui/icons-material/PhoneEnabled';
+import HelpOutlineIcon from '@mui/icons-material/HelpOutline';
+import ArrowOutwardIcon from '@mui/icons-material/ArrowOutward';
+import CancelIcon from '@mui/icons-material/Cancel';
+
+type Anchor = 'top';
+
+const links = [
+    "Home", "Pricing", "About Us", "Contact Us"
+]
+interface Props {
+    state: boolean,
+    setState(x: boolean): void
+}
+
+const FaqsDrawer: FC<Props> = ({ state, setState }) => {
+
+    const toggleDrawer =
+        (anchor: Anchor, open: boolean) =>
+            (event: React.KeyboardEvent | React.MouseEvent) => {
+                if (
+                    event.type === 'keydown' &&
+                    ((event as React.KeyboardEvent).key === 'Tab' ||
+                        (event as React.KeyboardEvent).key === 'Shift')
+                ) {
+                    return;
+                }
+
+                setState(open);
+            };
+
+    const list = (anchor: Anchor) => (
+        <Box
+            sx={{ width: 'auto', minHeight: "100vh" }}
+            role="presentation"
+            onClick={toggleDrawer(anchor, false)}
+            onKeyDown={toggleDrawer(anchor, false)}
+        >
+            <Headings
+                sx={{
+                    color: projectColors.dark + " !important",
+                    display: "flex !important",
+                    justifyContent: "center",
+                    fontWeight: "700 !important",
+                    paddingTop: "16px",
+                    marginBottom: "0 !important"
+                }}>Pages</Headings>
+            <List>
+                <LinkItems type={"col"}>
+                    {links.map((link, idx) => (
+                        <Link
+                            key={"i-" + idx}
+                            href={link === "Home" ? "/" : `/${slugify(link)}`}
+                            passHref>
+                            <ListItemButton sx={{ paddingLeft: "0px", paddingRight: "0px" }}>
+                                <ListItemText primary={link}
+                                    sx={{
+                                        width: "96px",
+                                        display: "flex",
+                                        alignItems: "center",
+                                        justifyContent: "flex-start",
+                                        fontFamily: projectFonts.primary,
+                                        marginLeft: "24px",
+                                        textDecoration: "underline"
+                                    }}
+                                />
+                            </ListItemButton></Link>
+                    ))}
+                </LinkItems>
+            </List>
+            <Divider />
+            <List>
+                {['FAQs', 'Book now'].map((text, index) => (
+                    <ListItem key={text} disablePadding>
+                        <ListItemButton>
+                            <ListItemIcon>
+                                {text === "FAQs" ? <HelpOutlineIcon /> : <ArrowOutwardIcon />}
+                            </ListItemIcon>
+                            <ListItemText primary={text} />
+                        </ListItemButton>
+                    </ListItem>
+                ))}
+            </List>
+            <Divider />
+            <Box
+                sx={{
+                    padding: "1rem"
+                }}>
+                <Headings
+                    sx={{
+                        color: projectColors.dark + " !important",
+                        display: "flex !important",
+                        justifyContent: "center",
+                        fontWeight: "700 !important"
+                    }}
+                >Contact info</Headings>
+                <EmailBox bg={projectColors.light} color={projectColors.primary} />
+                <TextIcon
+                    bg={projectColors.light}
+                    color={projectColors.primary}
+                    label='+27607013296'
+                    elem={<PhoneEnabledIcon
+                        sx={{
+                            color: projectColors.primary
+                        }} />}
+                />
+
+                <Headings
+                    sx={{
+                        color: projectColors.dark + " !important",
+                        display: "flex !important",
+                        justifyContent: "center",
+                        fontWeight: "700 !important"
+                    }}>Address</Headings>
+                <TextIcon
+                    bg={projectColors.light}
+                    color={projectColors.primary}
+                    label='64 Marlynhoek Meer en see, Richards Bay,3901, South Africa'
+                    elem={<LocationOnIcon
+                        sx={{
+                            color: projectColors.primary
+                        }} />}
+                />
+            </Box>
+        </Box>
+    );
+
+    return (
+        <div>
+            {(['top'] as const).map((anchor) => (
+                <React.Fragment key={anchor}>
+                    {/* <Button onClick={toggleDrawer(anchor, true)}>{anchor}</Button> */}
+                    <Drawer
+                        anchor={anchor}
+                        open={state}
+                        onClose={toggleDrawer(anchor, false)}
+                        sx={{
+                            zIndex: state ? "2000" : "-200",
+                            postion: "relative"
+                        }}
+                    >
+                        <Button
+                            color="error"
+                            sx={{
+                                position: "fixed",
+                                right: "1rem",
+                                top: "1rem",
+                                zIndex: state ? "2005" : "0",
+
+                            }}
+                            onClick={toggleDrawer(anchor, false)}
+                        >
+                            <CancelIcon />
+                        </Button>
+                        {list(anchor)}
+                    </Drawer>
+                </React.Fragment>
+            ))}
+        </div>
+    );
+}
+
+
+export default FaqsDrawer;

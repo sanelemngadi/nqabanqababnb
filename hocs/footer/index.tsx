@@ -10,6 +10,7 @@ import PhoneEnabledIcon from '@mui/icons-material/PhoneEnabled';
 import TextIcon from '../../src/components/molecules/TextIcon';
 import Link from 'next/link';
 import { slugify } from '../../src/utils';
+import HorizontalRuleIcon from '@mui/icons-material/HorizontalRule';
 
 
 const links = [
@@ -69,9 +70,12 @@ const Footer = () => {
                 <Box>
                     <Typography
                         sx={{
-                            color: projectColors.grayD9
+                            color: "#888888",
+                            fontSize: "14px",
+                            display: "flex",
+                            alignItems: "center"
                         }}
-                    >© {new Date().getFullYear()} Nqabanqaba. All rights reserved.</Typography>
+                    ><HorizontalRuleIcon />&nbsp;© {new Date().getFullYear()} Nqabanqaba. All rights reserved.</Typography>
                 </Box>
             </FooterWrapper >
         </Box >

@@ -3,10 +3,15 @@ import { useTheme } from "@mui/material/styles";
 import { useMediaQuery } from "@mui/material";
 import AppBarMobile from './AppBarMobile';
 import AppBarDesktop from './AppBarDesktop';
+import FaqsDrawer from '../../src/components/templates/faqsDrawer';
 
 const AppBar = () => {
   // const [prevScrollPos, setPrevScrollPos] = useState<number>(0);
   const [showAppBar, setShowAppBar] = useState<boolean>(true);
+  const [state, setState] = useState(false);
+
+  console.log("state: ", state);
+
 
   // const controlAppBar = () => {
   //   const currentScrollPos = window.scrollY;
@@ -50,9 +55,11 @@ const AppBar = () => {
     <>
       {showAppBar &&
         <>
-          {matches ? <AppBarMobile /> : <AppBarDesktop />}
+          {matches ? <AppBarMobile setState={setState} /> : <AppBarDesktop />}
         </>
       }
+
+      <FaqsDrawer state={state} setState={setState} />
     </>
   )
 }

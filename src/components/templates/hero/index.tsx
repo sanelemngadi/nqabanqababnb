@@ -1,50 +1,12 @@
-import { Box, Container, Stack, Checkbox, TextField, Button } from '@mui/material';
+import { Box, Stack, Checkbox, Button } from '@mui/material';
 import React from 'react';
 import { projectColors, projectFonts } from '../../../styles/theme';
 import Heading from '../../atoms/hero/Heading';
-import styled from "@emotion/styled";
-import { TextShadow } from '../../../styles/hero';
+import { TextInput, TextShadow, Wrapper } from '../../../styles/hero';
 
-const Wrapper = styled(Container)`
-    min-height:calc(100vh - 80px - 40px);
-    background-color: ${projectColors.primary};
-    padding: 1rem;
-    overflow-x: hidden;
 
-    @media (max-width: 992px) {
-        background-image: url('/images/park.jpg');
-        background-repeat: no-repeat;
-        background-size: cover;
-        background-position: center;        
-    }
-`
 
-const TextInput = styled(TextField)`
-    background-color: ${projectColors.light};
-    border-radius: 8px;
-    border: 0;
-    outline: 0;
-    &::after{
-        border-bottom: none;
-    }
 
-    &:hover, &:focus{
-        border: 0 !important;
-        outline: 0;
-    }
-
-    fieldset:hover, div:hover{
-        border: 0;
-        outline: 0;
-    }
-    fieldset{
-        border: 0px solid red;
-    }
-    fieldset:hover{
-        border: 0px solid yellow;
-    }
-
-`
 
 const Hero = () => {
     return (
@@ -73,7 +35,6 @@ const Hero = () => {
                     <Stack direction="row"
                         component="form"
                         sx={{
-                            // display: "flex",
                             alignItems: "center",
                             justifyContent: "space-around",
                             flexDirection: { xs: "column", sm: "row" },
@@ -102,7 +63,14 @@ const Hero = () => {
                         </Box>
                     </Stack>
                 </Box>
-                <Box>
+                <Box
+                    sx={{
+                        backgroundColor: { md: "white" },
+                        padding: "4px",
+                        borderRadius: { xs: "0px", md: "100px" },
+                        overflow: "hidden"
+                    }}
+                >
                     <Stack direction="row"
                         component="form"
                         sx={{
@@ -110,7 +78,7 @@ const Hero = () => {
                             alignItems: "center",
                             justifyContent: "space-around",
                             flexDirection: { xs: "column", sm: "row" },
-                            margin: "2rem auto"
+                            margin: "0.1rem auto"
                         }}
                     >
                         <Box
@@ -122,7 +90,61 @@ const Hero = () => {
                             <TextInput
                                 id="outlined-basic"
                                 label="Nqabanqaba"
-                                variant="outlined"
+                                variant="standard"
+                                sx={{
+                                    marginBottom: { xs: "1rem", sm: "0" },
+                                    width: "100%",
+                                    height: { xs: "48px", md: "54px" },
+                                    display: { xs: "none", md: "block" }
+                                }}
+                            />
+                        </Box>
+                        <Box
+                            sx={{
+                                width: "100%",
+                                paddingX: "1rem",
+                            }}
+                        >
+                            <TextInput
+                                id="outlined-basic"
+                                label="Checking"
+                                variant="standard"
+                                sx={{
+                                    marginBottom: { xs: "1rem", sm: "0" },
+                                    width: "100%",
+                                    height: { xs: "48px", md: "54px" },
+                                    display: { xs: "none", md: "block" }
+                                }}
+                            />
+                        </Box>
+                        <Box
+                            sx={{
+                                width: "100%",
+                                paddingX: "1rem",
+                            }}
+                        >
+                            <TextInput
+                                id="outlined-basic"
+                                label="Children"
+                                variant="standard"
+                                sx={{
+                                    marginBottom: { xs: "1rem", sm: "0" },
+                                    width: "100%",
+                                    height: { xs: "48px", md: "54px" },
+                                    display: { xs: "none", md: "block" }
+                                }}
+                            />
+                        </Box>
+                        <Box
+                            sx={{
+                                width: "100%",
+                                paddingX: "1rem",
+                            }}
+                        >
+                            <TextInput
+                                id="outlined-basic"
+                                label="adults"
+                                variant="standard"
                                 sx={{
                                     marginBottom: { xs: "1rem", sm: "0" },
                                     width: "100%",
@@ -141,23 +163,24 @@ const Hero = () => {
                                     height: { xs: "48px", md: "54px" },
                                     backgroundColor: projectColors.secondary,
                                     color: projectColors.primary,
-                                    borderRadius: "8px"
+                                    borderRadius: { xs: "8px", md: "100px" }
                                 }}
                             >
                                 Check Availability
                             </Button>
                         </Box>
                     </Stack>
-                    <TextShadow
-                        sx={{
-                            textAlign: "center",
-                            color: projectColors.bgsecondary,
-                            fontSize: "14px",
-                            fontFamily: projectFonts.primary,
-                            display: { xs: "none", md: "block" }
-                        }}
-                    >Click the box above to enter your info to check availability.</TextShadow>
                 </Box>
+                <TextShadow
+                    sx={{
+                        textAlign: "center",
+                        color: projectColors.bgsecondary,
+                        fontSize: "14px",
+                        fontFamily: projectFonts.primary,
+                        display: { xs: "none", md: "block" },
+                        marginTop: "16px"
+                    }}
+                >Click the box above to enter your info to check availability.</TextShadow>
             </Wrapper>
         </Box>
     )
