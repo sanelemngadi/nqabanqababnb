@@ -31,7 +31,11 @@ const Hero = () => {
                 >
                     Best BnB in Richards Bay that offers more than comfort and quility sleep.
                 </TextShadow>
-                <Box>
+                <Box
+                    sx={{
+                        marginTop: "32px"
+                    }}
+                >
                     <Stack direction="row"
                         component="form"
                         sx={{
