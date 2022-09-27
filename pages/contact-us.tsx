@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { FC } from 'react';
 import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
 import Typography from "@mui/material/Typography";
@@ -11,18 +11,17 @@ import styled from '@emotion/styled';
 import { Headings } from '../src/styles/footer';
 import TextIcon from '../src/components/molecules/TextIcon';
 import SocialIcons from '../src/components/molecules/SocialIcons';
+import Head from 'next/head';
+import MetaData from '../meta';
 
 const ContactForm = styled.form`
     display: block;
-    /* border: 1px solid red; */
     grid-area: one;
     padding: 1rem 0;
 `
 
 const ContactDetails = styled(Box)`
     grid-area: two;
-    /* flex-grow: 1; */
-    /* border: 1px solid black; */
     padding: 1rem;
 `
 
@@ -39,119 +38,139 @@ const ContactContainer = styled(Box)`
     margin-top: "32px";
 `
 
-const ContactUs = () => {
+const ContactUs: FC = () => {
     return (
-        <Box>
-            <Box
-                sx={{
-                    height: { xs: 256, md: 345 },
-                    // border: "1px solid black",
-                    backgroundImage: "url(/images/backyard.jpg)",
-                    backgroundRepeat: "no-repeat",
-                    backgroundPosition: "center",
-                    backgroundSize: "cover",
-                    display: "flex",
-                    flexDirection: "column",
-                    justifyContent: "center",
-                    alignItems: 'center',
-                    textAlign: 'center',
-                }}
-            >
+        <>
+            <MetaData
+                title='Nqabanqaba | Contact Us'
+                subtitle="If you have a question don't hasitate to drop us a text message, we are more than happy to clear your confusion."
+                image='https://nqabanqaba.netlify.app/images/backyard.jpg' />
 
-                <Typography variant="caption"
+            <Box>
+
+                <Box
                     sx={{
-                        fontSize: { xs: "16px", md: "24px" },
-                        fontFamily: projectFonts.secondary,
-                        color: projectColors.secondary
+                        height: { xs: 256, md: 345 },
+                        backgroundImage: "url(/images/backyard.jpg)",
+                        backgroundRepeat: "no-repeat",
+                        backgroundPosition: "center",
+                        backgroundSize: "cover",
+                        backgroundAttachment: "fixed",
+                        display: "flex",
+                        flexDirection: "column",
+                        justifyContent: "center",
+                        alignItems: 'center',
+                        textAlign: 'center',
                     }}
                 >
-                    <Link href="/"><a style={{ color: projectColors.secondary }}>Home</a></Link> - Contact
-                </Typography>
-                <Typography variant="h1"
-                    sx={{
-                        fontSize: { xs: "32px", md: "48px" },
-                        fontFamily: projectFonts.secondary,
-                        color: projectColors.light
-                    }}
-                >
-                    Ayikapheli but this will be a contact us pages
-                </Typography>
-            </Box>
-            <Container maxWidth="lg">
-                <Box>
-                    <Typography variant="h1"
+
+                    <Typography variant="caption"
                         sx={{
-                            fontSize: { xs: "24px", md: "32px" },
+                            fontSize: { xs: "16px", md: "24px" },
                             fontFamily: projectFonts.secondary,
-                            color: projectColors.primary,
-                            textAlign: 'center',
-                            marginTop: "48px",
-                            marginBottom: "10px",
+                            color: projectColors.secondary
                         }}
                     >
-                        Get in touch with us
+                        <Link href="/"><a style={{ color: projectColors.secondary }}>Home</a></Link> - Contact
                     </Typography>
                     <Typography variant="h1"
                         sx={{
-                            fontSize: { xs: "18px", md: "24px" },
-                            fontFamily: projectFonts.primary,
-                            color: projectColors.primary,
-                            textAlign: 'center',
-                            // marginTop: "32px",
-                            marginBottom: "24px",
-                            maxWidth: { xs: "500px", md: "768px" },
-                            margin: { xs: "8px auto", md: "24px auto" },
-                            padding: "2px"
+                            fontSize: { xs: "32px", md: "48px" },
+                            fontFamily: projectFonts.secondary,
+                            color: projectColors.light
                         }}
                     >
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quisquam illo praesentium sequi in cum, beatae maiores quae qui.
+                        How can we halp you?
                     </Typography>
                 </Box>
-                <ContactContainer>
-                    <ContactForm>
-                        <TextField fullWidth id="outlined-basic" label="Outlined" variant="outlined" />
-                        <TextField sx={{ marginTop: "1rem", marginBottom: "1rem" }} fullWidth id="outlined-basic" label="Outlined" variant="outlined" />
-                        <TextareaAutosize
-                            aria-label="minimum height"
-                            minRows={10}
-                            cols={30}
-                            placeholder="Message"
-                            style={{ width: "100%" }}
-                        />
-
-                        <div>
-                            <Button variant="outlined">Send Messgae</Button>
-                        </div>
-                    </ContactForm>
-                    <ContactDetails>
-
-                        <Headings
+                <Container maxWidth="lg">
+                    <Box>
+                        <Typography variant="h1"
                             sx={{
-                                color: "black !important"
+                                fontSize: { xs: "24px", md: "32px" },
+                                fontFamily: projectFonts.secondary,
+                                color: projectColors.primary,
+                                textAlign: 'center',
+                                marginTop: "48px",
+                                marginBottom: "10px",
                             }}
-                        >Write Us</Headings>
-                        <TextIcon elem={<span></span>} label='www.nqabanqaba.co.za' bg='white' color={projectColors.secondary} />
-                        <Headings
+                        >
+                            Get in touch with us
+                        </Typography>
+                        <Typography variant="h1"
                             sx={{
-                                color: "black !important"
-                            }}>Call Us</Headings>
-                        <TextIcon elem={<span></span>} label='+2760701396' bg='white' color={projectColors.secondary} />
-                        <Headings
-                            sx={{
-                                color: "black !important"
-                            }}>Visit Us</Headings>
-                        <TextIcon elem={<span></span>} label='64 Marlynhoek Meer en see, Richards Bay,3901, South Africa' color={projectColors.secondary} />
-                        <Headings
-                            sx={{
-                                color: "black !important"
-                            }}>Socialize with Us</Headings>
-                        <Box sx={{ maxWidth: "96px" }}>
-                            <SocialIcons small={false} />
-                        </Box>
-                    </ContactDetails>
-                </ContactContainer>
-            </Container>
-        </Box>
+                                fontSize: { xs: "16px", md: "18px" },
+                                fontFamily: projectFonts.primary,
+                                color: projectColors.primary,
+                                textAlign: 'center',
+                                marginBottom: "24px",
+                                maxWidth: { xs: "500px", md: "500px" },
+                                margin: { xs: "8px auto", md: "24px auto" },
+                                padding: "2px"
+                            }}
+                        >
+                            If you have a question don&#39;t hasitate to drop us a text message, we are more than happy to clear your confusion.
+                        </Typography>
+                    </Box>
+                    <ContactContainer>
+                        <ContactForm>
+                            <TextField fullWidth id="outlined-basic" label="Name" variant="outlined" />
+                            <TextField
+                                type='email'
+                                fullWidth
+                                sx={{ marginTop: "1rem", marginBottom: "1rem" }}
+                                id="outlined-basic"
+                                label="Email"
+                                variant="outlined"
+                            />
+                            <TextareaAutosize
+                                aria-label="minimum height"
+                                minRows={10}
+                                cols={30}
+                                placeholder="Message"
+                                style={{ width: "100%" }}
+                            />
+
+                            <div>
+                                <Button variant="outlined">Send Messgae</Button>
+                            </div>
+                        </ContactForm>
+                        <ContactDetails>
+
+                            <Headings
+                                sx={{
+                                    color: "black !important"
+                                }}
+                            >Write Us</Headings>
+                            <TextIcon elem={<span></span>} label='www.nqabanqaba.co.za' bg='white' color={projectColors.secondary} />
+                            <Headings
+                                sx={{
+                                    color: "black !important",
+                                }}
+                            >Call Us</Headings>
+                            <TextIcon
+                                elem={<span></span>}
+                                label='+2760701396'
+                                bg='white'
+                                color={projectColors.secondary}
+                            />
+                            <Headings
+                                sx={{
+                                    color: "black !important"
+                                }}>Visit Us</Headings>
+                            <TextIcon elem={<span></span>} label='64 Marlynhoek Meer en see, Richards Bay,3901, South Africa' color={projectColors.secondary} />
+                            <Headings
+                                sx={{
+                                    color: "black !important"
+                                }}>Socialize with Us</Headings>
+                            <Box sx={{ maxWidth: "96px" }}>
+                                <SocialIcons small={false} />
+                            </Box>
+                        </ContactDetails>
+                    </ContactContainer>
+                </Container>
+            </Box>
+        </>
     )
 }
 

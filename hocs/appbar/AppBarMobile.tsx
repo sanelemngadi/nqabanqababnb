@@ -1,4 +1,3 @@
-import Image from 'next/image'
 import React, { FC } from 'react'
 import { AppBarContainer } from '../../src/styles/appbar';
 import MenuIcon from '@mui/icons-material/Menu';
@@ -13,6 +12,9 @@ import HelpOutlineIcon from '@mui/icons-material/HelpOutline';
 import { useFaqsContext } from "../../src/context";
 
 import CancelIcon from '@mui/icons-material/Cancel';
+
+import { useRouter } from 'next/router';
+import { LogoComponent } from '../navigationComponents';
 
 const AppBarMobileLogo = styled.div`
     display: inline-flex;
@@ -29,6 +31,8 @@ const AppBarMenu = styled.div``;
 const AppBarMobile: FC<{ setState(x: boolean): void }> = ({ setState }) => {
 
     const item = useFaqsContext();
+
+    const router = useRouter();
     return (
         <Paper
             sx={{
@@ -45,14 +49,7 @@ const AppBarMobile: FC<{ setState(x: boolean): void }> = ({ setState }) => {
                     height: "48px !important"
                 }}>
                 <AppBarMobileLogo>
-                    <Button color="primary" component="a">
-                        <Image
-                            src="/vectors/logo.svg"
-                            width={128} height={32}
-                            layout="fixed"
-                            alt="nqabanqaba logo"
-                        />
-                    </Button>
+                    <LogoComponent vals={item.vals} />
                 </AppBarMobileLogo>
 
                 {item.vals ? <Button

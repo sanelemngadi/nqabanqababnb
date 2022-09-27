@@ -1,4 +1,3 @@
-import Image from 'next/image';
 import React from 'react';
 import { AppBarContainer, AppBarLogo, LinkItems, AppBarButtons } from '../../src/styles/appbar';
 import Box from "@mui/material/Box";
@@ -7,17 +6,18 @@ import Typography from "@mui/material/Typography";
 import Paper from "@mui/material/Paper";
 import ListItemButton from "@mui/material/ListItemButton";
 
-import { ListItemText } from "@mui/material";
-import Link from 'next/link';
 import HelpOutlineIcon from '@mui/icons-material/HelpOutline';
 import ArrowOutwardIcon from '@mui/icons-material/ArrowOutward';
 
 import styled from "@emotion/styled";
-import { projectColors, projectFonts } from '../../src/styles/theme';
+import { projectColors } from '../../src/styles/theme';
 import { slugify } from '../../src/utils';
 
 import CancelIcon from '@mui/icons-material/Cancel';
 import { useFaqsContext } from '../../src/context';
+import ActiveLink from '../../src/context/ActiveLink';
+
+import { FaqsButtonComponent, ListTextComponent, LogoComponent } from '../navigationComponents';
 
 
 const links = [
@@ -50,78 +50,39 @@ const AppBarDesktop = () => {
                 <AppBarLogo
                     elevation={vals ? 0 : 2}
                 >
-                    <Button
-                        color="primary"
-                        component="a"
-                        disabled={vals}
-                    >
-                        <Image
-                            src="/vectors/logo.svg"
-                            width={128} height={32}
-                            layout="fixed"
-                            alt="nqabanqaba logo"
-                        />
-                    </Button>
+                    <LogoComponent vals={vals} />
                 </AppBarLogo>
                 <LinkItems type={"row"}>
                     {links.map((link, idx) => (
-                        <Link
+                        <ActiveLink
                             key={"i-" + idx}
                             href={link === "Home" ? "/" : `/${slugify(link)}`}
-                            passHref>
+                        >
                             <ListItemButton
                                 disabled={vals}
                                 sx={{
                                     paddingLeft: "0px", paddingRight: "0px"
                                 }}>
-                                <ListItemText primary={link}
-                                    sx={{
-                                        width: "96px",
-                                        display: "flex",
-                                        alignItems: "center",
-                                        justifyContent: "center",
-                                        fontFamily: projectFonts.primary
-                                    }}
-                                />
+                                <ListTextComponent link={link} />
                             </ListItemButton>
-                        </Link>
+                        </ActiveLink>
                     ))}
                 </LinkItems>
 
                 <AppBarButtons type={"row"}>
                     {
                         vals ?
-                            <Button variant="outlined"
-                                onClick={() => setValue(false)}
-                                sx={{
-                                    marginRight: "16px",
-                                    backgroundColor: projectColors.bgsecondary,
-                                    color: vals ? "red" : projectColors.tertiary,
-                                    border: vals ? "1px solid red" : "1px solid blue"
-                                }}>
-                                <Typography variant="h6" sx={{
-                                    fontSize: "14px",
-                                    lineHeight: "1.5",
-                                }}>FAQs</Typography>
-                                <Icon>
-                                    <CancelIcon />
-                                </Icon></Button>
+                            <FaqsButtonComponent
+                                setValue={() => setValue(false)}
+                                vals={vals}
+                                ico={<CancelIcon />}
+                            />
                             :
-                            <Button variant="outlined"
-                                onClick={() => setValue(true)}
-                                sx={{
-                                    marginRight: "16px",
-                                    backgroundColor: projectColors.bgsecondary,
-                                    color: vals ? "red" : projectColors.tertiary,
-                                    border: vals ? "1px solid red" : "1px solid blue"
-                                }}>
-                                <Typography variant="h6" sx={{
-                                    fontSize: "14px",
-                                    lineHeight: "1.5",
-                                }}>FAQs</Typography>
-                                <Icon>
-                                    <HelpOutlineIcon />
-                                </Icon></Button>
+                            <FaqsButtonComponent
+                                setValue={() => setValue(true)}
+                                vals={vals}
+                                ico={<HelpOutlineIcon />}
+                            />
                     }
                     <Button
                         variant="contained"

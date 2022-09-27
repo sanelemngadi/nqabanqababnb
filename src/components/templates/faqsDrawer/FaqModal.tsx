@@ -8,23 +8,24 @@ import { useFaqsContext } from '../../../context';
 
 const style = {
     position: 'absolute' as 'absolute',
-    top: "calc(70px + 10px)",
-    left: "calc((100vw - 90vw)/2)",
+    top: { xs: "calc((100% - (100% - 152px - 64px))/2)", md: "calc((100% - (100% - 184px - 120px))/2)" },
+    left: { xs: "calc((100vw - 95vw)/2)", md: "calc((100vw - 90vw)/2)" },
     right: 0,
     bottom: 0,
-    maxWidth: "90vw",
-    height: "calc(100vh - 48px - 40px)",
+    maxWidth: { xs: '95vw', md: "90vw" },
+    maxHeight: { xs: "calc(100vh - 152px)", md: "calc(100vh - 184px)" },
     bgcolor: 'background.paper',
     boxShadow: 24,
     p: 4,
-    overflow: "auto"
+    overflow: "auto",
+    borderRadius: "1rem"
 };
 
 const FaqsModal = () => {
     const [open, setOpen] = React.useState(false);
     const handleClose = () => setOpen(false);
 
-    const { vals } = useFaqsContext();
+    const { vals, setValue } = useFaqsContext();
 
     return (
         <div>
@@ -33,6 +34,9 @@ const FaqsModal = () => {
                 onClose={handleClose}
                 aria-labelledby="modal-modal-title"
                 aria-describedby="modal-modal-description"
+                disableScrollLock
+
+                onBackdropClick={() => setValue(false)}
             >
                 <Box sx={style}>
                     <Grid container spacing={1}>
@@ -44,7 +48,7 @@ const FaqsModal = () => {
                     </Grid>
                 </Box>
             </Modal>
-        </div>
+        </div >
     );
 }
 

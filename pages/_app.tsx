@@ -10,7 +10,12 @@ import AppBar from '../hocs/appbar';
 import Script from 'next/script';
 import { PageContext } from '../src/context';
 import FaqsModal from '../src/components/templates/faqsDrawer/FaqModal';
-import Footer from '../hocs/footer';
+
+import "../src/components/imagesCollegeSwipper/styles.css"
+// import Footer from '../hocs/footer';
+import dynamic from 'next/dynamic';
+
+const Footer = dynamic(() => import('../hocs/footer'));
 
 //Client-side cache, shared for the whole session of the user in the browser
 const clientSideEmotionCache = createEmotionCache();

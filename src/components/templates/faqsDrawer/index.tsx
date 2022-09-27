@@ -9,9 +9,8 @@ import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import { LinkItems } from '../../../styles/appbar';
-import Link from 'next/link';
 import { slugify } from '../../../utils';
-import { projectColors, projectFonts } from '../../../styles/theme';
+import { projectColors } from '../../../styles/theme';
 import { Headings } from '../../../styles/footer';
 import EmailBox from '../../molecules/EmailBox';
 import TextIcon from '../../molecules/TextIcon';
@@ -20,6 +19,8 @@ import PhoneEnabledIcon from '@mui/icons-material/PhoneEnabled';
 import HelpOutlineIcon from '@mui/icons-material/HelpOutline';
 import ArrowOutwardIcon from '@mui/icons-material/ArrowOutward';
 import CancelIcon from '@mui/icons-material/Cancel';
+import ActiveLink from '../../../context/ActiveLink';
+import { ListTextComponent } from '../../../../hocs/navigationComponents';
 
 type Anchor = 'top';
 
@@ -66,30 +67,30 @@ const FaqsDrawer: FC<Props> = ({ state, setState }) => {
             <List>
                 <LinkItems type={"col"}>
                     {links.map((link, idx) => (
-                        <Link
+                        <ActiveLink
                             key={"i-" + idx}
                             href={link === "Home" ? "/" : `/${slugify(link)}`}
-                            passHref>
-                            <ListItemButton sx={{ paddingLeft: "0px", paddingRight: "0px" }}>
-                                <ListItemText primary={link}
-                                    sx={{
-                                        width: "96px",
-                                        display: "flex",
-                                        alignItems: "center",
-                                        justifyContent: "flex-start",
-                                        fontFamily: projectFonts.primary,
-                                        marginLeft: "24px",
-                                        textDecoration: "underline"
-                                    }}
+                        >
+                            <ListItemButton
+                                sx={{
+                                    paddingLeft: "0px",
+                                    paddingRight: "0px"
+                                }}
+                            >
+                                <ListTextComponent
+                                    link={link}
+                                    sm
                                 />
-                            </ListItemButton></Link>
+                            </ListItemButton>
+
+                        </ActiveLink>
                     ))}
                 </LinkItems>
             </List>
             <Divider />
             <List>
                 {['FAQs', 'Book now'].map((text, index) => (
-                    <ListItem key={text} disablePadding>
+                    <ListItem key={text + index} disablePadding>
                         <ListItemButton>
                             <ListItemIcon>
                                 {text === "FAQs" ? <HelpOutlineIcon /> : <ArrowOutwardIcon />}
