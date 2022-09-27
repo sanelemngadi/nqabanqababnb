@@ -54,7 +54,7 @@ const Footer = () => {
                                     color: projectColors.grayD9
                                 }} />}
                         />
-                        <EmailBox bg={projectColors.primary} color={projectColors.grayD9} />
+                        <EmailBox noElevation bg={projectColors.primary} color={projectColors.grayD9} />
                         <TextIcon
                             bg={projectColors.primary}
                             color={projectColors.grayD9}

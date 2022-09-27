@@ -10,8 +10,6 @@ const AppBar = () => {
   const [showAppBar, setShowAppBar] = useState<boolean>(true);
   const [state, setState] = useState(false);
 
-  console.log("state: ", state);
-
 
   // const controlAppBar = () => {
   //   const currentScrollPos = window.scrollY;

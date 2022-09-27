@@ -6,12 +6,13 @@ import Hero from '../src/components/templates/hero';
 import Ratings from '../src/components/organisms/reviews';
 import MetaData from '../meta';
 import FAQs from '../src/components/organisms/faqs';
-import Footer from '../hocs/footer';
+import { useFaqsContext } from "../src/context"
 
 const Home: NextPage = () => {
-  const ts = process.env.NEXT_TEST_VARIABLE;
+  // const ts = process.env.NEXT_TEST_VARIABLE;
 
-  console.log("testing: ", ts);
+  // console.log("testing: ", ts);
+
 
 
   return (
@@ -28,7 +29,6 @@ const Home: NextPage = () => {
         <Ratings />
         <FAQs />
       </main>
-      <Footer />
     </>
   )
 }

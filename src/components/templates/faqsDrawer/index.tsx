@@ -112,7 +112,7 @@ const FaqsDrawer: FC<Props> = ({ state, setState }) => {
                         fontWeight: "700 !important"
                     }}
                 >Contact info</Headings>
-                <EmailBox bg={projectColors.light} color={projectColors.primary} />
+                <EmailBox noElevation bg={projectColors.light} color={projectColors.primary} />
                 <TextIcon
                     bg={projectColors.light}
                     color={projectColors.primary}
@@ -147,7 +147,6 @@ const FaqsDrawer: FC<Props> = ({ state, setState }) => {
         <div>
             {(['top'] as const).map((anchor) => (
                 <React.Fragment key={anchor}>
-                    {/* <Button onClick={toggleDrawer(anchor, true)}>{anchor}</Button> */}
                     <Drawer
                         anchor={anchor}
                         open={state}

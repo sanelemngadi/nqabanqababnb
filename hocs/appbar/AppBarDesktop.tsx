@@ -16,10 +16,9 @@ import styled from "@emotion/styled";
 import { projectColors, projectFonts } from '../../src/styles/theme';
 import { slugify } from '../../src/utils';
 
+import CancelIcon from '@mui/icons-material/Cancel';
+import { useFaqsContext } from '../../src/context';
 
-// const slugify = (word: string): string => {
-//     return word.trim().toLowerCase().replaceAll(" ", '-');
-// };
 
 const links = [
     "Home", "Pricing", "About Us", "Contact Us"
@@ -33,8 +32,10 @@ const Icon = styled(Box)`
 `
 
 const AppBarDesktop = () => {
+    const { vals, setValue } = useFaqsContext();
     return (
         <Paper
+            elevation={4}
             sx={{
                 backgroundColor: projectColors.light,
                 position: "sticky !important",
@@ -46,8 +47,14 @@ const AppBarDesktop = () => {
             <AppBarContainer
                 maxWidth={"lg"}
             >
-                <AppBarLogo>
-                    <Button color="primary" component="a">
+                <AppBarLogo
+                    elevation={vals ? 0 : 2}
+                >
+                    <Button
+                        color="primary"
+                        component="a"
+                        disabled={vals}
+                    >
                         <Image
                             src="/vectors/logo.svg"
                             width={128} height={32}
@@ -62,7 +69,11 @@ const AppBarDesktop = () => {
                             key={"i-" + idx}
                             href={link === "Home" ? "/" : `/${slugify(link)}`}
                             passHref>
-                            <ListItemButton sx={{ paddingLeft: "0px", paddingRight: "0px" }}>
+                            <ListItemButton
+                                disabled={vals}
+                                sx={{
+                                    paddingLeft: "0px", paddingRight: "0px"
+                                }}>
                                 <ListItemText primary={link}
                                     sx={{
                                         width: "96px",
@@ -72,23 +83,49 @@ const AppBarDesktop = () => {
                                         fontFamily: projectFonts.primary
                                     }}
                                 />
-                            </ListItemButton></Link>
+                            </ListItemButton>
+                        </Link>
                     ))}
                 </LinkItems>
 
                 <AppBarButtons type={"row"}>
-                    <Button variant="outlined"
-                        sx={{
-                            marginRight: "16px",
-                            backgroundColor: projectColors.bgsecondary,
-                            color: projectColors.tertiary
-                        }}>
-                        <Typography variant="h6" sx={{
-                            fontSize: "14px",
-                            lineHeight: "1.5",
-                        }}>FAQs</Typography>
-                        <Icon><HelpOutlineIcon /></Icon></Button>
-                    <Button variant="contained"
+                    {
+                        vals ?
+                            <Button variant="outlined"
+                                onClick={() => setValue(false)}
+                                sx={{
+                                    marginRight: "16px",
+                                    backgroundColor: projectColors.bgsecondary,
+                                    color: vals ? "red" : projectColors.tertiary,
+                                    border: vals ? "1px solid red" : "1px solid blue"
+                                }}>
+                                <Typography variant="h6" sx={{
+                                    fontSize: "14px",
+                                    lineHeight: "1.5",
+                                }}>FAQs</Typography>
+                                <Icon>
+                                    <CancelIcon />
+                                </Icon></Button>
+                            :
+                            <Button variant="outlined"
+                                onClick={() => setValue(true)}
+                                sx={{
+                                    marginRight: "16px",
+                                    backgroundColor: projectColors.bgsecondary,
+                                    color: vals ? "red" : projectColors.tertiary,
+                                    border: vals ? "1px solid red" : "1px solid blue"
+                                }}>
+                                <Typography variant="h6" sx={{
+                                    fontSize: "14px",
+                                    lineHeight: "1.5",
+                                }}>FAQs</Typography>
+                                <Icon>
+                                    <HelpOutlineIcon />
+                                </Icon></Button>
+                    }
+                    <Button
+                        variant="contained"
+                        disabled={vals}
                         sx={{
                             backgroundColor: projectColors.tertiary,
                             color: projectColors.bgsecondary

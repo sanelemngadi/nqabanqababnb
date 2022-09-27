@@ -7,8 +7,6 @@ import Paper from "@mui/material/Paper";
 import Box from "@mui/material/Box";
 import styled from "@emotion/styled";
 
-//icons
-import MailOutlinedIcon from '@mui/icons-material/MailOutlined';
 
 interface Props {
     bg?: string,

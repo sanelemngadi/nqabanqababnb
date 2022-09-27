@@ -8,6 +8,9 @@ import Head from 'next/head';
 import TopHeader from '../hocs/TopHeader';
 import AppBar from '../hocs/appbar';
 import Script from 'next/script';
+import { PageContext } from '../src/context';
+import FaqsModal from '../src/components/templates/faqsDrawer/FaqModal';
+import Footer from '../hocs/footer';
 
 //Client-side cache, shared for the whole session of the user in the browser
 const clientSideEmotionCache = createEmotionCache();
@@ -23,7 +26,7 @@ const App = (props: MyAppProps) => {
 
   return (
     <>
-      <Script strategy='lazyOnload' src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_GOOGLE_PUBLIC_ANALYTICS}`} />
+      <Script strategy='lazyOnload' src={`https://www.googletagmanager.com/gtag/js?id=G-283WECMC8C`} />
       <Script strategy='lazyOnload'
         id="nqabanqaba-bukhosini"
       >
@@ -32,7 +35,7 @@ const App = (props: MyAppProps) => {
           function gtag(){dataLayer.push(arguments);}
           gtag('js', new Date());
 
-          gtag('config', ${process.env.NEXT_GOOGLE_PUBLIC_ANALYTICS});
+          gtag('config', 'G-283WECMC8C');
         `}
       </Script>
       <CacheProvider value={emotionCache}>
@@ -43,9 +46,15 @@ const App = (props: MyAppProps) => {
         </Head>
         <ThemeProvider theme={theme}>
           <CssBaseline />
-          <TopHeader />
-          <AppBar />
-          <Component {...pageProps} />
+          <PageContext>
+            <>
+              <FaqsModal />
+              <TopHeader />
+              <AppBar />
+              <Component {...pageProps} />
+              <Footer />
+            </>
+          </PageContext>
         </ThemeProvider>
       </CacheProvider>
     </>

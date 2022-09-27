@@ -5,8 +5,11 @@ import Button from '@mui/material/Button';
 import Container from '@mui/material/Container';
 import FAQ from '../../atoms/faqs';
 import SectionHeading from '../../atoms/sections';
+import { useFaqsContext } from '../../../context';
 
 const FAQs: FC = () => {
+
+    const { vals, setValue } = useFaqsContext();
     return (
         <Box>
             <Container
@@ -27,11 +30,13 @@ const FAQs: FC = () => {
                         mb: 5
                     }}
                 >
-                    <Button variant="outlined"
+                    <Button
+                        onClick={() => setValue(true)}
+                        variant="outlined"
                         sx={{
                             px: 10
                         }}
-                    >More</Button>
+                    >More...</Button>
                 </Box>
             </Container>
         </Box>

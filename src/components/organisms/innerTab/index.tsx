@@ -22,8 +22,6 @@ const InnerTab: FC<{ innerCats: SurroundingFeatures[] | ImageFeatures }> = ({ in
         setValue(newValue);
     };
 
-    console.log("tab rendered");
-
     return (
         <Box
             sx={{

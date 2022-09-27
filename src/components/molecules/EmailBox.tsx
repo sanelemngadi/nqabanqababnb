@@ -13,21 +13,25 @@ import MailOutlinedIcon from '@mui/icons-material/MailOutlined';
 interface Props {
     small?: boolean,
     bg?: string,
-    color?: string
+    color?: string,
+    noElevation?: boolean
 }
 
 const EmailBoxStyled = styled(Paper) <{ bg: string }>`
     background-color: ${({ bg }) => bg};
 `
 
-const EmailBox: FunctionComponent<Props> = ({ small, color, bg }) => {
+const EmailBox: FunctionComponent<Props> = ({ small, color, bg, noElevation }) => {
     return (
-        <EmailBoxStyled bg={bg ? bg : "#fff"}
+        <EmailBoxStyled
+            elevation={noElevation ? 0 : 2}
+            bg={bg ? bg : "#fff"}
             sx={{
                 display: small ? "none" : "flex",
                 width: "224px",
                 justifyContent: "space-around",
-                alignItems: "center"
+                alignItems: "center",
+                px: noElevation ? "0px" : "8px",
             }}
         >
             <Box

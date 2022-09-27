@@ -10,6 +10,9 @@ import Box from "@mui/material/Box";
 import Paper from "@mui/material/Paper";
 import { projectColors } from '../../src/styles/theme';
 import HelpOutlineIcon from '@mui/icons-material/HelpOutline';
+import { useFaqsContext } from "../../src/context";
+
+import CancelIcon from '@mui/icons-material/Cancel';
 
 const AppBarMobileLogo = styled.div`
     display: inline-flex;
@@ -24,6 +27,8 @@ const Icon = styled(Box)`
 
 const AppBarMenu = styled.div``;
 const AppBarMobile: FC<{ setState(x: boolean): void }> = ({ setState }) => {
+
+    const item = useFaqsContext();
     return (
         <Paper
             sx={{
@@ -49,27 +54,41 @@ const AppBarMobile: FC<{ setState(x: boolean): void }> = ({ setState }) => {
                         />
                     </Button>
                 </AppBarMobileLogo>
-                <Button
-                    size='small'
+
+                {item.vals ? <Button
+                    color="error"
+                    onClick={() => item.setValue(false)}
                     sx={{
                         marginRight: "0px",
-                        // backgroundColor: projectColors.bgsecondary,
-                        color: projectColors.tertiary
-                    }}>
-                    {/* <Typography variant="h6" sx={{
-                        fontSize: "12px",
-                        lineHeight: "1",
-                    }}>FAQs</Typography> */}
-                    <Icon><HelpOutlineIcon /></Icon></Button>
+                        display: "flex",
+                        justifyContent: "flex-end",
+
+                    }}
+                >
+                    <CancelIcon fontSize='small' />
+                </Button> :
+                    <Button
+                        onClick={() => item.setValue(true)}
+                        size='small'
+                        sx={{
+                            marginRight: "0px",
+                            color: projectColors.tertiary
+                        }}>
+                        <Icon><HelpOutlineIcon /></Icon>
+                    </Button>
+                }
                 <AppBarMenu>
-                    <IconButton color="primary" component="div"
+                    <IconButton
+                        color="primary"
+                        component="div"
+                        disabled={item.vals}
                         onClick={() => setState(true)}
                     >
-                        <MenuIcon />
+                        <MenuIcon fontSize='small' />
                     </IconButton>
                 </AppBarMenu>
             </AppBarContainer>
-        </Paper>
+        </Paper >
     )
 }
 
