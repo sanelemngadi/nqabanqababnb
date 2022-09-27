@@ -26,7 +26,6 @@ const ReviewsTab: FC = () => {
             sx={{
                 marginTop: { xs: "1rem", md: "2rem" },
                 paddingBottom: { md: "24px" },
-                // background: "black",
                 paddingTop: "1rem"
             }}
         >
@@ -34,7 +33,6 @@ const ReviewsTab: FC = () => {
                 maxWidth="lg"
 
                 sx={{
-                    // background: "black",
                     px: 0
                 }}
             >
@@ -72,7 +70,7 @@ const ReviewsTab: FC = () => {
                             backgroundImage: "url('/vectors/bgGrid.svg')",
                             marginTop: "1rem",
                             borderRadius: { xs: "0px", sm: "16px", md: "32px" },
-                            padding: { xs: "12px", sm: "16px", md: "32px" },
+                            padding: { xs: "8px", sm: "16px", md: "32px" },
                         }}
                     >
                         {reviews.map((item, idx) => (

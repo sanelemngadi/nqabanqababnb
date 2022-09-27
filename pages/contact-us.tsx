@@ -11,7 +11,6 @@ import styled from '@emotion/styled';
 import { Headings } from '../src/styles/footer';
 import TextIcon from '../src/components/molecules/TextIcon';
 import SocialIcons from '../src/components/molecules/SocialIcons';
-import Head from 'next/head';
 import MetaData from '../meta';
 
 const ContactForm = styled.form`
@@ -39,6 +38,7 @@ const ContactContainer = styled(Box)`
 `
 
 const ContactUs: FC = () => {
+
     return (
         <>
             <MetaData
@@ -113,8 +113,23 @@ const ContactUs: FC = () => {
                         </Typography>
                     </Box>
                     <ContactContainer>
-                        <ContactForm>
-                            <TextField fullWidth id="outlined-basic" label="Name" variant="outlined" />
+                        <ContactForm
+                            name="Contacts"
+                            method='POST'
+                            data-netlify="true"
+                            onSubmit={() => 'submit'}
+                            data-netlify-honeypot='bot-field'
+                            action='/sucess/'
+
+                        >
+                            <input type="hidden" name="bot-field" />
+                            <TextField
+                                fullWidth
+                                id="outlined-basic"
+                                label="Name"
+                                variant="outlined"
+                                name='name'
+                            />
                             <TextField
                                 type='email'
                                 fullWidth
@@ -122,17 +137,20 @@ const ContactUs: FC = () => {
                                 id="outlined-basic"
                                 label="Email"
                                 variant="outlined"
+                                name='email'
                             />
                             <TextareaAutosize
                                 aria-label="minimum height"
                                 minRows={10}
                                 cols={30}
                                 placeholder="Message"
+                                name='message'
                                 style={{ width: "100%" }}
                             />
 
                             <div>
-                                <Button variant="outlined">Send Messgae</Button>
+                                <Button variant="outlined"
+                                    type='submit'>Send Messgae</Button>
                             </div>
                         </ContactForm>
                         <ContactDetails>

@@ -11,7 +11,9 @@ import Script from 'next/script';
 import { PageContext } from '../src/context';
 import FaqsModal from '../src/components/templates/faqsDrawer/FaqModal';
 
-import "../src/components/imagesCollegeSwipper/styles.css"
+import { useRouter } from 'next/router';
+
+// import "../src/components/imagesCollegeSwipper/styles.css"
 // import Footer from '../hocs/footer';
 import dynamic from 'next/dynamic';
 
@@ -28,6 +30,8 @@ interface MyAppProps extends AppProps {
 // <meta name="author" content="Mfaniseni Bukhosini">
 const App = (props: MyAppProps) => {
   const { Component, emotionCache = clientSideEmotionCache, pageProps } = props;
+  const router = useRouter();
+  // console.log("url: ", router.pathname);
 
   return (
     <>
@@ -54,10 +58,10 @@ const App = (props: MyAppProps) => {
           <PageContext>
             <>
               <FaqsModal />
-              <TopHeader />
-              <AppBar />
+              {router.pathname !== '/sucess' && router.pathname !== "/404" && <TopHeader />}
+              {router.pathname !== '/sucess' && router.pathname !== "/404" && <AppBar />}
               <Component {...pageProps} />
-              <Footer />
+              {router.pathname !== '/sucess' && router.pathname !== "/404" && <Footer />}
             </>
           </PageContext>
         </ThemeProvider>

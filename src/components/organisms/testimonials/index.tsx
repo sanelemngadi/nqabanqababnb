@@ -23,17 +23,17 @@ import { ReviewI } from '../../../interfaces';
 
 const SwipperWrapper = styled(Swiper)`
     border-radius: 1rem;
-    /* background-color: ${projectColors.tertiary}; */
 
     .swiper-button-next,.swiper-button-prev{
         color: ${projectColors.light};
     }
-
-    .swiper-pagination{
-        background-color: "#000";
+    .swiper-pagination-bullet{
+        background: #fff;
     }
 
-    /* .swiper-button-next */
+    .swiper-pagination{
+        background-color: #000;
+    }
 `
 
 const Testimonials: FC<{ reviews: ReviewI[] }> = ({ reviews }) => {
@@ -47,10 +47,11 @@ const Testimonials: FC<{ reviews: ReviewI[] }> = ({ reviews }) => {
             sx={{
                 paddingTop: ".5rem",
                 paddingLeft: ".5rem",
-                background: `linear-gradient(155deg, rgba(0,0,0,0.2), ${projectColors.tertiary} 50%)`,
+                background: { xs: projectColors.dark, md: `linear-gradient(155deg, rgba(0,0,0,0.2), ${projectColors.tertiary} 50%)` },
                 borderRadius: "16px",
                 maxWidth: "768px",
                 margin: "0 auto",
+                color: "#fff",
                 ['.swiper-pagination-bullet-active']: {
                     backgroundColor: projectColors.light
                 }

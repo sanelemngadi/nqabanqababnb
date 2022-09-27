@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React from "react";
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
 import styled from '@emotion/styled';
@@ -12,28 +12,55 @@ import "swiper/css/navigation";
 
 import { rooms } from "../../../data";
 
-// import "./styles.css";
-
-// import required modules
 import { Parallax, Pagination, Navigation } from "swiper";
 import Image from "next/image";
-
-const Images = styled(Image)`
-    /* flex-grow: 1; */
-`;
+import { projectColors } from "../../styles/theme";
 
 const Wrapper = styled(Swiper)`
-    /* --swiper-navigation-color: "#fff";
-    --swiper-pagination-color: "#fff"; */
-
     color: #fff;
     .swiper-slide{
+        font-size: 18px;
+        box-sizing: border-box;
         padding: 24px;
+
         @media (min-width: 576px){
             padding: 24px 32px;
         }
         @media (min-width: 768px){
             padding: 40px 60px;
+        }
+    }
+
+    .swiper {
+        width: 100%;
+        height: 100%;
+        background: #000;
+    }
+    .parallax-bg {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 130%;
+        height: 100%;
+        -webkit-background-size: cover;
+        background-size: cover;
+        background-position: center;
+    }
+
+    .swiper-pagination-bullet{
+        background-color: ${projectColors.light};
+    }
+    .swiper-pagination{
+        background-color: rgba(0,0,0,0.5);
+    }
+
+    .swiper-button-next,
+    .swiper-button-prev{
+        display: none;
+
+        @media (min-width: 768px){
+            display: flex;
+            color: ${projectColors.light};
         }
     }
 `
@@ -42,17 +69,13 @@ const Text = styled(Box)`
     max-width: 400px;
     line-height: 1.3;
     display: flex;
-    /* background-color: blue; */
     width: 100%;
 `
 
-export default function CollegeSwiper() {
+const CollegeSwiper = () => {
     return (
         <>
             <Wrapper
-                // sx={{
-                //     padding: { xs: "1rem", md: "40px 60px" }
-                // }}
                 speed={600}
                 parallax={true}
                 pagination={{
@@ -101,7 +124,7 @@ export default function CollegeSwiper() {
                                     flexGrow: 1,
                                 }}
                             >
-                                <Images
+                                <Image
                                     src={room.image}
                                     width={450}
                                     height={300}
@@ -115,3 +138,5 @@ export default function CollegeSwiper() {
         </>
     );
 }
+
+export default CollegeSwiper;
