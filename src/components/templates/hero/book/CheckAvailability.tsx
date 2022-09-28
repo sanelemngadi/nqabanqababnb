@@ -19,18 +19,17 @@ const CheckAvailability: FC = () => {
 
 
     }
-    const handleSubmit = (e: any) => {
-        e.preventDefault();
-        console.log("form: ", formData);
-    }
+    // const handleSubmit = (e: any) => {
+    //     e.preventDefault();
+    //     console.log("form: ", formData);
+    // }
 
 
     return (
         <Stack
-            onSubmit={(e) => handleSubmit(e)}
             component="form"
             target="_blank"
-            action="https://www.nightsbridge.co.za/bridge/book"
+            action="https://www.nightsbridge.co.za/bridge/book/"
             sx={{
                 display: "flex",
                 alignItems: "center",

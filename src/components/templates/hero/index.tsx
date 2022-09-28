@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import { Box, Stack, Checkbox } from '@mui/material';
+import { Box, Stack, Checkbox, Paper } from '@mui/material';
 import { projectColors, projectFonts } from '../../../styles/theme';
 import Heading from '../../atoms/hero/Heading';
 import { TextShadow, Wrapper } from '../../../styles/hero';
@@ -69,7 +69,8 @@ const Hero: FC = () => {
                         </Box>
                     </Stack>
                 </Box>
-                <Box
+                <Paper
+                    elevation={3}
                     sx={{
                         backgroundColor: { xs: "white" },
                         padding: "4px",
@@ -79,7 +80,7 @@ const Hero: FC = () => {
                     }}
                 >
                     <CheckAvailability />
-                </Box>
+                </Paper>
                 <TextShadow
                     sx={{
                         textAlign: "center",
