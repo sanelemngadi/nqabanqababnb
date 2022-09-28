@@ -35,6 +35,7 @@ export const LogoComponent: FC<LogoProps> = ({ vals }) => {
                 width={128} height={32}
                 layout="fixed"
                 alt="nqabanqaba logo"
+                priority
             />
         </Button>
     )

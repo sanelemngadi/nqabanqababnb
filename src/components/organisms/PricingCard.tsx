@@ -9,6 +9,7 @@ import RoomRating from '../molecules/ratings';
 import Link from 'next/link';
 import ArrowRightAltIcon from '@mui/icons-material/ArrowRightAlt';
 import styled from '@emotion/styled';
+import { slugify } from '../../utils';
 
 interface Props {
     image: string,
@@ -73,7 +74,7 @@ const PricingCard: FC<Props> = ({ image, label, description, max }) => {
                         // width: "50%",
                     }}
                 >
-                    <Link href="#" passHref>
+                    <Link href={`/room-detail/${slugify(label)}`} passHref>
                         <CardLink>Read more <ArrowRightAltIcon /></CardLink>
                     </Link>
                 </Box>

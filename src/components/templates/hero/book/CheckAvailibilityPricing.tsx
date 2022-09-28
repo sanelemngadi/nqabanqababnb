@@ -1,14 +1,16 @@
 import React, { FC, useState } from "react";
 import Box from "@mui/material/Box";
 import Button from '@mui/material/Button';
-import Stack from '@mui/material/Stack';
+import Paper from '@mui/material/Paper';
+import Divider from '@mui/material/Divider';
+import Typography from '@mui/material/Typography';
 import { projectColors } from "../../../../styles/theme";
 import { TextInput, SelectInput, FormGroup } from "../../../../styles/hero";
 
 interface Props {
     sm?: boolean,
 }
-const CheckAvailability: FC<Props> = ({ sm }) => {
+const CheckAvailabilityPricing: FC<Props> = ({ sm }) => {
     const [formData, setFormData] = useState({
         startdate: new Date().toISOString().split('T')[0],
         enddate: new Date().toISOString().split('T')[0]
@@ -23,7 +25,7 @@ const CheckAvailability: FC<Props> = ({ sm }) => {
     }
 
     return (
-        <Stack
+        <Paper
             component="form"
             target="_blank"
             action="https://www.nightsbridge.co.za/bridge/book"
@@ -31,8 +33,9 @@ const CheckAvailability: FC<Props> = ({ sm }) => {
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "space-around",
-                flexDirection: { xs: "column", md: sm ? 'column' : "row" },
-                margin: "0.1rem auto"
+                flexDirection: "column",
+                margin: "0.1rem auto",
+                padding: '1rem',
             }}
         >
             <input type="hidden" name="action" value="2" />
@@ -41,8 +44,25 @@ const CheckAvailability: FC<Props> = ({ sm }) => {
             <input type="hidden" name="bbrtid" value="0" />
             <input type="hidden" name="rtgroupid" value="0" />
             <FormGroup>
+                <Typography
+                    variant='h5' component='h3'
+                    sx={{
+                        textTransform: 'uppercase',
+                        color: projectColors.primary,
+                        margin: "1rem 0"
+                    }}
+                >Nqabanqaba bnb</Typography>
+                <Typography
+                    variant='body1' component='h6'
+                    sx={{
+                        color: projectColors.secondary,
+                        margin: "1rem 0",
+                        fontSize: '12px'
+                    }}
+                >Please not that this page does&apos;t imply that this room is currently available have to check it availibility below</Typography>
+                <Divider />
                 <label htmlFor="availabilty-select">Region</label>
-                <SelectInput
+                <SelectInput pricing={1}
                     id="availabilty-select"
                 // value={10}
                 >
@@ -85,18 +105,19 @@ const CheckAvailability: FC<Props> = ({ sm }) => {
                     sx={{
                         display: "flex",
                         alignItems: "cente",
-                        width: { xs: "100%", md: "203px" },
-                        height: { xs: "40px", md: "54px" },
+                        width: '100%',
+                        height: '40px',
                         backgroundColor: projectColors.secondary,
                         color: projectColors.primary,
-                        borderRadius: { xs: "8px", md: "100px" }
+                        borderRadius: '8px',
+                        marginTop: '1rem'
                     }}
                 >
                     Check Availability
                 </Button>
             </Box>
-        </Stack>
+        </Paper>
     );
 }
 
-export default CheckAvailability;
+export default CheckAvailabilityPricing;

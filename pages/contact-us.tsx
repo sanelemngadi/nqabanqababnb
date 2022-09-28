@@ -123,6 +123,7 @@ const ContactUs: FC = () => {
 
                         >
                             <input name="bot-field" style={{ display: "none" }} />
+                            <input type="hidden" name="form-name" value='Contacts' />
                             <TextField
                                 fullWidth
                                 id="outlined-basic"

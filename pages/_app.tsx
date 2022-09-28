@@ -59,6 +59,8 @@ const App = (props: MyAppProps) => {
         <Head>
           <title>Welcome to Nqabanqaba bnb</title>
           <meta name="viewport" content='initial-scale=1, width=device-width' />
+          <meta name="keywords" content="Guesthouse, Guest house, Best Guesthouse in Richards Bay, Best BnB in Meerensee, meer en see, rooms to let" />
+          <meta name="robots" content="all" />
         </Head>
         <ThemeProvider theme={theme}>
           <CssBaseline />

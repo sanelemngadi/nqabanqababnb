@@ -43,7 +43,7 @@ export const TextInput = styled.input`
     }
 `
 
-export const SelectInput = styled.select`
+export const SelectInput = styled.select<{ pricing?: number }>`
     background-color: ${projectColors.light};
     border: 0;
     border-bottom: 1px solid #D9D9D9;
@@ -51,6 +51,7 @@ export const SelectInput = styled.select`
     width: 100%;
     height: 32px;
     padding: .2rem 2rem;
+    border-radius: 0px;
     
     option{
         background-color: red;
@@ -59,7 +60,6 @@ export const SelectInput = styled.select`
     @media (min-width: 900px) {
         margin-bottom: 0;
         border-radius: 0px;
-        border-bottom-left-radius: 100px;
         margin-top: 0;
         height: 32px;
         

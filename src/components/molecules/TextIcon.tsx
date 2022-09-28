@@ -12,19 +12,21 @@ interface Props {
     bg?: string,
     color?: string,
     label: string,
-    elem: JSX.Element
+    elem: JSX.Element,
+    width?: string,
+    fs?: string,
 }
 
 const TextIconStyled = styled(Paper) <{ bg: string }>`
     background-color: ${({ bg }) => bg};
 `
 
-const TextIcon: FunctionComponent<Props> = ({ color, bg, label, elem }) => {
+const TextIcon: FunctionComponent<Props> = ({ color, bg, label, elem, width, fs }) => {
     return (
         <TextIconStyled elevation={0} bg={bg ? bg : "#fff"}
             sx={{
                 display: "flex",
-                width: "224px",
+                width: width ? width : "224px",
                 justifyContent: "flex-start",
                 alignItems: "center",
                 marginY: "8px"
@@ -35,7 +37,7 @@ const TextIcon: FunctionComponent<Props> = ({ color, bg, label, elem }) => {
                     display: "flex",
                     justifyContent: "center",
                     alignItems: "center",
-                    fontSize: "12px",
+                    fontSize: fs ? fs : "12px",
                     paddingRight: "16px"
                 }}>
                 {elem}
@@ -43,7 +45,7 @@ const TextIcon: FunctionComponent<Props> = ({ color, bg, label, elem }) => {
             <Typography
                 sx={{
                     color: color ? color : theme.palette.primary.main,
-                    fontSize: "14px"
+                    fontSize: fs ? fs : "14px",
                 }}
             >
                 {label}

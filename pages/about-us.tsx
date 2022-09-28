@@ -1,12 +1,12 @@
-import React, { FC, useState, useEffect } from 'react';
+import React, { FC } from 'react';
 import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
 import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
 import { projectColors, projectFonts } from '../src/styles/theme';
-import styled from "@emotion/styled"; import Image from 'next/image';
+import styled from "@emotion/styled";
+import Image from 'next/image';
 import MetaData from '../meta';
-;
 
 
 const Paragraph = styled(Typography)`
@@ -76,7 +76,7 @@ const AboutUs: FC = () => {
                     <Grid item xs={12} md={6}>
                         <RuleHeading>1 Check in/out hours</RuleHeading>
                         <Box>
-                            <Image src="/vectors/rules.svg" width={344} height={422} />
+                            <Image src="/vectors/rules.svg" width={344} height={422} alt='house rules' />
                         </Box>
                         <RuleHeading>2 Child Policy</RuleHeading>
                         <Paragraph variant="body1">

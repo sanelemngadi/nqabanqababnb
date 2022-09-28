@@ -13,7 +13,7 @@ const BookNow: FC<{ open: boolean, setBook: (x: boolean) => void }> = ({ open, s
         return () => {
             setBook(false);
         }
-    }, [open]);
+    }, [setBook]);
     const style = {
         position: 'absolute' as 'absolute',
         top: '50%',
