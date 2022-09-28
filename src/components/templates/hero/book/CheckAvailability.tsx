@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import React, { FC, useState } from "react";
 import Box from "@mui/material/Box";
 import Button from '@mui/material/Button';
 import Stack from '@mui/material/Stack';
@@ -6,10 +6,28 @@ import { projectColors } from "../../../../styles/theme";
 import { TextInput, SelectInput, FormGroup } from "../../../../styles/hero";
 
 const CheckAvailability: FC = () => {
+    const [formData, setFormData] = useState({
+        startdate: new Date().toISOString().split('T')[0],
+        enddate: new Date().toISOString().split('T')[0]
+    });
+    console.log("1form: ", formData);
+    const handleChange = (e: any) => {
+        setFormData({
+            ...formData,
+            [e.target.name]: e.target.value
+        });
+
+
+    }
+    const handleSubmit = (e: any) => {
+        e.preventDefault();
+        console.log("form: ", formData);
+    }
 
 
     return (
         <Stack
+            onSubmit={(e) => handleSubmit(e)}
             component="form"
             target="_blank"
             action="https://www.nightsbridge.co.za/bridge/book"
@@ -42,6 +60,8 @@ const CheckAvailability: FC = () => {
                     type='date'
                     name="startdate"
                     required
+                    value={formData.startdate}
+                    onChange={(e) => handleChange(e)}
 
                 />
             </FormGroup>
@@ -53,6 +73,8 @@ const CheckAvailability: FC = () => {
                     type='date'
                     name="enddate"
                     required
+                    value={formData.enddate}
+                    onChange={(e) => handleChange(e)}
                 />
             </FormGroup>
             <Box

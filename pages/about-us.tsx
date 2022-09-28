@@ -5,7 +5,7 @@ import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
 import { projectColors, projectFonts } from '../src/styles/theme';
 import styled from "@emotion/styled"; import Image from 'next/image';
-import Loading from '../src/components/organisms/loading';
+import MetaData from '../meta';
 ;
 
 
@@ -23,17 +23,12 @@ const RuleHeading = styled(Typography)`
 `
 
 const AboutUs: FC = () => {
-    const [loading, setLoading] = useState(true);
-
-    useEffect(() => {
-        setLoading(false);
-
-        return () => {
-            setLoading(true);
-        }
-    }, []);
     return (
         <Box>
+            <MetaData
+                title='Nqabanqaba | About Us'
+                subtitle='We are situated 2.7 km from Alkantstrand Beach, Nqabanqaba features accommodation with a shared lounge, a casino and room service for your convenience.'
+                image='https://nqabanqaba.netlify.app/images/room3.jpg' />
             <Container maxWidth="md">
                 <Typography variant="h1"
                     sx={{

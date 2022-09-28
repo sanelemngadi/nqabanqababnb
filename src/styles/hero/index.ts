@@ -19,7 +19,7 @@ export const TextShadow = styled(Typography)`
 export const TextInput = styled.input`
      appearance: none;
     -webkit-appearance: none;
-    color: #95a5a6;
+    color: #000;
     font-family: ${projectFonts.primary};
     visibility: visible !important;
     text-transform: uppercase;
