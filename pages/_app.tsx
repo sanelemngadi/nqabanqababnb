@@ -9,14 +9,16 @@ import Head from 'next/head';
 import TopHeader from '../hocs/TopHeader';
 import AppBar from '../hocs/appbar';
 import Script from 'next/script';
-import { PageContext } from '../src/context';
-import FaqsModal from '../src/components/templates/faqsDrawer/FaqModal';
+import { PageContext, useFaqsContext } from '../src/context';
 
 import { useRouter } from 'next/router';
 import dynamic from 'next/dynamic';
 import Loading from '../src/components/organisms/loading';
 
-const Footer = dynamic(() => import('../hocs/footer'));
+const Footer = dynamic(() => import(/* webpackChunkName: 'footer' */ '../hocs/footer'));
+const FaqsModal = dynamic(() => import(/* webpackChunkName: 'faqsmodal' */ '../src/components/templates/faqsDrawer/FaqModal'),
+  { loading: () => <Loading /> }
+);
 
 //Client-side cache, shared for the whole session of the user in the browser
 const clientSideEmotionCache = createEmotionCache();
@@ -26,11 +28,11 @@ interface MyAppProps extends AppProps {
 }
 
 
-// <meta name="author" content="Mfaniseni Bukhosini">
 const App = (props: MyAppProps) => {
   const { Component, emotionCache = clientSideEmotionCache, pageProps } = props;
   const router = useRouter();
   const [loading, setLoading] = useState(true);
+  const { vals } = useFaqsContext();
 
   useEffect(() => {
     setLoading(false);
@@ -50,9 +52,9 @@ const App = (props: MyAppProps) => {
           window.dataLayer = window.dataLayer || [];
           function gtag(){dataLayer.push(arguments);}
           gtag('js', new Date());
-
+          
           gtag('config', 'G-283WECMC8C');
-        `}
+          `}
       </Script>
       <CacheProvider value={emotionCache}>
 
@@ -62,6 +64,7 @@ const App = (props: MyAppProps) => {
           <meta name="keywords" content="Guesthouse, Guest house, Best Guesthouse in Richards Bay, Best BnB in Meerensee, meer en see, rooms to let" />
           <meta name="robots" content="all" />
           <link rel="canonical" href={`https://nqabanqaba.netlify.app${router.pathname}`}></link>
+          <meta name="author" content="Mfaniseni Bukhosini" />
         </Head>
         <ThemeProvider theme={theme}>
           <CssBaseline />

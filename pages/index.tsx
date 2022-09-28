@@ -1,22 +1,32 @@
 import type { NextPage } from 'next';
-import Surroundings from '../src/components/organisms/surroundings';
-import Pricing from '../src/components/organisms/pricing';
-import ChooseStay from '../src/components/templates/chooseStay';
 import Hero from '../src/components/templates/hero';
-import Ratings from '../src/components/organisms/reviews';
 import MetaData from '../meta';
-import FAQs from '../src/components/organisms/faqs';
+import { Suspense } from 'react';
+import CircularProgress from '@mui/material/CircularProgress'
+
+import dynamic from 'next/dynamic';
+
+const ChooseStay = dynamic(() => import(/* webpackChunkName: 'choseyourstay' */ '../src/components/templates/chooseStay'), {
+  suspense: true,
+});
+const Pricing = dynamic(() => import(/* webpackChunkName: 'pricing' */ '../src/components/organisms/pricing'));
+const Surroundings = dynamic(() => import(/* webpackChunkName: 'surroundings' */ '../src/components/organisms/surroundings'));
+const Ratings = dynamic(() => import(/* webpackChunkName: 'rating' */ '../src/components/organisms/reviews'));
+const FAQs = dynamic(() => import(/* webpackChunkName: 'faqs' */ '../src/components/organisms/faqs'));
 
 const Home: NextPage = () => {
   return (
     <>
+
       <MetaData
         title='nqabanqaba | homepage'
         subtitle='The best guesthouse in Richards Bay that offers more than quality sleep'
         image='https://nqabanqaba.netlify.app/images/im300.jpg' />
       <main>
         <Hero />
-        <ChooseStay />
+        <Suspense fallback={<CircularProgress color='secondary' />}>
+          <ChooseStay />
+        </Suspense>
         <Pricing />
         <Surroundings />
         <Ratings />

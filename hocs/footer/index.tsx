@@ -38,7 +38,11 @@ const Footer = () => {
                         <br />
                         <Headings>Site Map</Headings>
                         {links.map((link, idx) => (
-                            <Link href={link === "Home" ? "/" : `/${slugify(link)}`} key={"i" + idx} passHref>
+                            <Link
+                                href={link === "Home" ? "/" : `/${slugify(link)}`}
+                                prefetch={false}
+                                key={"i" + idx}
+                                passHref>
                                 <MapLink>{link}</MapLink>
                             </Link>
                         ))}

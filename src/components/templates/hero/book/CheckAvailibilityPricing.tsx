@@ -59,7 +59,7 @@ const CheckAvailabilityPricing: FC<Props> = ({ sm }) => {
                         margin: "1rem 0",
                         fontSize: '12px'
                     }}
-                >Please not that this page does&apos;t imply that this room is currently available have to check it availibility below</Typography>
+                >Please note that this page does&apos;t imply that this room is currently available, you have to check its availibility below</Typography>
                 <Divider />
                 <label htmlFor="availabilty-select">Region</label>
                 <SelectInput pricing={1}

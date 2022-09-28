@@ -20,4 +20,4 @@ const pricing = () => {
     )
 }
 
-export default pricing
+export default pricing;

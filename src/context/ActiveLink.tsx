@@ -25,7 +25,10 @@ const ActiveLink: FC<Props> = ({ router, href, children }) => {
     const isActive = router.pathname === href || router.asPath === href;
     return (
         <Container active={isActive ? 1 : 0}>
-            <Link href={href} passHref>
+            <Link href={href}
+                passHref
+                prefetch={false}
+            >
                 {children}
             </Link>
         </Container>

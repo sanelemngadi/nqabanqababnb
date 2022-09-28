@@ -93,25 +93,25 @@ const RoomDetailSlide = () => {
                 className="mySwiper"
             >
                 <SwiperSlide>
-                    <Image src={'/images/room1.jpg'} layout='fill' priority alt='room' />
+                    <Image src={'/images/room1.jpg'} width={449} height={256} alt='room' />
                 </SwiperSlide>
                 <SwiperSlide>
-                    <Image src={'/images/room2.jpg'} layout='fill' priority alt='room' />
+                    <Image src={'/images/room2.jpg'} width={449} height={256} alt='room' />
                 </SwiperSlide>
                 <SwiperSlide>
-                    <Image src={'/images/room3.jpg'} layout='fill' priority alt='room' />
+                    <Image src={'/images/room3.jpg'} width={449} height={256} alt='room' />
                 </SwiperSlide>
                 <SwiperSlide>
-                    <Image src={'/images/room4.jpg'} layout='fill' alt='room' />
+                    <Image src={'/images/room4.jpg'} width={449} height={256} alt='room' />
                 </SwiperSlide>
                 <SwiperSlide>
-                    <Image src={'/images/backyard.jpg'} layout='fill' alt='room' />
+                    <Image src={'/images/backyard.jpg'} width={449} height={256} alt='room' />
                 </SwiperSlide>
                 <SwiperSlide>
-                    <Image src={'/images/park.jpg'} layout='fill' alt='room' />
+                    <Image src={'/images/park.jpg'} width={449} height={256} alt='room' />
                 </SwiperSlide>
                 <SwiperSlide>
-                    <Image src={'/images/im300.jpg'} layout='fill' alt='room' />
+                    <Image src={'/images/im300.jpg'} width={449} height={256} alt='room' />
                 </SwiperSlide>
             </Wrapper>
         </>

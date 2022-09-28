@@ -16,10 +16,10 @@ export default class MyDocument extends Document {
                 <Head>
                     <meta content={theme.palette.primary.main} name="theme-color" />
                     <meta name="description" content={description} />
-                    <link
+                    {/* <link
                         rel="stylesheet"
                         href={fontsUrl}
-                    />
+                    /> */}
                     {/* <link
                         rel="stylesheet"
                         href="https://fonts.googleapis.com/icon?family=Material+Icons"

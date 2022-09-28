@@ -10,6 +10,7 @@ import Link from 'next/link';
 import ArrowRightAltIcon from '@mui/icons-material/ArrowRightAlt';
 import styled from '@emotion/styled';
 import { slugify } from '../../utils';
+import Image from 'next/image';
 
 interface Props {
     image: string,
@@ -38,11 +39,11 @@ const PricingCard: FC<Props> = ({ image, label, description, max }) => {
             maxWidth: { xs: "100%", sm: 345 },
             padding: "8px"
         }} >
-            <CardMedia
-                component="img"
-                height="216"
-                image={image}
+            <Image
                 alt={label}
+                width={345}
+                src={image}
+                height={216}
             />
             <CardContent
                 sx={{
@@ -71,10 +72,13 @@ const PricingCard: FC<Props> = ({ image, label, description, max }) => {
                 <Box
                     sx={{
                         marginY: "1rem",
-                        // width: "50%",
                     }}
                 >
-                    <Link href={`/room-detail/${slugify(label)}`} passHref>
+                    <Link
+                        href={`/room-detail/${slugify(label)}`}
+                        prefetch={false}
+                        passHref
+                    >
                         <CardLink>Read more <ArrowRightAltIcon /></CardLink>
                     </Link>
                 </Box>
