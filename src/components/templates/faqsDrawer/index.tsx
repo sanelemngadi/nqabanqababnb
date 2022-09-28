@@ -22,6 +22,7 @@ import CancelIcon from '@mui/icons-material/Cancel';
 import ActiveLink from '../../../context/ActiveLink';
 import { ListTextComponent } from '../../../../hocs/navigationComponents';
 import { useFaqsContext } from '../../../context';
+import { useRouter } from 'next/router';
 
 type Anchor = 'top';
 
@@ -35,13 +36,15 @@ interface Props {
 
 const FaqsDrawer: FC<Props> = ({ state, setState }) => {
     const { setValue } = useFaqsContext();
+    const router = useRouter();
+    const today = new Date().toISOString().split('T')[0];
 
     const handleActions = (action: string): void => {
         if (action.toLowerCase() === "faqs") {
             setValue(true);
         }
         if (action.toLowerCase() === "book now") {
-            console.log("Book now");
+            router.push(`https://book.nightsbridge.com/32135?action=2&nbid=952&bbrtid=0&rtgroupid=0&startdate=${today}&enddate=${today}`)
 
         }
     }

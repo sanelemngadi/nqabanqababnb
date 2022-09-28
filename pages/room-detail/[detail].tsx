@@ -19,6 +19,7 @@ import { useRouter } from 'next/router';
 import { rooms } from '../../data';
 import { slugify } from '../../src/utils';
 import MetaData from '../../meta';
+import Head from 'next/head';
 
 const Detail = ({ }) => {
     const router = useRouter();
@@ -33,6 +34,9 @@ const Detail = ({ }) => {
                 title={`Nqabanqaba | ${detail_room}`}
                 subtitle={detail_room.description}
                 image={`https://nqabanqaba.netlify.app${detail_room.image}`} />
+            <Head>
+                <link rel="canonical" href={`https://nqabanqaba.netlify.app/room-detail/${detail}`} />
+            </Head>
             <Box>
                 <RoomDetailSlide />
             </Box>

@@ -62,6 +62,8 @@ export const FaqsButtonComponent: FC<FaqsButtonProps> = ({ vals, ico, setValue }
         <Button variant="outlined"
             onClick={setValue}
             sx={{
+                display: 'flex',
+                alignItems: 'center',
                 marginRight: "16px",
                 backgroundColor: projectColors.bgsecondary,
                 color: vals ? "red" : projectColors.tertiary,
@@ -71,7 +73,13 @@ export const FaqsButtonComponent: FC<FaqsButtonProps> = ({ vals, ico, setValue }
                 fontSize: "14px",
                 lineHeight: "1.5",
             }}>FAQs</Typography>
-            <Icon>
+            <Icon
+                sx={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    marginLeft: '8px'
+                }}
+            >
                 {ico}
             </Icon>
         </Button>

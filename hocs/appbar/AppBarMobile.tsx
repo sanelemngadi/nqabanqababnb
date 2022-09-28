@@ -13,7 +13,6 @@ import { useFaqsContext } from "../../src/context";
 
 import CancelIcon from '@mui/icons-material/Cancel';
 
-import { useRouter } from 'next/router';
 import { LogoComponent } from '../navigationComponents';
 
 const AppBarMobileLogo = styled.div`
@@ -32,7 +31,6 @@ const AppBarMobile: FC<{ setState(x: boolean): void }> = ({ setState }) => {
 
     const item = useFaqsContext();
 
-    const router = useRouter();
     return (
         <Paper
             sx={{

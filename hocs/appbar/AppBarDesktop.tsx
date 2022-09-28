@@ -18,6 +18,7 @@ import { useFaqsContext } from '../../src/context';
 import ActiveLink from '../../src/context/ActiveLink';
 
 import { FaqsButtonComponent, ListTextComponent, LogoComponent } from '../navigationComponents';
+import { useRouter } from 'next/router';
 
 
 const links = [
@@ -33,6 +34,8 @@ const Icon = styled(Box)`
 
 const AppBarDesktop = () => {
     const { vals, setValue } = useFaqsContext();
+    const router = useRouter();
+    const today = new Date().toISOString().split('T')[0];
     return (
         <Paper
             elevation={4}
@@ -93,11 +96,14 @@ const AppBarDesktop = () => {
                         }}
                     >
                         <Typography variant="h6"
+                            onClick={() => { return router.push(`https://book.nightsbridge.com/32135?action=2&nbid=952&bbrtid=0&rtgroupid=0&startdate=${today}&enddate=${today}`) }}
+
                             sx={{
                                 fontSize: "14px",
-                                lineHeight: "1.5"
+                                lineHeight: "1.5",
                             }}
                         >Book now!</Typography>
+
                         <Icon><ArrowOutwardIcon /></Icon>
                     </Button>
                 </AppBarButtons>

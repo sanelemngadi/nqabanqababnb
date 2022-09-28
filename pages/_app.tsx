@@ -61,6 +61,7 @@ const App = (props: MyAppProps) => {
           <meta name="viewport" content='initial-scale=1, width=device-width' />
           <meta name="keywords" content="Guesthouse, Guest house, Best Guesthouse in Richards Bay, Best BnB in Meerensee, meer en see, rooms to let" />
           <meta name="robots" content="all" />
+          <link rel="canonical" href={`https://nqabanqaba.netlify.app${router.pathname}`}></link>
         </Head>
         <ThemeProvider theme={theme}>
           <CssBaseline />

@@ -7,6 +7,8 @@ interface Props {
     image: string
 }
 const MetaData: FC<Props> = ({ title, subtitle, image }) => {
+
+    const date = new Date();
     return (
         <Head>
             <title>{title}</title>
