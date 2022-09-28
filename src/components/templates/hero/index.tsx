@@ -1,14 +1,16 @@
-import { Box, Stack, Checkbox, Button } from '@mui/material';
-import React from 'react';
+import React, { FC } from 'react';
+import { Box, Stack, Checkbox } from '@mui/material';
 import { projectColors, projectFonts } from '../../../styles/theme';
 import Heading from '../../atoms/hero/Heading';
-import { TextInput, TextShadow, Wrapper } from '../../../styles/hero';
+import { TextShadow, Wrapper } from '../../../styles/hero';
+import CheckAvailability from './book/CheckAvailability';
 
 
 
 
 
-const Hero = () => {
+const Hero: FC = () => {
+
     return (
         <Box
             sx={{
@@ -69,111 +71,14 @@ const Hero = () => {
                 </Box>
                 <Box
                     sx={{
-                        backgroundColor: { md: "white" },
+                        backgroundColor: { xs: "white" },
                         padding: "4px",
-                        borderRadius: { xs: "0px", md: "100px" },
-                        overflow: "hidden"
+                        borderRadius: { xs: "1rem", md: "100px" },
+                        overflow: "hidden",
+                        p: { xs: 3, md: 2 },
                     }}
                 >
-                    <Stack direction="row"
-                        component="form"
-                        sx={{
-                            display: "flex",
-                            alignItems: "center",
-                            justifyContent: "space-around",
-                            flexDirection: { xs: "column", sm: "row" },
-                            margin: "0.1rem auto"
-                        }}
-                    >
-                        <Box
-                            sx={{
-                                width: "100%",
-                                paddingX: "1rem",
-                            }}
-                        >
-                            <TextInput
-                                id="outlined-basic"
-                                label="Nqabanqaba"
-                                variant="standard"
-                                sx={{
-                                    marginBottom: { xs: "1rem", sm: "0" },
-                                    width: "100%",
-                                    height: { xs: "48px", md: "54px" },
-                                    display: { xs: "none", md: "block" }
-                                }}
-                            />
-                        </Box>
-                        <Box
-                            sx={{
-                                width: "100%",
-                                paddingX: "1rem",
-                            }}
-                        >
-                            <TextInput
-                                id="outlined-basic"
-                                label="Checking"
-                                variant="standard"
-                                sx={{
-                                    marginBottom: { xs: "1rem", sm: "0" },
-                                    width: "100%",
-                                    height: { xs: "48px", md: "54px" },
-                                    display: { xs: "none", md: "block" }
-                                }}
-                            />
-                        </Box>
-                        <Box
-                            sx={{
-                                width: "100%",
-                                paddingX: "1rem",
-                            }}
-                        >
-                            <TextInput
-                                id="outlined-basic"
-                                label="Children"
-                                variant="standard"
-                                sx={{
-                                    marginBottom: { xs: "1rem", sm: "0" },
-                                    width: "100%",
-                                    height: { xs: "48px", md: "54px" },
-                                    display: { xs: "none", md: "block" }
-                                }}
-                            />
-                        </Box>
-                        <Box
-                            sx={{
-                                width: "100%",
-                                paddingX: "1rem",
-                            }}
-                        >
-                            <TextInput
-                                id="outlined-basic"
-                                label="adults"
-                                variant="standard"
-                                sx={{
-                                    marginBottom: { xs: "1rem", sm: "0" },
-                                    width: "100%",
-                                    height: { xs: "48px", md: "54px" },
-                                    display: { xs: "none", md: "block" }
-                                }}
-                            />
-                        </Box>
-                        <Box>
-                            <Button variant="contained"
-                                color="secondary"
-                                sx={{
-                                    display: "flex",
-                                    alignItems: "cente",
-                                    width: { xs: "100%", md: "203px" },
-                                    height: { xs: "48px", md: "54px" },
-                                    backgroundColor: projectColors.secondary,
-                                    color: projectColors.primary,
-                                    borderRadius: { xs: "8px", md: "100px" }
-                                }}
-                            >
-                                Check Availability
-                            </Button>
-                        </Box>
-                    </Stack>
+                    <CheckAvailability />
                 </Box>
                 <TextShadow
                     sx={{

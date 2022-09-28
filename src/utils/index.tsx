@@ -1,3 +1,4 @@
+import React from "react";
 import Box from "@mui/material/Box";
 
 interface TabPanelProps {
@@ -34,3 +35,4 @@ export const a11yProps = (index: number) => {
 export const slugify = (word: string): string => {
     return word.trim().toLowerCase().replaceAll(" ", '-');
 };
+

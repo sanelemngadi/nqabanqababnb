@@ -34,7 +34,8 @@ const CardLink = styled.a`
 const PricingCard: FC<Props> = ({ image, label, description, max }) => {
     return (
         <Card sx={{
-            width: { xs: "100%", sm: 345 },
+            maxWidth: { xs: "100%", sm: 345 },
+            padding: "8px"
         }} >
             <CardMedia
                 component="img"

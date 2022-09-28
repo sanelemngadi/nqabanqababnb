@@ -1,10 +1,11 @@
-import React, { FC } from 'react';
+import React, { FC, useState, useEffect } from 'react';
 import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
 import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
 import { projectColors, projectFonts } from '../src/styles/theme';
 import styled from "@emotion/styled"; import Image from 'next/image';
+import Loading from '../src/components/organisms/loading';
 ;
 
 
@@ -22,6 +23,15 @@ const RuleHeading = styled(Typography)`
 `
 
 const AboutUs: FC = () => {
+    const [loading, setLoading] = useState(true);
+
+    useEffect(() => {
+        setLoading(false);
+
+        return () => {
+            setLoading(true);
+        }
+    }, []);
     return (
         <Box>
             <Container maxWidth="md">

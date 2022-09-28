@@ -1,3 +1,4 @@
+import { useState, useEffect } from 'react';
 import type { AppProps } from 'next/app';
 import { ThemeProvider } from "@mui/material/styles";
 import CssBaseline from '@mui/material/CssBaseline';
@@ -12,10 +13,8 @@ import { PageContext } from '../src/context';
 import FaqsModal from '../src/components/templates/faqsDrawer/FaqModal';
 
 import { useRouter } from 'next/router';
-
-// import "../src/components/imagesCollegeSwipper/styles.css"
-// import Footer from '../hocs/footer';
 import dynamic from 'next/dynamic';
+import Loading from '../src/components/organisms/loading';
 
 const Footer = dynamic(() => import('../hocs/footer'));
 
@@ -31,7 +30,15 @@ interface MyAppProps extends AppProps {
 const App = (props: MyAppProps) => {
   const { Component, emotionCache = clientSideEmotionCache, pageProps } = props;
   const router = useRouter();
-  // console.log("url: ", router.pathname);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    setLoading(false);
+
+    return () => {
+      setLoading(true);
+    }
+  }, []);
 
   return (
     <>
@@ -56,13 +63,15 @@ const App = (props: MyAppProps) => {
         <ThemeProvider theme={theme}>
           <CssBaseline />
           <PageContext>
-            <>
-              <FaqsModal />
-              {router.pathname !== '/sucess' && router.pathname !== "/404" && <TopHeader />}
-              {router.pathname !== '/sucess' && router.pathname !== "/404" && <AppBar />}
-              <Component {...pageProps} />
-              {router.pathname !== '/sucess' && router.pathname !== "/404" && <Footer />}
-            </>
+            {loading ? <Loading /> :
+              <>
+                <FaqsModal />
+                {router.pathname !== '/sucess' && router.pathname !== "/404" && <TopHeader />}
+                {router.pathname !== '/sucess' && router.pathname !== "/404" && <AppBar />}
+                <Component {...pageProps} />
+                {router.pathname !== '/sucess' && router.pathname !== "/404" && <Footer />}
+              </>
+            }
           </PageContext>
         </ThemeProvider>
       </CacheProvider>

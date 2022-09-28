@@ -114,15 +114,15 @@ const ContactUs: FC = () => {
                     </Box>
                     <ContactContainer>
                         <ContactForm
-                            name="Contacts"
                             method='POST'
+                            action='/sucess/'
+                            name="Contacts"
                             data-netlify="true"
                             onSubmit={() => 'submit'}
                             data-netlify-honeypot='bot-field'
-                            action='/sucess/'
 
                         >
-                            <input type="hidden" name="bot-field" />
+                            <input name="bot-field" style={{ display: "none" }} />
                             <TextField
                                 fullWidth
                                 id="outlined-basic"

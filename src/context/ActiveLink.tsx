@@ -1,9 +1,14 @@
-import React, { FC } from 'react';
+//external imports
 import Link from 'next/link';
+import React, { FC } from 'react';
 import { withRouter } from 'next/router';
+
+//internal imports
+import { projectColors } from '../styles/theme';
+
+//third party imports
 import Box from "@mui/material/Box";
 import styled from "@emotion/styled";
-import { projectColors } from '../styles/theme';
 
 interface Props {
     router: any,
@@ -11,7 +16,7 @@ interface Props {
     children: JSX.Element
 }
 
-const Container = styled(Box) <{ active: boolean }>`
+const Container = styled(Box) <{ active: number }>`
     color: ${({ active }) => active ? projectColors.tertiary : projectColors.primary};
 `
 
@@ -19,7 +24,7 @@ const ActiveLink: FC<Props> = ({ router, href, children }) => {
 
     const isActive = router.pathname === href || router.asPath === href;
     return (
-        <Container active={isActive}>
+        <Container active={isActive ? 1 : 0}>
             <Link href={href} passHref>
                 {children}
             </Link>

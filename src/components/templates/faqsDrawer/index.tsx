@@ -21,6 +21,7 @@ import ArrowOutwardIcon from '@mui/icons-material/ArrowOutward';
 import CancelIcon from '@mui/icons-material/Cancel';
 import ActiveLink from '../../../context/ActiveLink';
 import { ListTextComponent } from '../../../../hocs/navigationComponents';
+import { useFaqsContext } from '../../../context';
 
 type Anchor = 'top';
 
@@ -33,6 +34,17 @@ interface Props {
 }
 
 const FaqsDrawer: FC<Props> = ({ state, setState }) => {
+    const { setValue } = useFaqsContext();
+
+    const handleActions = (action: string): void => {
+        if (action.toLowerCase() === "faqs") {
+            setValue(true);
+        }
+        if (action.toLowerCase() === "book now") {
+            console.log("Book now");
+
+        }
+    }
 
     const toggleDrawer =
         (anchor: Anchor, open: boolean) =>
@@ -91,7 +103,9 @@ const FaqsDrawer: FC<Props> = ({ state, setState }) => {
             <List>
                 {['FAQs', 'Book now'].map((text, index) => (
                     <ListItem key={text + index} disablePadding>
-                        <ListItemButton>
+                        <ListItemButton
+                            onClick={() => handleActions(text)}
+                        >
                             <ListItemIcon>
                                 {text === "FAQs" ? <HelpOutlineIcon /> : <ArrowOutwardIcon />}
                             </ListItemIcon>
