@@ -59,7 +59,6 @@ const Testimonials: FC<{ reviews: ReviewI[] }> = ({ reviews }) => {
         >
             <SwipperWrapper
                 navigation={!matches}
-                // pagination={true}
                 modules={[Pagination, Navigation]}
                 pagination={{ clickable: true }}
                 className="mySwiper"

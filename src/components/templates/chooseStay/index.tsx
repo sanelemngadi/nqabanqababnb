@@ -1,13 +1,11 @@
 import React from 'react';
-import { Box, Container, Typography } from "@mui/material";
+import Box from "@mui/material/Box";
+import Container from "@mui/material/Container";
+import Typography from "@mui/material/Typography";
 import Image from 'next/image';
-import { useTheme } from "@mui/material/styles";
-import { useMediaQuery } from "@mui/material";
 import { projectFonts } from '../../../styles/theme';
 
 const ChooseStay = () => {
-    const theme = useTheme();
-    const matches = useMediaQuery(theme.breakpoints.down('sm'));
 
     return (
         <Box
@@ -30,11 +28,12 @@ const ChooseStay = () => {
                 </Box>
                 <Box>
                     <Typography
-                        variant={matches ? "h5" : "h3"}
+                        variant={"h3"}
                         sx={{
                             marginTop: { xs: "16px", md: "32px" },
                             marginBottom: { xs: "16px", md: "32px" },
                             fontFamily: projectFonts.secondary,
+                            fontSize: { xs: '24px', md: '40px' }
                         }}
                     >Choose your stay</Typography>
                 </Box>

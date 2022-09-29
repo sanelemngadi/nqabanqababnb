@@ -1,12 +1,7 @@
 import React, { FC } from 'react';
 import Box from "@mui/material/Box";
-import Button from "@mui/material/Button";
 import Container from "@mui/material/Container";
 import { projectColors, projectFonts } from '../../../styles/theme';
-
-import Icon from '@mui/material/Icon';
-import Typography from '@mui/material/Typography';
-import ArrowOutwardIcon from '@mui/icons-material/ArrowOutward';
 
 import { TabPanel } from "../../../utils";
 import Testimonials from '../testimonials';
@@ -91,23 +86,6 @@ const ReviewsTab: FC = () => {
                     margin: "1rem auto"
                 }}
             >
-                <Button
-                    variant="contained"
-                    disableElevation
-                    color="secondary"
-                    sx={{
-                        backgroundColor: projectColors.bgsecondary,
-                        color: projectColors.primary,
-                    }}
-                >
-                    <Typography variant="h6"
-                        sx={{
-                            fontSize: "14px",
-                            lineHeight: "1.5"
-                        }}
-                    >View all reviews</Typography>
-                    <Icon><ArrowOutwardIcon /></Icon>
-                </Button>
             </Box>
         </Box>
     )

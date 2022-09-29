@@ -7,25 +7,19 @@ import { useRouter } from 'next/router';
 import Image from 'next/image';
 import { projectColors, projectFonts } from '../../src/styles/theme';
 
-interface LogoProps {
-    vals: boolean
-}
-
 interface ListTextProps {
     link: string,
     sm?: boolean
 }
 
 interface FaqsButtonProps {
-    vals: boolean,
     ico: JSX.Element,
-    setValue: () => void
+    setShowFaqsModal: () => void,
 }
-export const LogoComponent: FC<LogoProps> = ({ vals }) => {
+export const LogoComponent: FC = () => {
     const router = useRouter();
     return (
         <Button
-            disabled={vals}
             color="primary"
             component="a"
             onClick={() => router.push('/')}
@@ -57,17 +51,16 @@ export const ListTextComponent: FC<ListTextProps> = ({ link, sm }) => {
     )
 }
 
-export const FaqsButtonComponent: FC<FaqsButtonProps> = ({ vals, ico, setValue }) => {
+export const FaqsButtonComponent: FC<FaqsButtonProps> = ({ ico, setShowFaqsModal }) => {
     return (
         <Button variant="outlined"
-            onClick={setValue}
+            onClick={setShowFaqsModal}
             sx={{
                 display: 'flex',
                 alignItems: 'center',
                 marginRight: "16px",
                 backgroundColor: projectColors.bgsecondary,
-                color: vals ? "red" : projectColors.tertiary,
-                border: vals ? "1px solid red" : "1px solid blue"
+                color: projectColors.tertiary,
             }}>
             <Typography variant="h6" sx={{
                 fontSize: "14px",

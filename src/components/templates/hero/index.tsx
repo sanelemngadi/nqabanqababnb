@@ -1,5 +1,8 @@
 import React, { FC } from 'react';
-import { Box, Stack, Checkbox, Paper } from '@mui/material';
+import Box from '@mui/material/Box';
+import Stack from '@mui/material/Stack';
+import Checkbox from '@mui/material/Checkbox';
+import Paper from '@mui/material/Paper';
 import { projectColors, projectFonts } from '../../../styles/theme';
 import Heading from '../../atoms/hero/Heading';
 import { TextShadow, Wrapper } from '../../../styles/hero';

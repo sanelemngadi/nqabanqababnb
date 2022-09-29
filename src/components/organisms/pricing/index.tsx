@@ -26,9 +26,6 @@ const SwipperWrapper = styled(Swiper)`
     .swiper-pagination{
         transform: translateY(.5rem);
     }
-
-    /* .swiper-pagination-bullet{
-    } */
 `
 
 

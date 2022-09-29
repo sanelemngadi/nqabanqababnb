@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React from "react";
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
 import styled from '@emotion/styled';
@@ -16,8 +16,6 @@ import { projectColors } from "../../../styles/theme";
 import Image from "next/image";
 
 const Wrapper = styled(Swiper)`
-    /* min-height: 256px; */
-    /* border: 1px solid red; */
     .swiper {
         width: 100%;
         height: 100%;
@@ -39,17 +37,8 @@ const Wrapper = styled(Swiper)`
       background: #000;
 
       /* Center slide text vertically */
-      display: -webkit-box;
-      display: -ms-flexbox;
-      display: -webkit-flex;
       display: flex;
-      -webkit-box-pack: center;
-      -ms-flex-pack: center;
-      -webkit-justify-content: center;
       justify-content: center;
-      -webkit-box-align: center;
-      -ms-flex-align: center;
-      -webkit-align-items: center;
       align-items: center;
     }
 

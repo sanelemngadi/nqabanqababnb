@@ -1,7 +1,4 @@
 import React from 'react';
-import { useTheme } from "@mui/material/styles";
-import { useMediaQuery } from "@mui/material";
-
 //material ui components
 import Container from "@mui/material/Container";
 import Typography from "@mui/material/Typography";
@@ -12,8 +9,6 @@ import { projectColors } from '../src/styles/theme';
 
 
 const TopHeader = () => {
-    const theme = useTheme()
-    const matches = useMediaQuery(theme.breakpoints.down('md'));
 
     return (
         <Box
@@ -29,7 +24,7 @@ const TopHeader = () => {
                     display: "flex",
                     alignItems: "center",
                 }}>
-                <EmailBox small={matches} />
+                <EmailBox />
                 <Typography
                     variant="caption"
                     component="p"
@@ -40,7 +35,6 @@ const TopHeader = () => {
                         paddingLeft: { md: "32px" },
                         width: "100%",
                         textAlign: { xs: "center", md: "left" }
-                        // margin: "0 auto"
                     }}
                 >
                     Check in at 14h00 and check out at 9h00
@@ -52,7 +46,7 @@ const TopHeader = () => {
                         width: "104px",
                     }}
                 >
-                    <SocialIcons small={matches} />
+                    <SocialIcons />
                 </Box>
             </Container>
         </Box >

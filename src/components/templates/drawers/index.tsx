@@ -3,6 +3,7 @@ import Box from '@mui/material/Box';
 import Drawer from '@mui/material/Drawer';
 import Button from '@mui/material/Button';
 import List from '@mui/material/List';
+import Container from '@mui/material/Container';
 import Divider from '@mui/material/Divider';
 import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
@@ -21,28 +22,23 @@ import ArrowOutwardIcon from '@mui/icons-material/ArrowOutward';
 import CancelIcon from '@mui/icons-material/Cancel';
 import ActiveLink from '../../../context/ActiveLink';
 import { ListTextComponent } from '../../../../hocs/navigationComponents';
-import { useFaqsContext } from '../../../context';
 import { useRouter } from 'next/router';
 
 type Anchor = 'top';
 
 const links = [
-    "Home", "Pricing", "About Us", "Contact Us"
+    "Home", "Our Room", "About Us", "Contact Us"
 ]
 interface Props {
     state: boolean,
     setState(x: boolean): void
 }
 
-const FaqsDrawer: FC<Props> = ({ state, setState }) => {
-    const { setValue } = useFaqsContext();
+const MenuDrawer: FC<Props> = ({ state, setState }) => {
     const router = useRouter();
     const today = new Date().toISOString().split('T')[0];
 
     const handleActions = (action: string): void => {
-        if (action.toLowerCase() === "faqs") {
-            setValue(true);
-        }
         if (action.toLowerCase() === "book now") {
             router.push(`https://book.nightsbridge.com/32135?action=2&nbid=952&bbrtid=0&rtgroupid=0&startdate=${today}&enddate=${today}`)
 
@@ -104,7 +100,7 @@ const FaqsDrawer: FC<Props> = ({ state, setState }) => {
             </List>
             <Divider />
             <List>
-                {['FAQs', 'Book now'].map((text, index) => (
+                {['Book now'].map((text, index) => (
                     <ListItem key={text + index} disablePadding>
                         <ListItemButton
                             onClick={() => handleActions(text)}
@@ -162,38 +158,40 @@ const FaqsDrawer: FC<Props> = ({ state, setState }) => {
     );
 
     return (
-        <div>
-            {(['top'] as const).map((anchor) => (
-                <React.Fragment key={anchor}>
-                    <Drawer
-                        anchor={anchor}
-                        open={state}
-                        onClose={toggleDrawer(anchor, false)}
-                        sx={{
-                            zIndex: state ? "2000" : "-200",
-                            postion: "relative"
-                        }}
-                    >
-                        <Button
-                            color="error"
+        <Container>
+            <Box>
+                {(['top'] as const).map((anchor) => (
+                    <React.Fragment key={anchor}>
+                        <Drawer
+                            anchor={anchor}
+                            open={state}
+                            onClose={toggleDrawer(anchor, false)}
                             sx={{
-                                position: "fixed",
-                                right: "1rem",
-                                top: "1rem",
-                                zIndex: state ? "2005" : "0",
-
+                                zIndex: state ? "2000" : "-200",
+                                postion: "relative"
                             }}
-                            onClick={toggleDrawer(anchor, false)}
                         >
-                            <CancelIcon />
-                        </Button>
-                        {list(anchor)}
-                    </Drawer>
-                </React.Fragment>
-            ))}
-        </div>
+                            <Button
+                                color="error"
+                                sx={{
+                                    position: "fixed",
+                                    right: "1rem",
+                                    top: "1rem",
+                                    zIndex: state ? "2005" : "0",
+
+                                }}
+                                onClick={toggleDrawer(anchor, false)}
+                            >
+                                <CancelIcon />
+                            </Button>
+                            {list(anchor)}
+                        </Drawer>
+                    </React.Fragment>
+                ))}
+            </Box>
+        </Container>
     );
 }
 
 
-export default FaqsDrawer;
+export default MenuDrawer;

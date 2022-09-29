@@ -183,7 +183,7 @@ const ContactUs: FC = () => {
                                     color: "black !important"
                                 }}>Socialize with Us</Headings>
                             <Box sx={{ maxWidth: "96px" }}>
-                                <SocialIcons small={false} />
+                                <SocialIcons />
                             </Box>
                         </ContactDetails>
                     </ContactContainer>

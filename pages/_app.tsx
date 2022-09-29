@@ -9,7 +9,6 @@ import Head from 'next/head';
 import TopHeader from '../hocs/TopHeader';
 import AppBar from '../hocs/appbar';
 import Script from 'next/script';
-import { PageContext, useFaqsContext } from '../src/context';
 
 import { useRouter } from 'next/router';
 import dynamic from 'next/dynamic';
@@ -29,9 +28,6 @@ import '@fontsource/plus-jakarta-sans/700.css';
 
 
 const Footer = dynamic(() => import(/* webpackChunkName: 'footer' */ '../hocs/footer'));
-const FaqsModal = dynamic(() => import(/* webpackChunkName: 'faqsmodal' */ '../src/components/templates/faqsDrawer/FaqModal'),
-  { loading: () => <Loading /> }
-);
 
 //Client-side cache, shared for the whole session of the user in the browser
 const clientSideEmotionCache = createEmotionCache();
@@ -45,7 +41,6 @@ const App = (props: MyAppProps) => {
   const { Component, emotionCache = clientSideEmotionCache, pageProps } = props;
   const router = useRouter();
   const [loading, setLoading] = useState(true);
-  const { vals } = useFaqsContext();
 
   useEffect(() => {
     setLoading(false);
@@ -57,18 +52,7 @@ const App = (props: MyAppProps) => {
 
   return (
     <>
-      {/* <Script strategy='lazyOnload' src={`https://www.googletagmanager.com/gtag/js?id=G-283WECMC8C`} />
-      <Script strategy='lazyOnload'
-        id="nqabanqaba-bukhosini"
-      >
-        {`
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
-          gtag('js', new Date());
-          
-          gtag('config', 'G-283WECMC8C');
-          `}
-      </Script> */}
+
       <CacheProvider value={emotionCache}>
 
         <Head>
@@ -81,19 +65,29 @@ const App = (props: MyAppProps) => {
         </Head>
         <ThemeProvider theme={theme}>
           <CssBaseline />
-          <PageContext>
-            {loading ? <Loading /> :
-              <>
-                <FaqsModal />
-                {router.pathname !== '/sucess' && router.pathname !== "/404" && <TopHeader />}
-                {router.pathname !== '/sucess' && router.pathname !== "/404" && <AppBar />}
-                <Component {...pageProps} />
-                {router.pathname !== '/sucess' && router.pathname !== "/404" && <Footer />}
-              </>
-            }
-          </PageContext>
+          {loading ? <Loading /> :
+            <>
+
+              {router.pathname !== '/sucess' && router.pathname !== "/404" && <TopHeader />}
+              {router.pathname !== '/sucess' && router.pathname !== "/404" && <AppBar />}
+              <Component {...pageProps} />
+              {router.pathname !== '/sucess' && router.pathname !== "/404" && <Footer />}
+            </>
+          }
         </ThemeProvider>
       </CacheProvider>
+      <Script strategy='lazyOnload' src={`https://www.googletagmanager.com/gtag/js?id=G-283WECMC8C`} />
+      <Script strategy='lazyOnload'
+        id="nqabanqaba-bukhosini"
+      >
+        {`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          
+          gtag('config', 'G-283WECMC8C');
+          `}
+      </Script>
     </>
   )
 }

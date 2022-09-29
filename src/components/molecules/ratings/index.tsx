@@ -10,7 +10,6 @@ const RoomRating: FC<{ max: string }> = ({ max }) => {
     return (
         <Box
             sx={{
-                // '& > legend': { my: 2 },
                 my: 1,
                 display: "flex",
                 alignItems: "center",

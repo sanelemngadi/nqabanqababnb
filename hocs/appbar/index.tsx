@@ -1,29 +1,26 @@
 import React, { useState } from 'react';
-import { useTheme } from "@mui/material/styles";
-import { useMediaQuery } from "@mui/material";
-import AppBarMobile from './AppBarMobile';
 import AppBarDesktop from './AppBarDesktop';
-// import FaqsDrawer from '../../src/components/templates/faqsDrawer';
 import dynamic from 'next/dynamic';
+import Loading from '../../src/components/organisms/loading';
 
-const FaqsDrawer = dynamic(() => import(/* webpackChunkName: 'faqsdrawer' */ '../../src/components/templates/faqsDrawer'));
+const MenuDrawer = dynamic(() => import(/* webpackChunkName: 'menudrawer' */ '../../src/components/templates/drawers'),
+  { loading: () => <Loading /> }
+);
+const FaqsModal = dynamic(() => import(/* webpackChunkName: 'faqsdrawer' */ '../../src/components/templates/drawers/FaqModal'),
+  { loading: () => <Loading /> }
+);
 
 const AppBar = () => {
-  // const [prevScrollPos, setPrevScrollPos] = useState<number>(0);
-  const [showAppBar, setShowAppBar] = useState<boolean>(true);
-  const [state, setState] = useState(false);
+  const [showAppBar, setShowAppBar] = useState<boolean>(false);
+  const [showFaqsModal, setShowFaqsModal] = useState<boolean>(false);
 
-  const theme = useTheme();
-  const matches = useMediaQuery(theme.breakpoints.down('md'));
   return (
     <>
-      {showAppBar &&
-        <>
-          {matches ? <AppBarMobile setState={setState} /> : <AppBarDesktop />}
-        </>
-      }
+      <AppBarDesktop setShowAppBar={setShowAppBar} setShowFaqsModal={setShowFaqsModal} />
 
-      <FaqsDrawer state={state} setState={setState} />
+      <FaqsModal showFaqsModal={showFaqsModal} setShowFaqsModal={setShowFaqsModal} />
+
+      <MenuDrawer state={showAppBar} setState={setShowAppBar} />
     </>
   )
 }

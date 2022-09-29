@@ -2,7 +2,7 @@ import React from 'react';
 import { FooterWrapper, Headings, ItemGrid, MapLink } from '../../src/styles/footer';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
-import { Typography } from '@mui/material';
+import Typography from '@mui/material/Typography';
 import { projectColors } from '../../src/styles/theme';
 import EmailBox from '../../src/components/molecules/EmailBox';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
@@ -14,7 +14,7 @@ import HorizontalRuleIcon from '@mui/icons-material/HorizontalRule';
 
 
 const links = [
-    "Home", "Pricing", "About Us", "Contact Us"
+    "Home", "Our Room", "About Us", "Contact Us"
 ]
 const Footer = () => {
     return (
@@ -62,7 +62,7 @@ const Footer = () => {
                         <TextIcon
                             bg={projectColors.primary}
                             color={projectColors.grayD9}
-                            label='+27607013296'
+                            label='(+27) 662 971 030'
                             elem={<PhoneEnabledIcon
                                 sx={{
                                     color: projectColors.grayD9

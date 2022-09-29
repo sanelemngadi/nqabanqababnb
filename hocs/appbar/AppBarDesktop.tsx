@@ -1,20 +1,22 @@
-import React from 'react';
-import { AppBarContainer, AppBarLogo, LinkItems, AppBarButtons } from '../../src/styles/appbar';
+import React, { FC } from 'react';
+import { LinkItems } from '../../src/styles/appbar';
+import { AppBarButtons, DeskTopLinkList, AllScreenLogo, AppBarMenu, AppBarContainer } from '../../src/styles/appbar/system';
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import Paper from "@mui/material/Paper";
+import IconButton from "@mui/material/IconButton";
 import ListItemButton from "@mui/material/ListItemButton";
 
+//material ui icons
 import HelpOutlineIcon from '@mui/icons-material/HelpOutline';
 import ArrowOutwardIcon from '@mui/icons-material/ArrowOutward';
+import MenuIcon from '@mui/icons-material/Menu';
 
 import styled from "@emotion/styled";
 import { projectColors } from '../../src/styles/theme';
 import { slugify } from '../../src/utils';
 
-import CancelIcon from '@mui/icons-material/Cancel';
-import { useFaqsContext } from '../../src/context';
 import ActiveLink from '../../src/context/ActiveLink';
 
 import { FaqsButtonComponent, ListTextComponent, LogoComponent } from '../navigationComponents';
@@ -22,7 +24,7 @@ import { useRouter } from 'next/router';
 
 
 const links = [
-    "Home", "Pricing", "About Us", "Contact Us"
+    "Home", "Our Room", "About Us", "Contact Us"
 ]
 
 const Icon = styled(Box)`
@@ -32,67 +34,66 @@ const Icon = styled(Box)`
     margin-left: 8px;
 `
 
-const AppBarDesktop = () => {
-    const { vals, setValue } = useFaqsContext();
+interface Props {
+    setShowAppBar(x: boolean): void,
+    setShowFaqsModal(x: boolean): void
+}
+
+const AppBarDesktop: FC<Props> = ({ setShowAppBar, setShowFaqsModal }) => {
     const router = useRouter();
     const today = new Date().toISOString().split('T')[0];
     return (
         <Paper
+            className="paperdesktop"
             elevation={4}
             sx={{
                 backgroundColor: projectColors.light,
                 position: "sticky !important",
                 top: 0,
                 left: 0,
-                zIndex: '1999',
+                zIndex: '999',
             }}
         >
             <AppBarContainer
                 maxWidth={"lg"}
             >
-                <AppBarLogo
-                    elevation={vals ? 0 : 2}
+                <AllScreenLogo
                 >
-                    <LogoComponent vals={vals} />
-                </AppBarLogo>
-                <LinkItems type={"row"}>
-                    {links.map((link, idx) => (
-                        <ActiveLink
-                            key={"i-" + idx}
-                            href={link === "Home" ? "/" : `/${slugify(link)}`}
-                        >
-                            <ListItemButton
-                                disabled={vals}
-                                sx={{
-                                    paddingLeft: "0px", paddingRight: "0px"
-                                }}>
-                                <ListTextComponent link={link} />
-                            </ListItemButton>
-                        </ActiveLink>
-                    ))}
-                </LinkItems>
+                    <LogoComponent />
+                </AllScreenLogo>
 
-                <AppBarButtons type={"row"}>
-                    {
-                        vals ?
-                            <FaqsButtonComponent
-                                setValue={() => setValue(false)}
-                                vals={vals}
-                                ico={<CancelIcon />}
-                            />
-                            :
-                            <FaqsButtonComponent
-                                setValue={() => setValue(true)}
-                                vals={vals}
-                                ico={<HelpOutlineIcon />}
-                            />
-                    }
+
+
+
+                <DeskTopLinkList>
+                    <LinkItems type={"row"}>
+                        {links.map((link, idx) => (
+                            <ActiveLink
+                                key={"i-" + idx}
+                                href={link === "Home" ? "/" : `/${slugify(link)}`}
+                            >
+                                <ListItemButton
+                                    sx={{
+                                        paddingLeft: "0px", paddingRight: "0px"
+                                    }}>
+                                    <ListTextComponent link={link} />
+                                </ListItemButton>
+                            </ActiveLink>
+                        ))}
+                    </LinkItems>
+                </DeskTopLinkList>
+
+                <AppBarButtons>
+                    <FaqsButtonComponent
+                        setShowFaqsModal={() => setShowFaqsModal(true)}
+                        ico={<HelpOutlineIcon />}
+                    />
+
                     <Button
                         variant="contained"
-                        disabled={vals}
                         sx={{
                             backgroundColor: projectColors.tertiary,
-                            color: projectColors.bgsecondary
+                            color: projectColors.bgsecondary,
                         }}
                     >
                         <Typography variant="h6"
@@ -107,6 +108,33 @@ const AppBarDesktop = () => {
                         <Icon><ArrowOutwardIcon /></Icon>
                     </Button>
                 </AppBarButtons>
+                <AppBarMenu>
+
+
+                    {/* /////////////////////////////// */}
+                    <Box>
+                        <IconButton
+                            onClick={() => setShowFaqsModal(true)}
+                            size='small'
+                            sx={{
+                                color: projectColors.tertiary
+                            }}>
+                            <HelpOutlineIcon />
+                        </IconButton>
+
+                    </Box>
+                    {/* ///////////////////////// */}
+
+                    <Box>
+                        <IconButton
+                            color="primary"
+                            component="div"
+                            onClick={() => setShowAppBar(true)}
+                        >
+                            <MenuIcon fontSize='small' />
+                        </IconButton>
+                    </Box>
+                </AppBarMenu>
             </AppBarContainer>
         </Paper>
     )

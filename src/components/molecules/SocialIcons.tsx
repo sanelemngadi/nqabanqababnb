@@ -3,44 +3,45 @@ import Box from "@mui/material/Box";
 import WhatsAppIcon from '@mui/icons-material/WhatsApp';
 import InstagramIcon from '@mui/icons-material/Instagram';
 import FacebookIcon from '@mui/icons-material/Facebook';
-import styled from "@emotion/styled";
+import { styled } from '@mui/material/styles';
 
-interface Props {
-    small: boolean
-}
+const Icon = styled(Box)(() => ({
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    cursor: 'pointer',
+    padding: '4px',
 
-const Icon = styled(Box)`
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    padding: 4px;
+    ':hover': {
+        backgroundColor: 'rgb(221, 219, 219)',
+        borderRadius: '25%',
+    },
 
-    &:hover{
-       background-color:rgb(221, 219, 219); 
-       border-radius: 25%;
+    ':nth-of-type(1):hover': {
+        color: 'green',
+    },
+    ':nth-of-type(2):hover': {
+        color: 'gold',
+    },
+    ':nth-of-type(3):hover': {
+        color: 'blue',
+    }
+}));
+
+const Wrapper = styled(Box)(({ theme }) => ({
+    display: 'none',
+    alignItems: "center",
+    justifyContent: "space-between",
+    color: "#9a9a9a",
+
+    [theme.breakpoints.up('md')]: {
+        display: 'flex',
     }
 
-    &:nth-of-type(1):hover{
-        color: green;
-    }
-    &:nth-of-type(2):hover{
-        color: gold;
-    }
-    &:nth-of-type(3):hover{
-        color: blue;
-    }
-`
-const SocialIcons: FC<Props> = ({ small }) => {
+}))
+const SocialIcons: FC = () => {
     return (
-        <Box
-            sx={{
-                display: small ? "none" : "flex",
-                alignItems: "center",
-                justifyContent: "space-between",
-                color: "#9a9a9a",
-            }}
-        >
+        <Wrapper>
             <Icon>
                 <WhatsAppIcon fontSize='small' />
             </Icon>
@@ -50,7 +51,7 @@ const SocialIcons: FC<Props> = ({ small }) => {
             <Icon>
                 <FacebookIcon fontSize='small' />
             </Icon>
-        </Box>
+        </Wrapper>
     )
 }
 

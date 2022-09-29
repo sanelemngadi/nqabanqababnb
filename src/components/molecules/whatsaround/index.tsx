@@ -21,7 +21,6 @@ const WhatsAround: FC<Props> = ({ head, subHead, type, details }) => {
             sx={{
                 display: "flex",
                 flexDirection: { xs: "column", md: "row" },
-                // background: "black",
                 borderRadius: "1rem"
             }}
         >
@@ -31,7 +30,6 @@ const WhatsAround: FC<Props> = ({ head, subHead, type, details }) => {
                     padding: { xs: "2px", sm: "4px", md: "16px" },
                     display: "flex",
                     alignItems: "center",
-                    // background: "red",
                 }}
             >
                 <TabHeading

@@ -1,8 +1,6 @@
 import type { NextPage } from 'next';
 import Hero from '../src/components/templates/hero';
 import MetaData from '../meta';
-import { Suspense } from 'react';
-import CircularProgress from '@mui/material/CircularProgress'
 
 import dynamic from 'next/dynamic';
 
@@ -24,9 +22,7 @@ const Home: NextPage = () => {
         image='https://nqabanqaba.netlify.app/images/im300.jpg' />
       <main>
         <Hero />
-        <Suspense fallback={<CircularProgress color='secondary' />}>
-          <ChooseStay />
-        </Suspense>
+        <ChooseStay />
         <Pricing />
         <Surroundings />
         <Ratings />

@@ -5,29 +5,30 @@ import theme, { projectFonts } from '../../styles/theme';
 import Typography from "@mui/material/Typography";
 import Paper from "@mui/material/Paper";
 import Box from "@mui/material/Box";
-import styled from "@emotion/styled";
+import { styled } from "@mui/material/styles";
 
-//icons
 import MailOutlinedIcon from '@mui/icons-material/MailOutlined';
 
 interface Props {
-    small?: boolean,
     bg?: string,
     color?: string,
     noElevation?: boolean
 }
 
-const EmailBoxStyled = styled(Paper) <{ bg: string }>`
-    background-color: ${({ bg }) => bg};
-`
+const EmailBoxStyled = styled(Paper)(({ bg }: { bg: string }) => ({
+    display: "none",
+    backgroundColor: bg,
+    [theme.breakpoints.up('md')]: {
+        display: "flex",
+    }
+}));
 
-const EmailBox: FunctionComponent<Props> = ({ small, color, bg, noElevation }) => {
+const EmailBox: FunctionComponent<Props> = ({ color, bg, noElevation }) => {
     return (
         <EmailBoxStyled
             elevation={noElevation ? 0 : 2}
             bg={bg ? bg : "#fff"}
             sx={{
-                display: small ? "none" : "flex",
                 width: "224px",
                 justifyContent: "space-around",
                 alignItems: "center",
@@ -49,7 +50,7 @@ const EmailBox: FunctionComponent<Props> = ({ small, color, bg, noElevation }) =
                         color: color ? color : theme.palette.primary.main,
                         fontSize: "14px",
                         fontFamily: projectFonts.primary
-                    }}>admin@nqabanqaba.co.za</a>
+                    }}>nqabanqaba2105@gmail.com</a>
             </Typography>
         </EmailBoxStyled>
     )
