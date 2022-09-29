@@ -10,7 +10,7 @@ export default class MyDocument extends Document {
 
     render() {
         const description = "This is the best guesthouse at Richards bay";
-        const fontsUrl = "https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap";
+        // const fontsUrl = "https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap";
         return (
             <Html lang="en">
                 <Head>
@@ -24,7 +24,7 @@ export default class MyDocument extends Document {
                         rel="stylesheet"
                         href="https://fonts.googleapis.com/icon?family=Material+Icons"
                     /> */}
-                    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Plus+Jakarta+Sans:wght@700&display=swap" rel="stylesheet" />
+                    {/* <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Plus+Jakarta+Sans:wght@700&display=swap" rel="stylesheet" /> */}
                 </Head>
                 < body>
                     <Main />

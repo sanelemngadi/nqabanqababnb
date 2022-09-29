@@ -15,6 +15,19 @@ import { useRouter } from 'next/router';
 import dynamic from 'next/dynamic';
 import Loading from '../src/components/organisms/loading';
 
+import '@fontsource/roboto/300.css';
+import '@fontsource/roboto/400.css';
+import '@fontsource/roboto/500.css';
+import '@fontsource/roboto/700.css';
+import '@fontsource/inter/400.css';
+import '@fontsource/inter/500.css';
+import '@fontsource/inter/700.css';
+import '@fontsource/plus-jakarta-sans/700.css';
+
+
+// plus-jakarta-sans
+
+
 const Footer = dynamic(() => import(/* webpackChunkName: 'footer' */ '../hocs/footer'));
 const FaqsModal = dynamic(() => import(/* webpackChunkName: 'faqsmodal' */ '../src/components/templates/faqsDrawer/FaqModal'),
   { loading: () => <Loading /> }
@@ -44,7 +57,7 @@ const App = (props: MyAppProps) => {
 
   return (
     <>
-      <Script strategy='lazyOnload' src={`https://www.googletagmanager.com/gtag/js?id=G-283WECMC8C`} />
+      {/* <Script strategy='lazyOnload' src={`https://www.googletagmanager.com/gtag/js?id=G-283WECMC8C`} />
       <Script strategy='lazyOnload'
         id="nqabanqaba-bukhosini"
       >
@@ -55,7 +68,7 @@ const App = (props: MyAppProps) => {
           
           gtag('config', 'G-283WECMC8C');
           `}
-      </Script>
+      </Script> */}
       <CacheProvider value={emotionCache}>
 
         <Head>
