@@ -130,7 +130,7 @@ const MenuDrawer: FC<Props> = ({ state, setState }) => {
                 <TextIcon
                     bg={projectColors.light}
                     color={projectColors.primary}
-                    label='+27607013296'
+                    label='(+27) 662 971 030'
                     elem={<PhoneEnabledIcon
                         sx={{
                             color: projectColors.primary

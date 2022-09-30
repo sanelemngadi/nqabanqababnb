@@ -3,6 +3,7 @@ import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import Modal from '@mui/material/Modal';
 import Paper from '@mui/material/Paper';
+import Typography from '@mui/material/Typography';
 import IconButton from '@mui/material/IconButton';
 import FaqsCard from './FaqsCard';
 import { faqs } from '../../../../data';
@@ -61,6 +62,11 @@ const FaqsModal: FC<Props> = ({ showFaqsModal, setShowFaqsModal }) => {
             >
                 <Box>
                     <Box sx={style}>
+                        <Typography
+                            variant="h5"
+                        >
+                            Frequently Asked Questions
+                        </Typography>
                         <Grid container spacing={1}>
                             <CancelModalButton item>
                                 <Paper
@@ -80,6 +86,7 @@ const FaqsModal: FC<Props> = ({ showFaqsModal, setShowFaqsModal }) => {
                                     </IconButton>
                                 </Paper>
                             </CancelModalButton>
+
                             {faqs.map((i, index) => (
                                 <Grid key={'faq-' + index} item xs={12} sm={6} md={4}>
                                     <FaqsCard {...i} />
