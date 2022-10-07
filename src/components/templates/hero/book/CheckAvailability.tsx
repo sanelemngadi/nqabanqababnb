@@ -2,7 +2,7 @@ import React, { FC, useState } from "react";
 import Box from "@mui/material/Box";
 import Button from '@mui/material/Button';
 import Stack from '@mui/material/Stack';
-import { projectColors } from "../../../../styles/theme";
+import { projectColors, projectFonts } from "../../../../styles/theme";
 import { TextInput, SelectInput, FormGroup } from "../../../../styles/hero";
 
 interface Props {
@@ -32,7 +32,7 @@ const CheckAvailability: FC<Props> = ({ sm }) => {
                 alignItems: "center",
                 justifyContent: "space-around",
                 flexDirection: { xs: "column", md: sm ? 'column' : "row" },
-                margin: "0.1rem auto"
+                margin: "0.1rem auto",
             }}
         >
             <input type="hidden" name="action" value="2" />
@@ -87,9 +87,13 @@ const CheckAvailability: FC<Props> = ({ sm }) => {
                         alignItems: "cente",
                         width: { xs: "100%", md: "203px" },
                         height: { xs: "40px", md: "54px" },
-                        backgroundColor: projectColors.secondary,
-                        color: projectColors.primary,
-                        borderRadius: { xs: "8px", md: "100px" }
+                        // backgroundColor: projectColors.secondary,
+                        backgroundColor: '#2E3AA5',
+                        // color: projectColors.primary,
+                        color: '#EBEBEB',
+                        borderRadius: 0,
+                        fontFamily: projectFonts.primary,
+                        fontWeight: 500
                     }}
                 >
                     Check Availability

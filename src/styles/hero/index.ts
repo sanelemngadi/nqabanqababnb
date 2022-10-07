@@ -26,8 +26,8 @@ export const TextInput = styled.input`
     font-size: 14px;
 
 
-
-    background-color: ${projectColors.light};
+    
+    /* background-color: ${projectColors.light}; */
     border: 0;
     border-bottom: 1px solid #D9D9D9;
     outline: 0;
@@ -35,6 +35,8 @@ export const TextInput = styled.input`
     height: 32px;
     padding: .2rem 1rem;
     margin-bottom: 1rem;
+    color: blue;
+    background-color: #EFEFEF;
     
     @media (min-width: 900px) {
         margin-bottom: 0;
@@ -44,7 +46,8 @@ export const TextInput = styled.input`
 `
 
 export const SelectInput = styled.select<{ pricing?: number }>`
-    background-color: ${projectColors.light};
+    /* background-color: ${projectColors.light}; */
+    background-color: #EFEFEF;
     border: 0;
     border-bottom: 1px solid #D9D9D9;
     outline: 0;
@@ -53,9 +56,9 @@ export const SelectInput = styled.select<{ pricing?: number }>`
     padding: .2rem 2rem;
     border-radius: 0px;
     
-    option{
+    /* option{
         background-color: red;
-    }
+    } */
     
     @media (min-width: 900px) {
         margin-bottom: 0;
@@ -67,23 +70,28 @@ export const SelectInput = styled.select<{ pricing?: number }>`
 `
 
 export const Wrapper = styled(Container)`
+    background-image: url('/images/park.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;        
     min-height:calc(100vh - 80px - 40px);
-    background-color: ${projectColors.primary};
     padding: 1rem;
     overflow-x: hidden;
-
-    @media (max-width: 992px) {
-        background-image: url('/images/park.jpg');
-        background-repeat: no-repeat;
-        background-size: cover;
-        background-position: center;        
+    
+    @media (min-width: 992px) {
+        background-image: unset;
+        background-color: ${projectColors.primary};
     }
-`
+    `
 
 
 export const FormGroup = styled(Box)`
     width: 100%;
-    font-size: 12px;
-    color: ${projectColors.grayD9};
+    font-size: 14px;
+    color: #707070;
+
+    label{
+        font-family: ${projectFonts.secondary};
+    }
 `
 

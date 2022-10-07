@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { FC, memo } from 'react';
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import styled from "@emotion/styled";
@@ -12,11 +12,9 @@ interface Props {
 
 const Wrapper = styled(Box)`
     max-width: 738px;
-    margin: 1rem auto;
+    margin: 1rem 0;
 `
 const SectionHeading: FC<Props> = ({ head, subHead, side }) => {
-
-
     return (
         <Wrapper>
             <Typography
@@ -37,7 +35,7 @@ const SectionHeading: FC<Props> = ({ head, subHead, side }) => {
                 component="h3"
                 sx={{
                     padding: "0 1rem",
-                    color: "#8D91B4",
+                    color: "#6A6A6A",
                     fontFamily: projectFonts.secondary,
                     fontSize: { xs: "16px", sm: "24px" },
                     textAlign: { xs: "left", md: side ? "left" : "center" },
@@ -50,4 +48,4 @@ const SectionHeading: FC<Props> = ({ head, subHead, side }) => {
     )
 }
 
-export default SectionHeading;
+export default memo(SectionHeading);

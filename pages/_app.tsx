@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import type { AppProps } from 'next/app';
 import { ThemeProvider } from "@mui/material/styles";
 import CssBaseline from '@mui/material/CssBaseline';
@@ -14,14 +14,9 @@ import { useRouter } from 'next/router';
 import dynamic from 'next/dynamic';
 import Loading from '../src/components/organisms/loading';
 
-import '@fontsource/roboto/300.css';
-import '@fontsource/roboto/400.css';
-import '@fontsource/roboto/500.css';
-import '@fontsource/roboto/700.css';
-import '@fontsource/inter/400.css';
-import '@fontsource/inter/500.css';
-import '@fontsource/inter/700.css';
-import '@fontsource/plus-jakarta-sans/700.css';
+import '@fontsource/cormorant/700.css';
+import '@fontsource/dosis/400.css';
+import '@fontsource/dosis/500.css';
 
 
 // plus-jakarta-sans
@@ -41,14 +36,31 @@ const App = (props: MyAppProps) => {
   const { Component, emotionCache = clientSideEmotionCache, pageProps } = props;
   const router = useRouter();
   const [loading, setLoading] = useState(true);
+  const [err, setErr] = useState(false);
 
   useEffect(() => {
     setLoading(false);
-
-    return () => {
-      setLoading(true);
-    }
   }, []);
+
+  useEffect(() => {
+    const handleStart = () => setLoading(true);
+    const handleComplete = () => setLoading(false);
+    const handleError = () => setErr(true);
+
+    router.events.on('routeChangeStart', handleStart);
+    router.events.on('routeChangeComplete', handleComplete);
+    router.events.on('routeChangeError', handleError);
+  }, [router]);
+
+  // const costs = [1, 2, 3, 4, 5];
+
+  // const total = useMemo(() =>
+  //   costs.reduce((a, c) => a + c, 0)
+  //   , [costs]);
+
+  // console.log("total: ", total);
+
+
 
   return (
     <>
@@ -65,19 +77,21 @@ const App = (props: MyAppProps) => {
         </Head>
         <ThemeProvider theme={theme}>
           <CssBaseline />
-          {loading ? <Loading /> :
-            <>
+          <>
+            {loading && <Loading />}
 
-              {router.pathname !== '/sucess' && router.pathname !== "/404" && <TopHeader />}
-              {router.pathname !== '/sucess' && router.pathname !== "/404" && <AppBar />}
-              <Component {...pageProps} />
-              {router.pathname !== '/sucess' && router.pathname !== "/404" && <Footer />}
-            </>
-          }
+            {router.pathname !== '/sucess' && router.pathname !== "/404" && <TopHeader />}
+            {router.pathname !== '/sucess' && router.pathname !== "/404" && <AppBar />}
+            <Component {...pageProps} />
+            {router.pathname !== '/sucess' && router.pathname !== "/404" && <Footer />}
+          </>
+
+
+          {/* <>{renderComponent()}</> */}
         </ThemeProvider>
       </CacheProvider>
-      <Script strategy='lazyOnload' src={`https://www.googletagmanager.com/gtag/js?id=G-283WECMC8C`} />
-      <Script strategy='lazyOnload'
+      <Script strategy='afterInteractive' src={`https://www.googletagmanager.com/gtag/js?id=G-283WECMC8C`} />
+      <Script strategy='afterInteractive'
         id="nqabanqaba-bukhosini"
       >
         {`

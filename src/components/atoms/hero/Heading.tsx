@@ -1,5 +1,5 @@
+import React, { memo } from 'react';
 import styled from '@emotion/styled';
-import React from 'react';
 import { projectColors, projectFonts } from '../../../styles/theme';
 
 
@@ -9,12 +9,24 @@ const Header = styled.h1`
 
     font-family: ${projectFonts.secondary};
 
-    text-align: left;
+    text-align: center;
     margin-top: 24px;
-    margin-left: 24px;
+    margin-left: 0px;
+    margin-bottom: 16px;
     flex-wrap: wrap;
-    span:nth-of-type(1){
-        font-size: 1.5rem;
+    font-size: 3rem;
+    font-weight: 700;
+    line-height: 1.1;
+    /* overflow: hidden; */
+    
+    @media (min-width: 768px) {
+        font-size: 4rem;
+        
+        margin-top: 24px;
+        margin-left: 24px;
+    }
+
+    /* span:nth-of-type(1){
         display: block;
     }
     span:nth-of-type(2){
@@ -26,8 +38,8 @@ const Header = styled.h1`
         @media (max-width: 400px) {
             display: block;
         }
-    }
-    @media (min-width: 500px) {
+    } */
+    /* @media (min-width: 500px) {
         span:nth-of-type(1){
             font-size: 2rem;
         }
@@ -37,8 +49,8 @@ const Header = styled.h1`
         span:nth-of-type(3){
             font-size: 2rem;
         }
-    }
-    @media (min-width: 768px) {
+    } */
+    /* @media (min-width: 768px) {
         span:nth-of-type(1){
             font-size: 2.5rem;
         }
@@ -48,13 +60,12 @@ const Header = styled.h1`
         span:nth-of-type(3){
             font-size: 2.5rem;
         }
-    }
+    } */
     
     
     @media (min-width: 992px) {
         margin-top: 88px;
-        text-align: center;
-        span:nth-of-type(1){
+        /* span:nth-of-type(1){
             font-size: 3rem;
             display: inline-block;
         }
@@ -64,18 +75,15 @@ const Header = styled.h1`
         span:nth-of-type(3){
             font-size: 3rem;
             vertical-align: bottom;
-        }
+        } */
     }
 `
 const Heading = () => {
     return (
         <Header>
-            <span>Welcome to&nbsp;</span>
-            <span>Nqabanqaba&nbsp;</span>
-            <span>BnB</span>
-
+            Welcome to Nqabanqaba BnB
         </Header>
     )
 }
 
-export default Heading
+export default memo(Heading);

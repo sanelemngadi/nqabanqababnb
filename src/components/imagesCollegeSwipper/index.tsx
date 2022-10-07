@@ -74,68 +74,66 @@ const Text = styled(Box)`
 
 const CollegeSwiper = () => {
     return (
-        <>
-            <Wrapper
-                speed={600}
-                parallax={true}
-                pagination={{
-                    clickable: true,
+        <Wrapper
+            speed={600}
+            parallax={true}
+            pagination={{
+                clickable: true,
+            }}
+            navigation={true}
+            modules={[Parallax, Pagination, Navigation]}
+            className="mySwiper"
+        >
+            <div
+                slot="container-start"
+                className="parallax-bg"
+                style={{
+                    backgroundImage: "url(/images/backyard.jpg)",
                 }}
-                navigation={true}
-                modules={[Parallax, Pagination, Navigation]}
-                className="mySwiper"
-            >
-                <div
-                    slot="container-start"
-                    className="parallax-bg"
-                    style={{
-                        backgroundImage: "url(/images/backyard.jpg)",
-                    }}
-                    data-swiper-parallax="-23%"
-                ></div>
-                {rooms.map((room, num) => (
-                    <SwiperSlide key={'room' + num}>
+                data-swiper-parallax="-23%"
+            ></div>
+            {rooms.map((room, num) => (
+                <SwiperSlide key={'room' + num}>
 
-                        <Typography variant='h5' data-swiper-parallax="-300">
-                            {room.label}
-                        </Typography>
-                        <Typography variant='caption' data-swiper-parallax="-200">
-                            {room.max}
-                        </Typography>
-                        <Text
-                            data-swiper-parallax="-100"
+                    <Typography variant='h5' data-swiper-parallax="-300">
+                        {room.label}
+                    </Typography>
+                    <Typography variant='caption' data-swiper-parallax="-200">
+                        {room.max}
+                    </Typography>
+                    <Text
+                        data-swiper-parallax="-100"
+                        sx={{
+                            flexDirection: { xs: "column", md: "column" }
+                        }}
+
+                    >
+                        <Typography
+                            variant="caption"
                             sx={{
-                                flexDirection: { xs: "column", md: "column" }
+                                flexGrow: 1,
+                                fontSize: '16px',
+                                linHeight: "1"
                             }}
-
                         >
-                            <Typography
-                                variant="caption"
-                                sx={{
-                                    flexGrow: 1,
-                                    fontSize: '16px',
-                                    linHeight: "1"
-                                }}
-                            >
-                                {room.description}
-                            </Typography>
-                            <Box
-                                sx={{
-                                    flexGrow: 1,
-                                }}
-                            >
-                                <Image
-                                    src={room.image}
-                                    width={450}
-                                    height={300}
-                                    alt={room.label}
-                                />
-                            </Box>
-                        </Text>
-                    </SwiperSlide>
-                ))}
-            </Wrapper>
-        </>
+                            {room.description}
+                        </Typography>
+                        <Box
+                            sx={{
+                                flexGrow: 1,
+                            }}
+                        >
+                            <Image
+                                src={room.image}
+                                width={450}
+                                height={300}
+                                alt={room.label}
+                            />
+                        </Box>
+                    </Text>
+                </SwiperSlide>
+            ))}
+        </Wrapper>
     );
 }
 

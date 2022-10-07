@@ -15,8 +15,6 @@ const Wrapper = styled(Box)`
     margin: 0 auto;
 `
 const TabHeading: FC<Props> = ({ head, subHead, color }) => {
-
-
     return (
         <Wrapper>
             <Typography
@@ -31,7 +29,6 @@ const TabHeading: FC<Props> = ({ head, subHead, color }) => {
                     margin: "0 auto",
                     px: "8px",
                     lineHeight: "1.5",
-                    // background: "black",
                     height: { xs: "64px", md: "96px" },
                     display: "flex",
                     alignItems: "center"

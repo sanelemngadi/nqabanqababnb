@@ -6,6 +6,7 @@ import ListItemText from "@mui/material/ListItemText";
 import { useRouter } from 'next/router';
 import Image from 'next/image';
 import { projectColors, projectFonts } from '../../src/styles/theme';
+import logo from "../../public/vectors/logo.svg"
 
 interface ListTextProps {
     link: string,
@@ -26,10 +27,10 @@ export const LogoComponent: FC = () => {
         >
             <Image
                 src="/vectors/logo.svg"
-                width={128} height={32}
+                width={'128'} height={'32'}
                 layout="fixed"
                 alt="nqabanqaba logo"
-                priority
+                priority={true}
             />
         </Button>
     )
@@ -37,17 +38,20 @@ export const LogoComponent: FC = () => {
 
 export const ListTextComponent: FC<ListTextProps> = ({ link, sm }) => {
     return (
-        <ListItemText primary={link}
+        <Typography
             sx={{
                 width: "96px",
                 display: "flex",
+                // fontSize: '40px',
                 alignItems: "center",
                 justifyContent: sm ? "flex-start" : "center",
                 fontFamily: projectFonts.primary,
                 marginLeft: sm ? "24px" : undefined,
-                textDecoration: sm ? "underline" : undefined
+                textDecoration: sm ? "underline" : undefined,
+                textTransform: 'uppercase',
+                fontWeight: 500
             }}
-        />
+        >{link}</Typography>
     )
 }
 
@@ -61,10 +65,15 @@ export const FaqsButtonComponent: FC<FaqsButtonProps> = ({ ico, setShowFaqsModal
                 marginRight: "16px",
                 backgroundColor: projectColors.bgsecondary,
                 color: projectColors.tertiary,
+                borderRadius: 0,
+                border: `1px solid ${projectColors.bgsecondary}`
+
             }}>
             <Typography variant="h6" sx={{
                 fontSize: "14px",
                 lineHeight: "1.5",
+                fontFamily: projectFonts.primary,
+                fontWeight: 500
             }}>FAQs</Typography>
             <Icon
                 sx={{

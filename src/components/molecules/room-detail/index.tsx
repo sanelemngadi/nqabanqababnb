@@ -68,42 +68,42 @@ const Wrapper = styled(Swiper)`
 `
 
 const RoomDetailSlide = () => {
+    // console.count("room detail rendered: ");
+
     return (
-        <>
-            <Wrapper
-                slidesPerView={3}
-                spaceBetween={0}
-                loop={true}
-                pagination={{
-                    clickable: true,
-                }}
-                navigation={true}
-                modules={[Pagination, Navigation]}
-                className="mySwiper"
-            >
-                <SwiperSlide>
-                    <Image src={'/images/room1.jpg'} width={449} height={256} alt='room' />
-                </SwiperSlide>
-                <SwiperSlide>
-                    <Image src={'/images/room2.jpg'} width={449} height={256} alt='room' />
-                </SwiperSlide>
-                <SwiperSlide>
-                    <Image src={'/images/room3.jpg'} width={449} height={256} alt='room' />
-                </SwiperSlide>
-                <SwiperSlide>
-                    <Image src={'/images/room4.jpg'} width={449} height={256} alt='room' />
-                </SwiperSlide>
-                <SwiperSlide>
-                    <Image src={'/images/backyard.jpg'} width={449} height={256} alt='room' />
-                </SwiperSlide>
-                <SwiperSlide>
-                    <Image src={'/images/park.jpg'} width={449} height={256} alt='room' />
-                </SwiperSlide>
-                <SwiperSlide>
-                    <Image src={'/images/im300.jpg'} width={449} height={256} alt='room' />
-                </SwiperSlide>
-            </Wrapper>
-        </>
+        <Wrapper
+            slidesPerView={3}
+            spaceBetween={0}
+            loop={true}
+            pagination={{
+                clickable: true,
+            }}
+            navigation={true}
+            modules={[Pagination, Navigation]}
+            className="mySwiper"
+        >
+            <SwiperSlide>
+                <Image src={'/images/room1.jpg'} width={449} height={256} alt='room' />
+            </SwiperSlide>
+            <SwiperSlide>
+                <Image src={'/images/room2.jpg'} width={449} height={256} alt='room' />
+            </SwiperSlide>
+            <SwiperSlide>
+                <Image src={'/images/room3.jpg'} width={449} height={256} alt='room' />
+            </SwiperSlide>
+            <SwiperSlide>
+                <Image src={'/images/room4.jpg'} width={449} height={256} alt='room' />
+            </SwiperSlide>
+            <SwiperSlide>
+                <Image src={'/images/backyard.jpg'} width={449} height={256} alt='room' />
+            </SwiperSlide>
+            <SwiperSlide>
+                <Image src={'/images/park.jpg'} width={449} height={256} alt='room' />
+            </SwiperSlide>
+            <SwiperSlide>
+                <Image src={'/images/im300.jpg'} width={449} height={256} alt='room' />
+            </SwiperSlide>
+        </Wrapper>
     );
 }
 

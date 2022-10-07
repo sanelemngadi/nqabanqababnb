@@ -4,14 +4,16 @@ import React, { FC } from 'react';
 interface Props {
     title: string
     subtitle: string,
-    image: string
+    image: string,
+    path?: string
 }
-const MetaData: FC<Props> = ({ title, subtitle, image }) => {
+const MetaData: FC<Props> = ({ title, subtitle, image, path }) => {
 
     const date = new Date();
     return (
         <Head>
             <title>{title}</title>
+            <link rel="canonical" href={`https://nqabanqaba.netlify.app${path}`} />
             <meta name="description" content={subtitle} />
             <meta property='og:title' content={title} />
             <meta property='og:description' content={subtitle} />

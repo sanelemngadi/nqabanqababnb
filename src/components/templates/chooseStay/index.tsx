@@ -4,26 +4,35 @@ import Container from "@mui/material/Container";
 import Typography from "@mui/material/Typography";
 import Image from 'next/image';
 import { projectFonts } from '../../../styles/theme';
+import HomeABout from '../../molecules/about';
+import ImagesGallery from '../../molecules/minigallery';
+import MiniFaqs from '../../molecules/minifaqs';
+import MiniAround from '../../molecules/miniarounds';
 
 const ChooseStay = () => {
 
     return (
         <Box
             sx={{
-                margin: { xs: "64px auto", sm: "96px auto" }
+                margin: { xs: "2rem auto", sm: "96px auto" }
             }}
         >
             <Container
-                maxWidth="md"
+                maxWidth="lg"
+                className="yebo"
                 sx={{
                     display: 'flex',
-                    justifyContent: "center",
-                    alignItems: "center",
-                    flexDirection: "column",
+                    justifyContent: "flex-start",
+                    alignItems: "start",
+                    flexDirection: { xs: 'column', md: 'row' },
                     margin: "0rem auto",
+                    paddingLeft: { sm: '0px' },
+                    paddingRight: { sm: '0px' },
+                    py: 1,
+                    px: { md: 1 }
                 }}
             >
-                <Box>
+                {/* <Box>
                     <Image src="/vectors/pillows.svg" alt="pillows" width={352} height={145} />
                 </Box>
                 <Box>
@@ -39,8 +48,26 @@ const ChooseStay = () => {
                 </Box>
                 <Box>
                     <Image src="/vectors/bed.svg" alt="the bed" width={384} height={95} />
-                </Box>
+                </Box> */}
 
+                <Box
+                    sx={{
+                        flex: { md: 3 },
+                    }}
+                >
+                    <HomeABout />
+                    <ImagesGallery />
+                    <MiniFaqs />
+                </Box>
+                <Box
+                    sx={{
+                        flex: { md: 1 },
+                        position: 'sticky',
+                        top: '96px'
+                    }}
+                >
+                    <MiniAround />
+                </Box>
             </Container>
         </Box>
     )

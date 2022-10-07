@@ -14,7 +14,7 @@ import ArrowOutwardIcon from '@mui/icons-material/ArrowOutward';
 import MenuIcon from '@mui/icons-material/Menu';
 
 import styled from "@emotion/styled";
-import { projectColors } from '../../src/styles/theme';
+import { projectColors, projectFonts } from '../../src/styles/theme';
 import { slugify } from '../../src/utils';
 
 import ActiveLink from '../../src/context/ActiveLink';
@@ -24,7 +24,7 @@ import { useRouter } from 'next/router';
 
 
 const links = [
-    "Home", "Our Room", "About Us", "Contact Us"
+    "Home", "Our Rooms", "About Us", "Contact Us"
 ]
 
 const Icon = styled(Box)`
@@ -52,6 +52,7 @@ const AppBarDesktop: FC<Props> = ({ setShowAppBar, setShowFaqsModal }) => {
                 top: 0,
                 left: 0,
                 zIndex: '999',
+                borderRadius: 0
             }}
         >
             <AppBarContainer
@@ -76,7 +77,9 @@ const AppBarDesktop: FC<Props> = ({ setShowAppBar, setShowFaqsModal }) => {
                                     sx={{
                                         paddingLeft: "0px", paddingRight: "0px"
                                     }}>
-                                    <ListTextComponent link={link} />
+                                    <ListTextComponent
+                                        link={link}
+                                    />
                                 </ListItemButton>
                             </ActiveLink>
                         ))}
@@ -91,9 +94,11 @@ const AppBarDesktop: FC<Props> = ({ setShowAppBar, setShowFaqsModal }) => {
 
                     <Button
                         variant="contained"
+                        disableElevation
                         sx={{
                             backgroundColor: projectColors.tertiary,
                             color: projectColors.bgsecondary,
+                            borderRadius: 0
                         }}
                     >
                         <Typography variant="h6"
@@ -102,6 +107,8 @@ const AppBarDesktop: FC<Props> = ({ setShowAppBar, setShowFaqsModal }) => {
                             sx={{
                                 fontSize: "14px",
                                 lineHeight: "1.5",
+                                fontFamily: projectFonts.primary,
+                                fontWeight: 500
                             }}
                         >Book now!</Typography>
 

@@ -11,11 +11,12 @@ const Loading = () => {
             sx={{
                 width: "100%",
                 height: '100vh',
-                background: `linear-gradient(135deg, ${projectColors.primary}, ${projectColors.tertiary})`,
+                // background: `linear-gradient(135deg, ${projectColors.primary}, ${projectColors.tertiary})`,
+                backgroundColor: "rgba(0 0 0 / 85%)",
                 position: "fixed",
                 top: "0",
                 left: "0",
-                zIndex: "3000"
+                zIndex: "3000",
             }}
         >
             <Container maxWidth='sm'

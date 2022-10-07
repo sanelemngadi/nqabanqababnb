@@ -7,24 +7,20 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "sitemap": "next-sitemap --config next-sitemap.config.js",
-    "analyze": "cross-env ANALYZE=true next build"
+    "sitemap": "next-sitemap --config next-sitemap.config.js"
   },
   "dependencies": {
     "@emotion/react": "^11.10.4",
     "@emotion/server": "^11.10.0",
     "@emotion/styled": "^11.10.4",
-    "@fontsource/inter": "^4.5.12",
-    "@fontsource/plus-jakarta-sans": "^4.5.9",
-    "@fontsource/roboto": "^4.5.8",
+    "@fontsource/cormorant": "^4.5.9",
+    "@fontsource/dosis": "^4.5.10",
     "@mui/icons-material": "^5.10.6",
     "@mui/material": "^5.10.6",
-    "@next/bundle-analyzer": "^12.3.1",
-    "cross-env": "^7.0.3",
     "next": "12.3.1",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "sharp": "^0.31.0",
+    "react-icons": "^4.4.0",
     "swiper": "^8.4.2"
   },
   "devDependencies": {

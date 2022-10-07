@@ -25,18 +25,20 @@ const Hero: FC = () => {
                 <TextShadow
                     variant="h4"
                     sx={{
-                        color: projectColors.light,
-                        maxWidth: "567px",
+                        // color: projectColors.light,
+                        color: '#D7D7D7',
+                        maxWidth: "768px",
                         textAlign: "center",
                         margin: "0 auto",
                         fontFamily: projectFonts.primary,
-                        fontSize: "24px",
-                        marginTop: "24px",
+                        fontSize: "30px",
+                        marginTop: "0px",
+                        marginBottom: '3rem'
                     }}
                 >
                     Best BnB in Richards Bay that offers more than comfort and quility sleep.
                 </TextShadow>
-                <Box
+                {/* <Box
                     sx={{
                         marginTop: "32px"
                     }}
@@ -71,13 +73,13 @@ const Hero: FC = () => {
                             >I am Travelling for work</TextShadow>
                         </Box>
                     </Stack>
-                </Box>
+                </Box> */}
                 <Paper
                     elevation={3}
                     sx={{
-                        backgroundColor: { xs: "white" },
+                        backgroundColor: { xs: "#EFEFEF" },
                         padding: "4px",
-                        borderRadius: { xs: "1rem", md: "100px" },
+                        borderRadius: 0,
                         overflow: "hidden",
                         p: { xs: 3, md: 2 },
                     }}
@@ -91,9 +93,9 @@ const Hero: FC = () => {
                         fontSize: "14px",
                         fontFamily: projectFonts.primary,
                         display: { xs: "none", md: "block" },
-                        marginTop: "16px"
+                        marginTop: "32px"
                     }}
-                >Click the box above to enter your info to check availability.</TextShadow>
+                >Please note that no pats are allowed at nqabanqaba bnb..</TextShadow>
             </Wrapper>
         </Box>
     )

@@ -4,6 +4,12 @@ import MetaData from '../meta';
 
 import dynamic from 'next/dynamic';
 
+// import ChooseStay from '../src/components/templates/chooseStay';
+// import Surroundings from '../src/components/organisms/surroundings';
+// import Ratings from '../src/components/organisms/reviews';
+// import Pricing from '../src/components/organisms/pricing';
+// import FAQs from '../src/components/organisms/faqs';
+
 const ChooseStay = dynamic(() => import(/* webpackChunkName: 'choseyourstay' */ '../src/components/templates/chooseStay'), {
   suspense: true,
 });
@@ -15,21 +21,20 @@ const FAQs = dynamic(() => import(/* webpackChunkName: 'faqs' */ '../src/compone
 const Home: NextPage = () => {
   return (
     <>
-
       <MetaData
-        title='nqabanqaba | homepage'
+        title='nqabanqaba | The guesthouse at Richards Bay'
         subtitle='The best guesthouse in Richards Bay that offers more than quality sleep'
         image='https://nqabanqaba.netlify.app/images/im300.jpg' />
       <main>
         <Hero />
         <ChooseStay />
         <Pricing />
-        <Surroundings />
-        <Ratings />
-        <FAQs />
+        {/* <Surroundings /> */}
+        {/* <Ratings /> */}
+        {/* <FAQs /> */}
       </main>
     </>
   )
 }
 
-export default Home
+export default Home;

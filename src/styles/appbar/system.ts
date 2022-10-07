@@ -47,12 +47,11 @@ export const DeskTopLinkList = styled(List)(({ theme }) => ({
 export const AllScreenLogo = styled(Box)(({ theme }) => ({
     display: 'inline-flex',
     alignItems: 'center',
-    // backgroundColor: projectColors.bgsecondary,
 
     [theme.breakpoints.up('md')]: {
         display: 'flex',
         flex: '1',
-        justifyContent: 'center',
+        justifyContent: 'flex-start',
         alignItems: 'unset',
 
     }

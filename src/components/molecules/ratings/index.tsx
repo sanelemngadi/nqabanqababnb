@@ -19,8 +19,9 @@ const RoomRating: FC<{ max: string }> = ({ max }) => {
             <Typography component="legend"
                 sx={{
                     opacity: "0.7",
-                    fontSize: "14px",
-                    fontFamily: projectFonts.primary
+                    fontSize: { xs: "18px", md: '24px' },
+                    fontFamily: projectFonts.secondary,
+                    color: '#757575',
                 }}
             >{max}</Typography>
             <Rating name="read-only" size="small" value={value} readOnly />

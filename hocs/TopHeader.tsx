@@ -20,7 +20,7 @@ const TopHeader = () => {
                 maxWidth="lg"
                 sx={{
                     backgroundColor: projectColors.dark,
-                    height: "40px",
+                    height: "48px",
                     display: "flex",
                     alignItems: "center",
                 }}>

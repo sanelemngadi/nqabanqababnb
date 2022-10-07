@@ -14,8 +14,8 @@ export const projectColors = {
 }
 
 export const projectFonts = {
-    primary: "'Inter', sans-serif",
-    secondary: "'Plus Jakarta Sans', sans-serif",
+    primary: "'Dosis', Helvetica, sans-serif",
+    secondary: "'Cormorant', serif",
 }
 
 const theme = createTheme({

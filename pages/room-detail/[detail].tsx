@@ -1,42 +1,66 @@
-import React from 'react';
+import React, { FC, useMemo, useCallback } from 'react';
+import { useRouter } from 'next/router';
+
 import Box from "@mui/material/Box";
-import Container from "@mui/material/Container";
 import Grid from "@mui/material/Grid";
-import Typography from "@mui/material/Typography";
 import Divider from "@mui/material/Divider";
+import Container from "@mui/material/Container";
+import HotelIcon from '@mui/icons-material/Hotel';
+import Typography from "@mui/material/Typography";
+import BathtubIcon from '@mui/icons-material/Bathtub';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 import TextIcon from '../../src/components/molecules/TextIcon';
-import { projectColors, projectFonts } from '../../src/styles/theme';
-
-import FamilyRestroomIcon from '@mui/icons-material/FamilyRestroom';
 import NightShelterIcon from '@mui/icons-material/NightShelter';
-import HotelIcon from '@mui/icons-material/Hotel';
-import BathtubIcon from '@mui/icons-material/Bathtub'; import CheckAvailabilityPricing from '../../src/components/templates/hero/book/CheckAvailibilityPricing';
-import RoomDetailSlide from '../../src/components/molecules/room-detail';
-;
+import FamilyRestroomIcon from '@mui/icons-material/FamilyRestroom';
 
-import { useRouter } from 'next/router';
+
+import MetaData from '../../meta';
 import { rooms } from '../../data';
 import { slugify } from '../../src/utils';
-import MetaData from '../../meta';
-import Head from 'next/head';
+import { projectColors, projectFonts } from '../../src/styles/theme';
+import RoomDetailSlide from '../../src/components/molecules/room-detail';
+import CheckAvailabilityPricing from '../../src/components/templates/hero/book/CheckAvailibilityPricing';
+;
 
-const Detail = ({ }) => {
+
+interface RoomI {
+    label: string,
+    description: string,
+    max: string,
+    image: string
+}
+
+const Detail: FC = () => {
     const router = useRouter();
     const { detail } = router.query;
-    const detail_room = rooms.filter((i) => slugify(i.label) === detail)[0];
+
+    const stringifyLabel = useCallback((room: RoomI) => {
+        return slugify(room.label.trim()) === detail;
+    }, [detail]);
+
+    const detail_room: RoomI = useMemo(() =>
+        rooms.filter((room) => {
+            return stringifyLabel(room)
+        })[0], [stringifyLabel]);
+
+    console.count("detail: ");
 
 
+    const icons = [
+        { label: "3 Guests", elem: FamilyRestroomIcon },
+        { label: "1 Bedroom", elem: NightShelterIcon },
+        { label: "2 Beds", elem: HotelIcon },
+        { label: "1 Bath", elem: BathtubIcon },
+    ];
 
     return (
         <Box>
             <MetaData
-                title={`Nqabanqaba | ${detail_room}`}
-                subtitle={detail_room.description}
-                image={`https://nqabanqaba.netlify.app${detail_room.image}`} />
-            <Head>
-                <link rel="canonical" href={`https://nqabanqaba.netlify.app/room-detail/${detail}`} />
-            </Head>
+                title={`Nqabanqaba | ${detail_room?.label ? detail_room.label : "the best guesthouse in Richards Bay"}`}
+                subtitle={detail_room?.description && detail_room.description}
+                image={`https://nqabanqaba.netlify.app${detail_room?.image && detail_room.image}`}
+                path={`${router.pathname.replace('[detail]', slugify(detail_room?.label ? detail_room.label : ""))}`}
+            />
             <Box>
                 <RoomDetailSlide />
             </Box>
@@ -71,7 +95,9 @@ const Detail = ({ }) => {
                                 maxWidth: "768px",
                                 margin: "1rem 0"
                             }}
-                        >{detail_room.label}</Typography>
+                        >
+                            {detail_room?.label && detail_room.label}
+                        </Typography>
                         <Typography
                             variant='h5' component='h3'
                             sx={{
@@ -84,46 +110,19 @@ const Detail = ({ }) => {
                             gap: { xs: "8px", md: '1rem' },
                             flexWrap: 'wrap'
                         }}>
-                            <TextIcon
-                                bg={projectColors.light}
-                                color={projectColors.tertiary}
-                                label='3 Guests'
-                                width='100px'
-                                elem={<FamilyRestroomIcon
-                                    sx={{
-                                        color: projectColors.tertiary
-                                    }} />}
-                            />
-                            <TextIcon
-                                bg={projectColors.light}
-                                color={projectColors.tertiary}
-                                label='1 Bedroom'
-                                width='120px'
-                                elem={<NightShelterIcon
-                                    sx={{
-                                        color: projectColors.tertiary
-                                    }} />}
-                            />
-                            <TextIcon
-                                bg={projectColors.light}
-                                color={projectColors.tertiary}
-                                label='2 Beds'
-                                width='100px'
-                                elem={<HotelIcon
-                                    sx={{
-                                        color: projectColors.tertiary
-                                    }} />}
-                            />
-                            <TextIcon
-                                bg={projectColors.light}
-                                color={projectColors.tertiary}
-                                label='1 Bath'
-                                width='100px'
-                                elem={<BathtubIcon
-                                    sx={{
-                                        color: projectColors.tertiary
-                                    }} />}
-                            />
+                            {icons.map((icon, idx) => (
+                                <TextIcon
+                                    key={"icon-" + idx}
+                                    bg={projectColors.light}
+                                    color={projectColors.tertiary}
+                                    label={icon.label}
+                                    width='120px'
+                                    elem={<icon.elem
+                                        sx={{
+                                            color: projectColors.tertiary
+                                        }} />}
+                                />
+                            ))}
                         </Box>
 
                         <Typography
@@ -132,7 +131,7 @@ const Detail = ({ }) => {
                                 color: projectColors.grey
                             }}
                         >
-                            {detail_room.description}
+                            {detail_room?.description && detail_room.description}
                         </Typography>
 
                         <Typography

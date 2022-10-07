@@ -1,26 +1,10 @@
 import React, { useState, useEffect } from 'react';
+import Box from "@mui/material/Box"
+import Container from "@mui/material/Container";
 import Alert from "@mui/material/Alert";
 import { useRouter } from 'next/router';
-import { projectColors } from '../src/styles/theme';
 import CircularProgress from '@mui/material/CircularProgress';
-import styled from '@emotion/styled';
-
-const Wrapper = styled.div`
-    background: linear-gradient(135deg, ${projectColors.primary}, ${projectColors.tertiary});
-    width: 100%;
-    height: 100vh;
-`
-
-const Content = styled.div`
-    width: 100%;
-    height: 100%;
-    max-width: 600px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 0 auto;
-
-`
+import { projectColors } from '../../styles/theme';
 
 const Sucess = () => {
     const router = useRouter();
@@ -36,12 +20,26 @@ const Sucess = () => {
         }
     }, [])
     return (
-        <Wrapper>
-            <Content>
+        <Box
+            sx={{
+                width: "100%",
+                height: '100vh',
+                background: `linear-gradient(135deg, ${projectColors.primary}, ${projectColors.tertiary})`
+            }}
+        >
+            <Container maxWidth='sm'
+                sx={{
+                    width: "100%",
+                    height: '100%',
+                    display: "flex",
+                    alignItems: 'center',
+                    justifyContent: 'center'
+                }}
+            >
                 {clicked ? <CircularProgress color='secondary' /> :
                     <Alert onClose={handleClose}>Thank you for dropping us a line, we will come back to you as soon as possible</Alert>}
-            </Content>
-        </Wrapper>
+            </Container>
+        </Box>
     )
 }
 

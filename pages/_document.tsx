@@ -16,6 +16,9 @@ export default class MyDocument extends Document {
                 <Head>
                     <meta content={theme.palette.primary.main} name="theme-color" />
                     <meta name="description" content={description} />
+                    {/* <link rel="preconnect" href="https://fonts.googleapis.com" />
+                    <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="true" />
+                    <link href="https://fonts.googleapis.com/css2?family=Cormorant:wght@700&family=Dosis:wght@400;500&display=swap" rel="stylesheet" /> */}
                     {/* <link
                         rel="stylesheet"
                         href={fontsUrl}
