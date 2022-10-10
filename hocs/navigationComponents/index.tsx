@@ -1,12 +1,10 @@
 import React, { FC } from 'react';
-import Button from "@mui/material/Button";
-import Typography from "@mui/material/Typography";
-import Icon from "@mui/material/Icon";
-import ListItemText from "@mui/material/ListItemText";
 import { useRouter } from 'next/router';
 import Image from 'next/image';
 import { projectColors, projectFonts } from '../../src/styles/theme';
-import logo from "../../public/vectors/logo.svg"
+import Button from '../../src/components/atoms/Button';
+import Typography from '../../src/components/atoms/Typography';
+import Box from '../../src/components/atoms/Box';
 
 interface ListTextProps {
     link: string,
@@ -23,7 +21,9 @@ export const LogoComponent: FC = () => {
         <Button
             color="primary"
             component="a"
+            type="button"
             onClick={() => router.push('/')}
+            sx={{ padding: "4px 1.5rem 4px 0" }}
         >
             <Image
                 src="/vectors/logo.svg"
@@ -38,11 +38,11 @@ export const LogoComponent: FC = () => {
 
 export const ListTextComponent: FC<ListTextProps> = ({ link, sm }) => {
     return (
-        <Typography
+        <Box
+            component={'span'}
             sx={{
                 width: "96px",
                 display: "flex",
-                // fontSize: '40px',
                 alignItems: "center",
                 justifyContent: sm ? "flex-start" : "center",
                 fontFamily: projectFonts.primary,
@@ -51,14 +51,17 @@ export const ListTextComponent: FC<ListTextProps> = ({ link, sm }) => {
                 textTransform: 'uppercase',
                 fontWeight: 500
             }}
-        >{link}</Typography>
+        >{link}</Box>
     )
 }
 
 export const FaqsButtonComponent: FC<FaqsButtonProps> = ({ ico, setShowFaqsModal }) => {
     return (
-        <Button variant="outlined"
+        <Button
+            variant="outlined"
             onClick={setShowFaqsModal}
+            color="tertiary"
+            type="button"
             sx={{
                 display: 'flex',
                 alignItems: 'center',
@@ -66,24 +69,28 @@ export const FaqsButtonComponent: FC<FaqsButtonProps> = ({ ico, setShowFaqsModal
                 backgroundColor: projectColors.bgsecondary,
                 color: projectColors.tertiary,
                 borderRadius: 0,
-                border: `1px solid ${projectColors.bgsecondary}`
+                border: `1px solid ${projectColors.bgsecondary} !important`
 
             }}>
-            <Typography variant="h6" sx={{
-                fontSize: "14px",
-                lineHeight: "1.5",
-                fontFamily: projectFonts.primary,
-                fontWeight: 500
-            }}>FAQs</Typography>
-            <Icon
+            <Typography
+                variant="h6"
                 sx={{
-                    display: 'flex',
+                    fontSize: "14px",
+                    lineHeight: "1.5",
+                    fontFamily: projectFonts.primary,
+                    fontWeight: 500,
+                }}>FAQs</Typography>
+            <span
+                style={{
+                    display: 'inline-flex',
                     alignItems: 'center',
-                    marginLeft: '8px'
+                    marginLeft: '8px',
+                    width: '1rem',
+                    height: '1rem',
                 }}
             >
                 {ico}
-            </Icon>
-        </Button>
+            </span>
+        </Button >
     )
 }

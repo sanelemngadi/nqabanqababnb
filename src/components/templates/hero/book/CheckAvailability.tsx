@@ -1,9 +1,9 @@
 import React, { FC, useState } from "react";
-import Box from "@mui/material/Box";
-import Button from '@mui/material/Button';
-import Stack from '@mui/material/Stack';
-import { projectColors, projectFonts } from "../../../../styles/theme";
+import { projectFonts } from "../../../../styles/theme";
 import { TextInput, SelectInput, FormGroup } from "../../../../styles/hero";
+import Box from "../../../atoms/Box";
+import Button from "../../../atoms/Button";
+import Form from "../../../atoms/Form";
 
 interface Props {
     sm?: boolean,
@@ -23,7 +23,7 @@ const CheckAvailability: FC<Props> = ({ sm }) => {
     }
 
     return (
-        <Stack
+        <Form
             component="form"
             target="_blank"
             action="https://www.nightsbridge.co.za/bridge/book"
@@ -31,9 +31,11 @@ const CheckAvailability: FC<Props> = ({ sm }) => {
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "space-around",
-                flexDirection: { xs: "column", md: sm ? 'column' : "row" },
+                flexDirection: "column",
                 margin: "0.1rem auto",
             }}
+
+            md={{ flexDirection: sm ? 'column' : "row" }}
         >
             <input type="hidden" name="action" value="2" />
             <input type="hidden" name="bbid" value="32135" />
@@ -44,7 +46,6 @@ const CheckAvailability: FC<Props> = ({ sm }) => {
                 <label htmlFor="availabilty-select">Region</label>
                 <SelectInput
                     id="availabilty-select"
-                // value={10}
                 >
                     <option >Richards Bay</option>
                 </SelectInput>
@@ -78,28 +79,26 @@ const CheckAvailability: FC<Props> = ({ sm }) => {
                     width: '100%',
                 }}
             >
-                <Button variant="contained"
+                <Button
+                    variant="contained"
                     color="secondary"
                     type='submit'
-                    disableElevation
                     sx={{
-                        display: "flex",
-                        alignItems: "cente",
-                        width: { xs: "100%", md: "203px" },
-                        height: { xs: "40px", md: "54px" },
-                        // backgroundColor: projectColors.secondary,
+                        width: "100%",
+                        height: "40px",
                         backgroundColor: '#2E3AA5',
-                        // color: projectColors.primary,
                         color: '#EBEBEB',
                         borderRadius: 0,
                         fontFamily: projectFonts.primary,
                         fontWeight: 500
                     }}
+
+                    md={{ width: '203px', height: "54px" }}
                 >
                     Check Availability
                 </Button>
             </Box>
-        </Stack>
+        </Form>
     );
 }
 

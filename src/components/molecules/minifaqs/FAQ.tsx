@@ -33,18 +33,18 @@ const AccordionHeader = styled.p<{ header: boolean }>`
 `
 
 const AccordionBody = styled.div<{ show: boolean }>`
-  max-height: ${({ show }) => show ? '10rem' : 0};
+  height: ${({ show }) => show ? 'auto' : 0};
+  overflow: ${({ show }) => show ? 'visible' : 'hidden'};
+  visibility: ${({ show }) => !show && 'hidden'};
   width: 90%;
   text-align: left;
-  overflow: hidden;
   align-items: center;
   background-color: #fcfcfcb7;
   padding: 0 1rem;
   padding: ${({ show }) => show ? '1rem' : '0 1rem'};
-  transition: all 0.5s ease-in;
   font-family: ${projectFonts.primary};
-  /* max-height: 10rem; */
-  /* transition: max-height 0.5s ease-in-out; */
+  transition: all 300ms ease-out;
+  /* transition: all 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms; */
 `
 
 const Radio = styled.input`

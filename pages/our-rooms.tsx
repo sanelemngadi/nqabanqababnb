@@ -1,18 +1,18 @@
 import React from 'react';
 import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
-import CollegeSwiper from '../src/components/imagesCollegeSwipper';
+// import CollegeSwiper from '../src/components/imagesCollegeSwipper';
 import MetaData from '../meta';
 
-const pricing = () => {
+const OurRooms = () => {
     return (
         <Box>
             <MetaData
-                title='Nqabanqaba | Pricing '
+                title='Nqabanqaba | OurRooms '
                 subtitle='The the rooms available at Nqabanqaba bnb.'
                 image='https://nqabanqaba.netlify.app/images/im300.jpg' />
 
-            <CollegeSwiper />
+            {/* <CollegeSwiper /> */}
             <Container maxWidth="md">
 
             </Container>
@@ -20,4 +20,4 @@ const pricing = () => {
     )
 }
 
-export default pricing;
+export default OurRooms;

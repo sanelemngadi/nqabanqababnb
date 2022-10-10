@@ -1,23 +1,19 @@
-import styled from "@emotion/styled";
-import { Box, Container, Grid, Typography } from "@mui/material";
-import { projectColors, projectFonts } from "../theme";
+import styled from "styled-components";
+import Grid from "../../components/atoms/Grid";
+import Typography from "../../components/atoms/Typography";
+import { projectColors } from "../theme";
 
 
 export const ItemGrid = styled(Grid)`
-    /* background-color: black; */
     color: #D9D9D9;
     padding: 20px;
 `
-export const FooterWrapper = styled(Container)`
-    background-color: ${projectColors.primary};
-`
 
 export const Headings = styled(Typography)`
-    font-family: ${projectFonts.primary};
-    font-size: 14px;
+    font-size: 16px;
     text-transform: uppercase;
     font-weight: 500;
-    color: ${projectColors.secondary};
+    color: ${projectColors.secondary} !important;
     margin-bottom: 16px;
 `
 

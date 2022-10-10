@@ -1,7 +1,12 @@
-import styled from "@emotion/styled";
-import Typography from "@mui/material/Typography";
-import Container from "@mui/material/Container";
-import Box from "@mui/material/Box";
+// import styled from "@emotion/styled";
+// import Typography from "@mui/material/Typography";
+// import Container from "@mui/material/Container";
+import styled from "styled-components";
+import Box from "../../components/atoms/Box";
+import Container from "../../components/atoms/Container";
+import Typography from "../../components/atoms/Typography";
+// import { Container } from "../../styled.globals";
+// import Box from "@mui/material/Box";
 import { projectColors, projectFonts } from "../theme";
 
 
@@ -24,10 +29,6 @@ export const TextInput = styled.input`
     visibility: visible !important;
     text-transform: uppercase;
     font-size: 14px;
-
-
-    
-    /* background-color: ${projectColors.light}; */
     border: 0;
     border-bottom: 1px solid #D9D9D9;
     outline: 0;
@@ -46,7 +47,6 @@ export const TextInput = styled.input`
 `
 
 export const SelectInput = styled.select<{ pricing?: number }>`
-    /* background-color: ${projectColors.light}; */
     background-color: #EFEFEF;
     border: 0;
     border-bottom: 1px solid #D9D9D9;
@@ -55,10 +55,6 @@ export const SelectInput = styled.select<{ pricing?: number }>`
     height: 32px;
     padding: .2rem 2rem;
     border-radius: 0px;
-    
-    /* option{
-        background-color: red;
-    } */
     
     @media (min-width: 900px) {
         margin-bottom: 0;
@@ -70,17 +66,17 @@ export const SelectInput = styled.select<{ pricing?: number }>`
 `
 
 export const Wrapper = styled(Container)`
-    background-image: url('/images/park.jpg');
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;        
-    min-height:calc(100vh - 80px - 40px);
-    padding: 1rem;
-    overflow-x: hidden;
+    background-image: url('/images/park.jpg') !important;
+    background-repeat: no-repeat !important;
+    background-size: cover !important;
+    background-position: center !important;        
+    min-height:calc(100vh - 80px - 40px) !important;
+    padding: 1rem !important;
+    overflow-x: hidden !important;
     
     @media (min-width: 992px) {
-        background-image: unset;
-        background-color: ${projectColors.primary};
+        background-image: unset !important;
+        background-color: ${projectColors.primary} !important;
     }
     `
 

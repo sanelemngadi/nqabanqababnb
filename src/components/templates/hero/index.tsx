@@ -1,12 +1,10 @@
 import React, { FC } from 'react';
-import Box from '@mui/material/Box';
-import Stack from '@mui/material/Stack';
-import Checkbox from '@mui/material/Checkbox';
-import Paper from '@mui/material/Paper';
 import { projectColors, projectFonts } from '../../../styles/theme';
 import Heading from '../../atoms/hero/Heading';
 import { TextShadow, Wrapper } from '../../../styles/hero';
 import CheckAvailability from './book/CheckAvailability';
+import Box from '../../atoms/Box';
+import Paper from '../../atoms/Paper';
 
 
 
@@ -17,72 +15,37 @@ const Hero: FC = () => {
     return (
         <Box
             sx={{
-                backgroundColor: projectColors.primary
+                backgroundColor: projectColors.primary,
             }}
         >
-            <Wrapper maxWidth="md">
+            <Wrapper maxWidth="md"
+            >
                 <Heading />
                 <TextShadow
                     variant="h4"
                     sx={{
-                        // color: projectColors.light,
                         color: '#D7D7D7',
                         maxWidth: "768px",
                         textAlign: "center",
                         margin: "0 auto",
-                        fontFamily: projectFonts.primary,
                         fontSize: "30px",
+                        fontWeight: 400,
                         marginTop: "0px",
                         marginBottom: '3rem'
                     }}
                 >
                     Best BnB in Richards Bay that offers more than comfort and quility sleep.
                 </TextShadow>
-                {/* <Box
-                    sx={{
-                        marginTop: "32px"
-                    }}
-                >
-                    <Stack direction="row"
-                        component="form"
-                        sx={{
-                            alignItems: "center",
-                            justifyContent: "space-around",
-                            flexDirection: { xs: "column", sm: "row" },
-                            maxWidth: "256px",
-                            margin: "2rem auto",
-                            display: { xs: "none", md: "flex" }
-                        }}
-                    >
-                        <Box>
-                            <Checkbox name="travel"
-                                sx={{
-                                    backgroundColor: "rgba(255, 255, 255, 0.25)",
-                                    marginBottom: { xs: "1rem", sm: "0" }
-                                }}
-                            />
-                        </Box>
-                        <Box>
-                            <TextShadow
-                                variant="h6"
-                                fontSize="16px"
-                                sx={{
-                                    backgroundColor: "transparent",
-                                    color: "#7B88FF"
-                                }}
-                            >I am Travelling for work</TextShadow>
-                        </Box>
-                    </Stack>
-                </Box> */}
                 <Paper
                     elevation={3}
                     sx={{
-                        backgroundColor: { xs: "#EFEFEF" },
+                        backgroundColor: "#EFEFEF",
                         padding: "4px",
                         borderRadius: 0,
                         overflow: "hidden",
-                        p: { xs: 3, md: 2 },
                     }}
+
+                    md={{ padding: "2rem" }}
                 >
                     <CheckAvailability />
                 </Paper>
@@ -92,12 +55,13 @@ const Hero: FC = () => {
                         color: projectColors.bgsecondary,
                         fontSize: "14px",
                         fontFamily: projectFonts.primary,
-                        display: { xs: "none", md: "block" },
+                        display: "none",
                         marginTop: "32px"
                     }}
+                    md={{ display: 'block' }}
                 >Please note that no pats are allowed at nqabanqaba bnb..</TextShadow>
             </Wrapper>
-        </Box>
+        </Box >
     )
 }
 

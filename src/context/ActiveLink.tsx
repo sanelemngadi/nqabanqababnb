@@ -1,14 +1,10 @@
-//external imports
 import Link from 'next/link';
 import React, { FC } from 'react';
 import { withRouter } from 'next/router';
 
-//internal imports
 import { projectColors } from '../styles/theme';
-
-//third party imports
-import Box from "@mui/material/Box";
-import styled from "@emotion/styled";
+import styled from 'styled-components';
+import Box from '../components/atoms/Box';
 
 interface Props {
     router: any,

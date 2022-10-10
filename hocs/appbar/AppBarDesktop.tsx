@@ -1,12 +1,7 @@
-import React, { FC } from 'react';
-import { LinkItems } from '../../src/styles/appbar';
-import { AppBarButtons, DeskTopLinkList, AllScreenLogo, AppBarMenu, AppBarContainer } from '../../src/styles/appbar/system';
-import Box from "@mui/material/Box";
-import Button from "@mui/material/Button";
-import Typography from "@mui/material/Typography";
-import Paper from "@mui/material/Paper";
-import IconButton from "@mui/material/IconButton";
-import ListItemButton from "@mui/material/ListItemButton";
+import React, { FC, useEffect, useState } from 'react';
+import { LinkItems, AppBarButtons, UnOrderedList, AllScreenLogo, AppBarMenu, AppBarContainer } from '../../src/styles/appbar';
+// import {  } from '../../src/styles/appbar/system';
+// import Paper from "@mui/material/Paper";
 
 //material ui icons
 import HelpOutlineIcon from '@mui/icons-material/HelpOutline';
@@ -21,6 +16,11 @@ import ActiveLink from '../../src/context/ActiveLink';
 
 import { FaqsButtonComponent, ListTextComponent, LogoComponent } from '../navigationComponents';
 import { useRouter } from 'next/router';
+import Button from '../../src/components/atoms/Button';
+import Typography from '../../src/components/atoms/Typography';
+import Box from '../../src/components/atoms/Box';
+import IconButton from '../../src/components/atoms/IconButton';
+import Paper from '../../src/components/atoms/Paper';
 
 
 const links = [
@@ -40,24 +40,44 @@ interface Props {
 }
 
 const AppBarDesktop: FC<Props> = ({ setShowAppBar, setShowFaqsModal }) => {
+    const [elevateAppbar, setElevateAppbar] = useState(false)
     const router = useRouter();
     const today = new Date().toISOString().split('T')[0];
+
+    const handleScroll = (): void => {
+        if (window.scrollY > 100) {
+            setElevateAppbar(true);
+        } else {
+            setElevateAppbar(false);
+
+        }
+    }
+
+    useEffect(() => {
+        window.addEventListener('scroll', handleScroll);
+
+        return () => {
+            window.removeEventListener('scroll', handleScroll);
+        }
+    }, [])
+
+
+
+
     return (
         <Paper
             className="paperdesktop"
-            elevation={4}
+            elevation={elevateAppbar ? 4 : 0}
             sx={{
                 backgroundColor: projectColors.light,
                 position: "sticky !important",
                 top: 0,
                 left: 0,
-                zIndex: '999',
+                zIndex: '200',
                 borderRadius: 0
             }}
         >
-            <AppBarContainer
-                maxWidth={"lg"}
-            >
+            <AppBarContainer>
                 <AllScreenLogo
                 >
                     <LogoComponent />
@@ -66,44 +86,64 @@ const AppBarDesktop: FC<Props> = ({ setShowAppBar, setShowFaqsModal }) => {
 
 
 
-                <DeskTopLinkList>
-                    <LinkItems type={"row"}>
-                        {links.map((link, idx) => (
+                <UnOrderedList>
+                    {links.map((link, idx) => (
+                        <LinkItems key={"i-" + idx}>
                             <ActiveLink
-                                key={"i-" + idx}
                                 href={link === "Home" ? "/" : `/${slugify(link)}`}
                             >
-                                <ListItemButton
+                                <Button
+                                    type='button'
+                                    component={'a'}
                                     sx={{
-                                        paddingLeft: "0px", paddingRight: "0px"
-                                    }}>
-                                    <ListTextComponent
-                                        link={link}
-                                    />
-                                </ListItemButton>
+                                        display: "flex",
+                                        fontWeight: 500,
+                                        minWidth: '96px',
+                                        alignItems: "center",
+                                        padding: ".3rem 1rem",
+                                        textDecoration: 'none',
+                                        justifyContent: "center",
+                                        color: projectColors.primary,
+                                        fontFamily: projectFonts.primary,
+                                        transitiom: 'transform 0.2s ease-in-out',
+
+                                        ['&:active']: {
+                                            transform: 'scale(0.95)',
+                                            transitiom: 'transform 0.2s ease-in-out',
+                                        }
+                                    }}
+
+                                >
+                                    {link}
+                                </Button>
                             </ActiveLink>
-                        ))}
-                    </LinkItems>
-                </DeskTopLinkList>
+                        </LinkItems>
+                    ))}
+                </UnOrderedList>
 
                 <AppBarButtons>
                     <FaqsButtonComponent
                         setShowFaqsModal={() => setShowFaqsModal(true)}
-                        ico={<HelpOutlineIcon />}
+                        ico={<HelpOutlineIcon fontSize='small' />}
                     />
 
                     <Button
                         variant="contained"
-                        disableElevation
+                        type='button'
+                        onClick={() => { return router.push(`https://book.nightsbridge.com/32135?action=2&nbid=952&bbrtid=0&rtgroupid=0&startdate=${today}&enddate=${today}`) }}
                         sx={{
                             backgroundColor: projectColors.tertiary,
                             color: projectColors.bgsecondary,
-                            borderRadius: 0
+                            borderRadius: 0,
+                            display: 'flex',
+                            alignItems: 'center',
+                            justifyContent: 'space-around',
+                            minWidth: '164px',
+                            border: "2px solid transparent"
                         }}
                     >
-                        <Typography variant="h6"
-                            onClick={() => { return router.push(`https://book.nightsbridge.com/32135?action=2&nbid=952&bbrtid=0&rtgroupid=0&startdate=${today}&enddate=${today}`) }}
-
+                        <Typography
+                            variant="h6"
                             sx={{
                                 fontSize: "14px",
                                 lineHeight: "1.5",
@@ -111,7 +151,6 @@ const AppBarDesktop: FC<Props> = ({ setShowAppBar, setShowFaqsModal }) => {
                                 fontWeight: 500
                             }}
                         >Book now!</Typography>
-
                         <Icon><ArrowOutwardIcon /></Icon>
                     </Button>
                 </AppBarButtons>
@@ -122,10 +161,11 @@ const AppBarDesktop: FC<Props> = ({ setShowAppBar, setShowFaqsModal }) => {
                     <Box>
                         <IconButton
                             onClick={() => setShowFaqsModal(true)}
-                            size='small'
                             sx={{
                                 color: projectColors.tertiary
-                            }}>
+                            }}
+                        // size='small'
+                        >
                             <HelpOutlineIcon />
                         </IconButton>
 
@@ -134,8 +174,6 @@ const AppBarDesktop: FC<Props> = ({ setShowAppBar, setShowFaqsModal }) => {
 
                     <Box>
                         <IconButton
-                            color="primary"
-                            component="div"
                             onClick={() => setShowAppBar(true)}
                         >
                             <MenuIcon fontSize='small' />
@@ -143,7 +181,7 @@ const AppBarDesktop: FC<Props> = ({ setShowAppBar, setShowFaqsModal }) => {
                     </Box>
                 </AppBarMenu>
             </AppBarContainer>
-        </Paper>
+        </Paper >
     )
 }
 

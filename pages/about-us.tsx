@@ -1,118 +1,139 @@
 import React, { FC } from 'react';
-import Box from "@mui/material/Box";
-import Container from "@mui/material/Container";
-import Grid from "@mui/material/Grid";
-import Typography from "@mui/material/Typography";
-import { projectColors, projectFonts } from '../src/styles/theme';
-import styled from "@emotion/styled";
+import styled from "styled-components";
 import Image from 'next/image';
 import MetaData from '../meta';
+import MiniAround from '../src/components/molecules/miniarounds';
+import { Nqabanqaba } from '../src/styled.globals';
+import Grid from '../src/components/atoms/Grid';
+import Typography from '../src/components/atoms/Typography';
+import Box from '../src/components/atoms/Box';
+import Container from '../src/components/atoms/Container';
 
 
-const Paragraph = styled(Typography)`
+const Paragraph = styled(Nqabanqaba)`
     margin: 1.5rem 0;
     font-size: 16px;
     font-weight: 500;
-    font-family: ${projectFonts.primary};
 `
 
-const RuleHeading = styled(Typography)`
+const RuleHeading = styled(Nqabanqaba)`
     margin: 1.5rem 0;
     font-size: 20px;
-    font-family: ${projectFonts.secondary};
+    color: red;
 `
+
+const rules2 = [
+    {
+        head: "3 Age restriction",
+        msg: "There is no age requirement for check-in."
+    },
+    {
+        head: "4 Smoking and/or parties",
+        msg: "Both  smoking and parties are not allowed inside the rooms."
+    },
+    {
+        head: "5 Quiet hours",
+        msg: "Guests must be quiet between 21:00 and 07:00."
+    },
+    {
+        head: "6 Pets",
+        msg: "Pets are not allowed."
+    },
+]
+
+const abouts = [
+    "We are situated 2.7 km from Alkantstrand Beach, Nqabanqaba features accommodation with a shared lounge, a casino and room service for your convenience.", "The bed and breakfast features both WiFi and private parking free of charge. N.qabanqaba provides guests with a terrace, a seating area, satellite flat-screen TV.", "We have a fully equipped kitchenette with a microwave and a fridge, and a private bathroom with shower and a hairdryer. The accommodation offers a à la carte or Full English/Irish breakfast.", "Guests can spend time in the water park or enjoy the outdoor swimming pool and garden at Nqabanqaba.", "Boardwalk Inkwazi Shopping Centre is 6 km from the bed and breakfast, while Enseleni Nature Reserve is 14 km from the property.", "Couples particularly like the location — they rated it 8.9 for a two-person trip."
+]
 
 const AboutUs: FC = () => {
     return (
         <Box>
-            <MetaData
-                title='Nqabanqaba | About Us'
-                subtitle='We are situated 2.7 km from Alkantstrand Beach, Nqabanqaba features accommodation with a shared lounge, a casino and room service for your convenience.'
-                image='https://nqabanqaba.netlify.app/images/room3.jpg' />
-            <Container maxWidth="md">
-                <Typography variant="h1"
+            <>
+                <MetaData
+                    title='Nqabanqaba B&B | cheap luxury B&B at Richards Bay Meerensee'
+                    subtitle='The bed and breakfast features both WiFi and private parking free of charge. Nqabanqaba provides guests with a terrace, a seating area, satellite flat-screen TV. We have a fully equipped kitchenette with a microwave and a fridge, and a private bathroom with shower and a hairdryer. The accommodation offers a à la carte or Full English/Irish breakfast.'
+                    path={`/about-us`}
+                    image='https://nqabanqaba.netlify.app/images/room3.jpg' />
+                <Container
+                    maxWidth="lg"
                     sx={{
-                        fontSize: { xs: "32px", md: "48px" },
-                        fontFamily: projectFonts.secondary,
-                        color: projectColors.primary,
-                        marginTop: "2rem"
+                        display: 'flex',
+                        justifyContent: "flex-start",
+                        alignItems: "start",
+                        flexDirection: 'column',
+                        margin: "0 auto",
+                        paddingLeft: '0px',
+                        paddingRight: '0px',
+                        padding: '1rem 1rem',
                     }}
+                    md={{ flexDirection: 'row', padding: '1rem' }}
                 >
-                    About Us
-                </Typography>
-                <Paragraph variant="body1">
-                    We are situated 2.7 km from Alkantstrand Beach, Nqabanqaba features accommodation with a shared lounge, a casino and room service for your convenience.
-                </Paragraph>
-                <Paragraph variant="body1">
-                    The bed and breakfast features both WiFi and private parking free of charge. N.qabanqaba provides guests with a terrace, a seating area, satellite flat-screen TV
-                </Paragraph>
-                <Paragraph variant="body1">
-                    We have a fully equipped kitchenette with a microwave and a fridge, and a private bathroom with shower and a hairdryer. The accommodation offers a à la carte or Full English/Irish breakfast.
+                    <Box
+                        md={{ flex: 3 }}
+                    >
+                        <Container maxWidth="md">
+                            <Typography variant="h1"
+                                md={{ fontSize: "48px" }}
+                            >
+                                About Us
+                            </Typography>
+                            <>
+                                {abouts.map((about, i) => (
+                                    <Paragraph key={'about-' + i} variant="p">
+                                        {about}
+                                    </Paragraph>
+                                ))}
+                            </>
+                            <Typography
+                                variant="h1"
+                                md={{ fontSize: "48px" }}
+                            >
+                                House rules
+                            </Typography>
+                            <Grid container spacing={2}
+                            >
+                                <Grid item xs={12} medium={6}>
+                                    <RuleHeading variant="h2">1 Check in/out hours</RuleHeading>
+                                    <Box>
+                                        <Image src="/vectors/rules.svg" width={344} height={422} alt='house rules' />
+                                    </Box>
+                                    <RuleHeading variant="h2">2 Child Policy</RuleHeading>
+                                    <Paragraph variant="p">
+                                        Children of any age are welcome.
+                                    </Paragraph>
+                                    <Paragraph variant="p">
+                                        Children aged 18 year s and above are considered adults at this property.
+                                    </Paragraph>
+                                    <Paragraph variant="p">
+                                        To see correct prices and occupancy information, please add the number of children in your group and their ages to your search.
+                                    </Paragraph>
+                                </Grid>
+                                <Grid item xs={12} medium={6}>
+                                    {rules2.map((rule, idx) => (
+                                        <React.Fragment key={idx + 'rule'}>
+                                            <RuleHeading variant="h2">{rule.head}</RuleHeading>
+                                            <Paragraph variant="p">
+                                                {rule.msg}
+                                            </Paragraph>
+                                        </React.Fragment>
+                                    ))}
+                                </Grid>
+                            </Grid>
+                        </Container>
 
-                </Paragraph>
-                <Paragraph variant="body1">
-                    Guests can spend time in the water park or enjoy the outdoor swimming pool and garden at Nqabanqaba.
-                </Paragraph>
-                <Paragraph variant="body1">
-                    Boardwalk Inkwazi Shopping Centre is 6 km from the bed and breakfast, while Enseleni Nature Reserve is 14 km from the property.
-                </Paragraph>
-                <Paragraph variant="body1">
-                    Couples particularly like the location — they rated it 8.9 for a two-person trip.
-                </Paragraph>
-
-
-
-                <Typography variant="h1"
-                    sx={{
-                        fontSize: { xs: "32px", md: "48px" },
-                        fontFamily: projectFonts.secondary,
-                        color: projectColors.primary,
-                        marginTop: "2rem"
-                    }}
-                >
-                    House rules
-                </Typography>
-                <Grid container spacing={2}>
-                    <Grid item xs={12} md={6}>
-                        <RuleHeading>1 Check in/out hours</RuleHeading>
-                        <Box>
-                            <Image src="/vectors/rules.svg" width={344} height={422} alt='house rules' />
-                        </Box>
-                        <RuleHeading>2 Child Policy</RuleHeading>
-                        <Paragraph variant="body1">
-                            Children of any age are welcome.
-                        </Paragraph>
-                        <Paragraph variant="body1">
-                            Children aged 18 years and above are considered adults at this property.
-                        </Paragraph>
-                        <Paragraph variant="body1">
-                            To see correct prices and occupancy information, please add the number of children in your group and their ages to your search.
-                        </Paragraph>
-                    </Grid>
-                    <Grid item xs={12} md={6}>
-                        <RuleHeading>3 Age restriction</RuleHeading>
-                        <Paragraph variant="body1">
-                            There is no age requirement for check-in.
-                        </Paragraph>
-
-                        <RuleHeading>4 Smoking and/or parties</RuleHeading>
-                        <Paragraph variant="body1">
-                            Both  smoking and parties are not allowed inside the rooms.
-                        </Paragraph>
-
-                        <RuleHeading>5 Quiet hours</RuleHeading>
-                        <Paragraph variant="body1">
-                            Guests must be quiet between 21:00 and 07:00.
-                        </Paragraph>
-
-                        <RuleHeading>6 Pets</RuleHeading>
-                        <Paragraph variant="body1">
-                            Pets are not allowed.
-                        </Paragraph>
-                    </Grid>
-                </Grid>
-            </Container>
-        </Box>
+                    </Box >
+                    <Box
+                        sx={{
+                            position: 'sticky',
+                            top: '96px'
+                        }}
+                        md={{ flex: 1 }}
+                    >
+                        <MiniAround />
+                    </Box>
+                </Container >
+            </>
+        </Box >
     )
 }
 

@@ -1,12 +1,11 @@
-import React, { FC, useMemo, useCallback } from 'react';
-import { useRouter } from 'next/router';
+import React, { FC } from 'react';
 
-import Box from "@mui/material/Box";
-import Grid from "@mui/material/Grid";
+// import Box from "@mui/material/Box";
+// import Grid from "@mui/material/Grid";
 import Divider from "@mui/material/Divider";
-import Container from "@mui/material/Container";
+// import Container from "@mui/material/Container";
 import HotelIcon from '@mui/icons-material/Hotel';
-import Typography from "@mui/material/Typography";
+// import Typography from "@mui/material/Typography";
 import BathtubIcon from '@mui/icons-material/Bathtub';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 import TextIcon from '../../src/components/molecules/TextIcon';
@@ -20,7 +19,12 @@ import { slugify } from '../../src/utils';
 import { projectColors, projectFonts } from '../../src/styles/theme';
 import RoomDetailSlide from '../../src/components/molecules/room-detail';
 import CheckAvailabilityPricing from '../../src/components/templates/hero/book/CheckAvailibilityPricing';
-;
+import Box from '../../src/components/atoms/Box';
+import Container from '../../src/components/atoms/Container';
+import Grid from '../../src/components/atoms/Grid';
+import Typography from '../../src/components/atoms/Typography';
+// import { stringify } from 'querystring';
+// ;
 
 
 interface RoomI {
@@ -30,22 +34,11 @@ interface RoomI {
     image: string
 }
 
-const Detail: FC = () => {
-    const router = useRouter();
-    const { detail } = router.query;
+interface Props {
+    nqabanqabaRooms: RoomI,
+}
 
-    const stringifyLabel = useCallback((room: RoomI) => {
-        return slugify(room.label.trim()) === detail;
-    }, [detail]);
-
-    const detail_room: RoomI = useMemo(() =>
-        rooms.filter((room) => {
-            return stringifyLabel(room)
-        })[0], [stringifyLabel]);
-
-    console.count("detail: ");
-
-
+const Detail: FC<Props> = ({ nqabanqabaRooms }) => {
     const icons = [
         { label: "3 Guests", elem: FamilyRestroomIcon },
         { label: "1 Bedroom", elem: NightShelterIcon },
@@ -56,24 +49,29 @@ const Detail: FC = () => {
     return (
         <Box>
             <MetaData
-                title={`Nqabanqaba | ${detail_room?.label ? detail_room.label : "the best guesthouse in Richards Bay"}`}
-                subtitle={detail_room?.description && detail_room.description}
-                image={`https://nqabanqaba.netlify.app${detail_room?.image && detail_room.image}`}
-                path={`${router.pathname.replace('[detail]', slugify(detail_room?.label ? detail_room.label : ""))}`}
+                title={`Nqabanqaba BnB | ${nqabanqabaRooms.label} at Richards Bay Meerensee`}
+                subtitle={nqabanqabaRooms.description}
+                image={`https://nqabanqaba.netlify.app${nqabanqabaRooms.image}`}
+                path={`/room-detail/${slugify(nqabanqabaRooms.label)}`}
             />
-            <Box>
+            <Box
+                sx={{
+                    marginBottom: "1rem"
+                }}
+            >
                 <RoomDetailSlide />
             </Box>
             <Container
+                maxWidth="lg"
                 sx={{
                     marginTop: '64px',
                     position: 'relative',
                 }}
             >
-                <Grid container spacing={3}>
-                    <Grid item xs={12} md={8}
-                        sx={{
-                            paddingRight: { md: '2rem' },
+                <Grid container spacing={0}>
+                    <Grid item xs={12} medium={8}
+                        md={{
+                            paddingRight: '2rem'
                         }}
                     >
                         <TextIcon
@@ -96,20 +94,25 @@ const Detail: FC = () => {
                                 margin: "1rem 0"
                             }}
                         >
-                            {detail_room?.label && detail_room.label}
+                            {nqabanqabaRooms.label}
                         </Typography>
                         <Typography
-                            variant='h5' component='h3'
+                            variant='h5'
                             sx={{
                                 textTransform: 'uppercase',
                                 color: projectColors.grey,
                             }}
                         >Self Catering</Typography>
-                        <Box sx={{
-                            display: 'flex',
-                            gap: { xs: "8px", md: '1rem' },
-                            flexWrap: 'wrap'
-                        }}>
+                        <Box
+                            sx={{
+                                display: 'flex',
+                                gap: "8px",
+                                flexWrap: 'wrap'
+                            }}
+                            md={{
+                                gap: '1rem'
+                            }}
+                        >
                             {icons.map((icon, idx) => (
                                 <TextIcon
                                     key={"icon-" + idx}
@@ -131,11 +134,11 @@ const Detail: FC = () => {
                                 color: projectColors.grey
                             }}
                         >
-                            {detail_room?.description && detail_room.description}
+                            {nqabanqabaRooms.description}
                         </Typography>
 
                         <Typography
-                            variant='h6' component='h4'
+                            variant='h6'
                             sx={{
                                 textTransform: 'uppercase',
                                 color: projectColors.primary,
@@ -155,7 +158,7 @@ const Detail: FC = () => {
                         </Typography>
                         <Divider />
                         <Typography
-                            variant='h6' component='h4'
+                            variant='h6'
                             sx={{
                                 textTransform: 'uppercase',
                                 color: projectColors.primary,
@@ -167,15 +170,22 @@ const Detail: FC = () => {
 
 
 
-                        <Box sx={{
-                            display: 'flex',
-                            gap: '1rem',
-                            ['ul']: {
-                                padding: { xs: '1rem', md: '40px' },
-                                flex: 1,
-                                margin: 0,
-                            }
-                        }}>
+                        <Box
+                            sx={{
+                                display: 'flex',
+                                gap: '1rem',
+                                ['ul']: {
+                                    padding: '1rem',
+                                    flex: 1,
+                                    margin: 0,
+                                }
+                            }}
+                            md={{
+                                ['ul']: {
+                                    padding: '40px',
+                                }
+                            }}
+                        >
                             <ul>
                                 <li>Bathroom amenities</li>
                                 <li>Wireless internet connection</li>
@@ -199,13 +209,17 @@ const Detail: FC = () => {
 
 
                     </Grid>
-                    <Grid item xs={12} md={4}>
+                    <Grid item xs={12} medium={4}>
                         <Box
                             sx={{
-                                background: 'blue',
-                                position: { xs: 'relative', md: 'sticky' },
-                                top: { md: "128px" },
+                                // background: 'blue',
+                                position: 'relative',
                                 marginBottom: "2rem"
+                            }}
+
+                            md={{
+                                position: "sticky",
+                                top: '128px'
                             }}
                         >
                             <CheckAvailabilityPricing sm />
@@ -215,6 +229,25 @@ const Detail: FC = () => {
             </Container>
         </Box>
     )
+}
+
+
+
+export const getStaticPaths = async () => {
+    const paths = rooms.map((room) => ({
+        params: { detail: slugify(room.label) }
+    }));
+    return { paths, fallback: false }
+}
+
+
+export const getStaticProps = async ({ params }: { params: { detail: string } }) => {
+    const nqabanqabaRooms = rooms.filter(r => slugify(r.label) === params.detail)
+    return {
+        props: {
+            nqabanqabaRooms: nqabanqabaRooms[0]
+        }
+    }
 }
 
 export default Detail;

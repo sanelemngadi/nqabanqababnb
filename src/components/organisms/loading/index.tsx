@@ -1,35 +1,71 @@
-import React from 'react';
-import Box from "@mui/material/Box"
-import Container from "@mui/material/Container";
-import CircularProgress from '@mui/material/CircularProgress';
-import { projectColors } from '../../../styles/theme';
+import React, { FC, useEffect, useState } from 'react';
+import Box from '../../atoms/Box';
+import Container from '../../atoms/Container';
 
-const Loading = () => {
+const Loading: FC = () => {
+    const [count, setCount] = useState(0);
+    const dots = [
+        '.', '.', '.'
+    ]
+
+
+    useEffect(() => {
+        // if () {
+        document.body.style.height = '100vh';
+        document.body.style.overflow = 'hidden';
+
+        return () => {
+            document.body.style.height = 'unset';
+            document.body.style.overflow = 'unset';
+        }
+
+    }, []);
+    useEffect(() => {
+        const timer = setInterval(() => {
+            if (count < 3) {
+                setCount(prev => prev + 1);
+            } else {
+                setCount(0);
+            }
+        }, 500);
+
+        return () => clearInterval(timer);
+    }, [count])
 
     return (
         <Box
             sx={{
                 width: "100%",
                 height: '100vh',
-                // background: `linear-gradient(135deg, ${projectColors.primary}, ${projectColors.tertiary})`,
-                backgroundColor: "rgba(0 0 0 / 85%)",
+                backgroundColor: "rgba(0 0 0 / 95%)",
                 position: "fixed",
                 top: "0",
                 left: "0",
                 zIndex: "3000",
             }}
         >
-            <Container maxWidth='sm'
+            <Container
+                maxWidth='sm'
                 sx={{
                     width: "100%",
                     height: '100%',
                     display: "flex",
                     alignItems: 'center',
                     justifyContent: 'center',
-                    flexDirection: "column"
+                    flexDirection: "row",
+                    fontSize: "48px",
+                    color: "#fff",
+                    ['div']: {
+                        width: "32px"
+                    }
                 }}
             >
-                <CircularProgress color='secondary' />
+                {/* <CircularProgress color='secondary' /> */}
+                Loading<div>
+                    {dots.slice(0, count).map((dot, idx) => (
+                        <span key={"dot-" + idx}>{dot}</span>
+                    ))}
+                </div>
             </Container>
         </Box>
     )

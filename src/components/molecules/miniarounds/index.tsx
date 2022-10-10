@@ -1,18 +1,13 @@
 import React from 'react';
-import styled from "@emotion/styled";
-import Box from "@mui/material/Box"
+import styled from 'styled-components';
 import { projectFonts } from '../../../styles/theme';
+import Box from '../../atoms/Box';
 
 const Wrapper = styled(Box)`
-    /* width: 392px;
-    height: 544px; */
-    /* border: 1px solid black; */
-    background-color:  #EFEFEF;
     padding: 1rem;
     display: flex;
     justify-content: center;
     align-items: center;
-    /* max-width: 700px; */
 
     ul{
         margin: 0;
@@ -25,12 +20,12 @@ const Wrapper = styled(Box)`
         font-family: ${projectFonts.secondary};
         font-weight: 700;
         font-size: 20px;
-        color: #6A6A6A;
+        color: #000;
         margin-bottom: .5rem;
     }
     li{
         font-family: ${projectFonts.primary};
-        font-weight: 500;
+        font-weight: 400;
         color: #6A6A6A;
     }
 `
@@ -39,14 +34,13 @@ const MiniAround = () => {
     return (
         <Wrapper
             sx={{
-                width: { xs: '100%' },
-                // width: { xs: '100%', md: '392px' },
-                // minHeight: { xs: '544px', md: '544px' }
-                boxShadow: { md: '2px 4px 4px 0px rgba(0 0 0 / 25%)' },
-                margin: { xs: '1rem auto', md: 0 },
-                maxWidth: { sm: '100%', md: '392px' },
-                minWidth: { md: '392px' }
+                width: '100%',
+                margin: '1rem auto',
+                border: '1px solid black',
+                padding: '1rem'
             }}
+            sm={{ maxWidth: '100%' }}
+            md={{ boxShadow: '1px 2px 2px 0px rgba(0 0 0 / 15%)', minWidth: '392px', maxWidth: '392px', margin: "0" }}
         >
             <Box>
                 <h4>The Nqabanqaba guesthouse offers the followin facilities and Amenities out of the box:</h4>

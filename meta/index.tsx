@@ -19,7 +19,7 @@ const MetaData: FC<Props> = ({ title, subtitle, image, path }) => {
             <meta property='og:description' content={subtitle} />
             <meta property='og:image' content={image} />
             <meta property="og:type" content="guesthouse. break and breakfast" />
-            <meta property="og:url" content="http://www.nqabanqaba.co.za" />
+            <meta property="og:url" content={`https://nqabanqaba.netlify.app${path}`} />
 
             <meta property="og:site_name" content="Nqabanqaba" />
             <meta property="og:updated_time" content="1440432930" />

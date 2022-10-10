@@ -1,38 +1,33 @@
 import React, { FunctionComponent } from 'react';
 import theme, { projectFonts } from '../../styles/theme';
 
-//material ui components
-import Typography from "@mui/material/Typography";
-import Paper from "@mui/material/Paper";
-import Box from "@mui/material/Box";
-import { styled } from "@mui/material/styles";
-
 import MailOutlinedIcon from '@mui/icons-material/MailOutlined';
+import Box from '../atoms/Box';
+import Typography from '../atoms/Typography';
+import styled from 'styled-components';
 
 interface Props {
     bg?: string,
     color?: string,
-    noElevation?: boolean
 }
 
-const EmailBoxStyled = styled(Paper)(({ bg }: { bg: string }) => ({
-    display: "none",
-    backgroundColor: bg,
-    [theme.breakpoints.up('md')]: {
-        display: "flex",
+const EmailBoxStyled = styled(Box) <{ bg: string }>`
+    display: none;
+    background-color: ${(props) => props.bg};
+    @media (min-width: 900px) {
+        display: flex;
     }
-}));
+`;
 
-const EmailBox: FunctionComponent<Props> = ({ color, bg, noElevation }) => {
+const EmailBox: FunctionComponent<Props> = ({ color, bg }) => {
     return (
         <EmailBoxStyled
-            elevation={noElevation ? 0 : 2}
             bg={bg ? bg : "#fff"}
             sx={{
-                width: "224px",
+                minWidth: "224px",
                 justifyContent: "space-around",
                 alignItems: "center",
-                px: noElevation ? "0px" : "8px",
+                px: "8px",
             }}
         >
             <Box

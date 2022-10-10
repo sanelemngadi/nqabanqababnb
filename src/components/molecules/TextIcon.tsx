@@ -1,11 +1,9 @@
 import React, { FunctionComponent } from 'react';
 import theme from '../../styles/theme';
 
-//material ui components
-import Typography from "@mui/material/Typography";
-import Paper from "@mui/material/Paper";
-import Box from "@mui/material/Box";
-import styled from "@emotion/styled";
+import styled from 'styled-components';
+import Box from '../atoms/Box';
+import Typography from '../atoms/Typography';
 
 
 interface Props {
@@ -17,13 +15,13 @@ interface Props {
     fs?: string,
 }
 
-const TextIconStyled = styled(Paper) <{ bg: string }>`
+const TextIconStyled = styled(Box) <{ bg: string }>`
     background-color: ${({ bg }) => bg};
 `
 
 const TextIcon: FunctionComponent<Props> = ({ color, bg, label, elem, width, fs }) => {
     return (
-        <TextIconStyled elevation={0} bg={bg ? bg : "#fff"}
+        <TextIconStyled bg={bg ? bg : "transparent"}
             sx={{
                 display: "flex",
                 width: width ? width : "224px",

@@ -1,15 +1,18 @@
 import React, { FC } from 'react';
-import Card from '@mui/material/Card';
-import CardContent from '@mui/material/CardContent';
-import Box from '@mui/material/Box';
-import Typography from '@mui/material/Typography';
+// import Card from '@mui/material/Card';
+// import CardContent from '@mui/material/CardContent';
+// import Box from '@mui/material/Box';
+// import Typography from '@mui/material/Typography';
 import { projectColors, projectFonts } from '../../styles/theme';
 import RoomRating from '../molecules/ratings';
 import Link from 'next/link';
 import ArrowRightAltIcon from '@mui/icons-material/ArrowRightAlt';
-import styled from '@emotion/styled';
+// import styled from '@emotion/styled';
 import { slugify } from '../../utils';
 import Image from 'next/image';
+import Box from '../atoms/Box';
+import styled from 'styled-components';
+import Typography from '../atoms/Typography';
 
 interface Props {
     image: string,
@@ -41,54 +44,59 @@ const Photo = styled(Box)`
 `
 const PricingCard: FC<Props> = ({ image, label, description, max }) => {
     return (
-        <Card sx={{
-            // maxWidth: { xs: "100%", sm: 345 },
-            // padding: "8px"
-            display: { md: 'flex' },
-            margin: { xs: '1rem', md: '0 1rem' },
-        }} >
+        <Box
+            sx={{
+                margin: '1rem',
+            }}
+            md={{
+                display: 'flex',
+                margin: '1rem',
+            }}
+        >
             <Photo
                 sx={{
-                    width: { md: '427px' },
-                    height: { md: '430px' },
                     background: 'blue',
                     overflow: 'hidden'
+                }}
+                md={{
+                    width: '427px',
+                    height: '430px',
                 }}
             >
                 <Image
                     alt={label}
                     width={427}
                     height={430}
-                    // width={345}
-                    // height={216}
                     src={image}
                     layout="responsive"
                 />
             </Photo>
-            <CardContent
+            <Box
                 sx={{
                     backgroundColor: projectColors.light,
-                    width: { md: '427px' },
-                    // height: { md: '430px' },
                     display: 'flex',
-                    // flexDirection: 'column',
                     alignItems: 'center',
                     justifyContent: 'center'
                 }}
+
+                md={{ width: '427px', }}
             >
                 <Box
-                    sx={{
-                        maxWidth: { md: "356px" },
-                        margin: { md: '0 auto' },
+                    md={{
+                        maxWidth: "356px",
+                        margin: '0 auto',
                     }}
                 >
-                    <Typography gutterBottom variant="h6"
+                    <Typography variant="h6"
                         sx={{
                             color: projectColors.dark,
                             fontFamily: projectFonts.secondary,
                             fontWeight: "700",
-                            fontSize: { xs: '24px', md: "36px" }
-                        }}>
+                            fontSize: '24px',
+                            margiBottom: '1rem'
+                        }}
+                        md={{ fontSize: "36px" }}
+                    >
                         {label}
                     </Typography>
                     <Box>
@@ -99,10 +107,12 @@ const PricingCard: FC<Props> = ({ image, label, description, max }) => {
                         fontFamily: projectFonts.primary,
                         fontSize: '16px',
                         fontWeight: '500',
-                        maxWidth: { md: '281px' },
-                        // margin: { md: '0 auto' }
 
-                    }}>
+                    }}
+                        md={{
+                            maxWidth: '281px',
+                        }}
+                    >
                         {description}
                     </Typography>
 
@@ -120,8 +130,8 @@ const PricingCard: FC<Props> = ({ image, label, description, max }) => {
                         </Link>
                     </Box>
                 </Box>
-            </CardContent>
-        </Card>
+            </Box>
+        </Box>
     )
 }
 

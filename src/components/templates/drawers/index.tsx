@@ -1,33 +1,37 @@
 import React, { FC } from 'react';
-import Box from '@mui/material/Box';
-import Drawer from '@mui/material/Drawer';
-import Button from '@mui/material/Button';
-import List from '@mui/material/List';
-import Container from '@mui/material/Container';
-import Divider from '@mui/material/Divider';
-import ListItem from '@mui/material/ListItem';
-import ListItemButton from '@mui/material/ListItemButton';
-import ListItemIcon from '@mui/material/ListItemIcon';
-import ListItemText from '@mui/material/ListItemText';
+
 import { LinkItems } from '../../../styles/appbar';
 import { slugify } from '../../../utils';
 import { projectColors } from '../../../styles/theme';
 import { Headings } from '../../../styles/footer';
+
 import EmailBox from '../../molecules/EmailBox';
 import TextIcon from '../../molecules/TextIcon';
+
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 import PhoneEnabledIcon from '@mui/icons-material/PhoneEnabled';
 import HelpOutlineIcon from '@mui/icons-material/HelpOutline';
 import ArrowOutwardIcon from '@mui/icons-material/ArrowOutward';
 import CancelIcon from '@mui/icons-material/Cancel';
+
+
 import ActiveLink from '../../../context/ActiveLink';
 import { ListTextComponent } from '../../../../hocs/navigationComponents';
 import { useRouter } from 'next/router';
+import Box from '../../atoms/Box';
+import Divider from '../../atoms/Divider';
+import Container from '../../atoms/Container';
+import Button from '../../atoms/Button';
+import IconButton from '../../atoms/IconButton';
+import Typography from '../../atoms/Typography';
+import Drawer from '../../atoms/Drawer';
+import UnOrderedList from '../../atoms/UnOrderedList';
+import ListItem from '../../atoms/ListItem';
 
 type Anchor = 'top';
 
 const links = [
-    "Home", "Our Room", "About Us", "Contact Us"
+    "Home", "Our Rooms", "About Us", "Contact Us"
 ]
 interface Props {
     state: boolean,
@@ -45,26 +49,23 @@ const MenuDrawer: FC<Props> = ({ state, setState }) => {
         }
     }
 
-    const toggleDrawer =
-        (anchor: Anchor, open: boolean) =>
-            (event: React.KeyboardEvent | React.MouseEvent) => {
-                if (
-                    event.type === 'keydown' &&
-                    ((event as React.KeyboardEvent).key === 'Tab' ||
-                        (event as React.KeyboardEvent).key === 'Shift')
-                ) {
-                    return;
-                }
+    const toggleDrawer = (event: React.KeyboardEvent | React.MouseEvent) => {
+        if (
+            event.type === 'keydown' &&
+            ((event as React.KeyboardEvent).key === 'Tab' ||
+                (event as React.KeyboardEvent).key === 'Shift')
+        ) {
+            return;
+        }
 
-                setState(open);
-            };
+        setState(false);
+    };
 
-    const list = (anchor: Anchor) => (
+    const list = () => (
         <Box
             sx={{ width: 'auto', minHeight: "100vh" }}
-            role="presentation"
-            onClick={toggleDrawer(anchor, false)}
-            onKeyDown={toggleDrawer(anchor, false)}
+            onClick={(e: any) => toggleDrawer(e)}
+            onKeyDown={(e: any) => toggleDrawer(e)}
         >
             <Headings
                 sx={{
@@ -75,44 +76,53 @@ const MenuDrawer: FC<Props> = ({ state, setState }) => {
                     paddingTop: "16px",
                     marginBottom: "0 !important"
                 }}>Pages</Headings>
-            <List>
-                <LinkItems type={"col"}>
-                    {links.map((link, idx) => (
+            <UnOrderedList>
+                {links.map((link, idx) => (
+                    <ListItem
+                        key={"i-" + idx}>
                         <ActiveLink
-                            key={"i-" + idx}
                             href={link === "Home" ? "/" : `/${slugify(link)}`}
                         >
-                            <ListItemButton
+                            <Button
+                                type="button"
                                 sx={{
                                     paddingLeft: "0px",
-                                    paddingRight: "0px"
+                                    paddingRight: "0px",
+                                    width: "100%"
                                 }}
                             >
                                 <ListTextComponent
                                     link={link}
                                     sm
                                 />
-                            </ListItemButton>
+                            </Button>
 
                         </ActiveLink>
-                    ))}
-                </LinkItems>
-            </List>
-            <Divider />
-            <List>
-                {['Book now'].map((text, index) => (
-                    <ListItem key={text + index} disablePadding>
-                        <ListItemButton
-                            onClick={() => handleActions(text)}
-                        >
-                            <ListItemIcon>
-                                {text === "FAQs" ? <HelpOutlineIcon /> : <ArrowOutwardIcon />}
-                            </ListItemIcon>
-                            <ListItemText primary={text} />
-                        </ListItemButton>
                     </ListItem>
                 ))}
-            </List>
+            </UnOrderedList>
+            <Divider />
+            <Button
+                type="button"
+                onClick={() => handleActions("Book now")}
+                sx={{
+                    display: 'flex',
+                    width: "100%",
+                    alignItems: 'center',
+                    justifyContent: 'flex-start'
+                }}
+            >
+                <IconButton
+                    component={'span'}
+                >
+                    <ArrowOutwardIcon />
+                </IconButton>
+                <Typography
+                    sx={{
+                        fontWeight: 500
+                    }}
+                >Book now</Typography>
+            </Button>
             <Divider />
             <Box
                 sx={{
@@ -126,7 +136,7 @@ const MenuDrawer: FC<Props> = ({ state, setState }) => {
                         fontWeight: "700 !important"
                     }}
                 >Contact info</Headings>
-                <EmailBox noElevation bg={projectColors.light} color={projectColors.primary} />
+                <EmailBox bg={projectColors.light} color={projectColors.primary} />
                 <TextIcon
                     bg={projectColors.light}
                     color={projectColors.primary}
@@ -158,38 +168,32 @@ const MenuDrawer: FC<Props> = ({ state, setState }) => {
     );
 
     return (
-        <Container>
-            <Box>
-                {(['top'] as const).map((anchor) => (
-                    <React.Fragment key={anchor}>
-                        <Drawer
-                            anchor={anchor}
-                            open={state}
-                            onClose={toggleDrawer(anchor, false)}
-                            sx={{
-                                zIndex: state ? "2000" : "-200",
-                                postion: "relative"
-                            }}
-                        >
-                            <Button
-                                color="error"
-                                sx={{
-                                    position: "fixed",
-                                    right: "1rem",
-                                    top: "1rem",
-                                    zIndex: state ? "2005" : "0",
+        <Drawer
+            open={state}
+            sx={{
+                zIndex: state ? "2000" : "-200",
+                postion: "relative"
+            }}
+        >
+            <Container>
+                <Box>
+                    <Button
+                        type="button"
+                        sx={{
+                            position: "fixed",
+                            right: "1rem",
+                            top: "1rem",
+                            zIndex: state ? "700" : "0",
 
-                                }}
-                                onClick={toggleDrawer(anchor, false)}
-                            >
-                                <CancelIcon />
-                            </Button>
-                            {list(anchor)}
-                        </Drawer>
-                    </React.Fragment>
-                ))}
-            </Box>
-        </Container>
+                        }}
+                        onClick={(e: any) => toggleDrawer(e)}
+                    >
+                        <CancelIcon />
+                    </Button>
+                    {list()}
+                </Box>
+            </Container>
+        </Drawer>
     );
 }
 

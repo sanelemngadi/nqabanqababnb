@@ -1,17 +1,25 @@
 import React, { FC } from 'react';
-import Box from "@mui/material/Box";
-import Container from "@mui/material/Container";
-import Typography from "@mui/material/Typography";
-import Button from "@mui/material/Button";
-import TextField from "@mui/material/TextField";
+// import Box from "@mui/material/Box";
+// import Container from "@mui/material/Container";
+// import Typography from "@mui/material/Typography";
+// import Button from "@mui/material/Button";
+// import TextField from "@mui/material/TextField";
 import TextareaAutosize from "@mui/material/TextareaAutosize";
 import { projectColors, projectFonts } from '../src/styles/theme';
 import Link from 'next/link';
-import styled from '@emotion/styled';
+// import styled from '@emotion/styled';
+import styled from 'styled-components';
 import { Headings } from '../src/styles/footer';
 import TextIcon from '../src/components/molecules/TextIcon';
 import SocialIcons from '../src/components/molecules/SocialIcons';
 import MetaData from '../meta';
+import MiniFaqs from '../src/components/molecules/minifaqs';
+import Box from '../src/components/atoms/Box';
+import Typography from '../src/components/atoms/Typography';
+import TextField from '../src/components/atoms/TextField';
+import Button from '../src/components/atoms/Button';
+import Container from '../src/components/atoms/Container';
+// import { Container } from '../src/styled.globals';
 
 const ContactForm = styled.form`
     display: block;
@@ -19,16 +27,16 @@ const ContactForm = styled.form`
     padding: 1rem 0;
 `
 
-const ContactDetails = styled(Box)`
+const ContactDetails = styled.div`
     grid-area: two;
     padding: 1rem;
 `
 
-const ContactContainer = styled(Box)`
+const ContactContainer = styled(Container)`
     display: grid;
     grid-template-columns:1fr;
-    grid-template-areas: "two"
-                         "one";
+    grid-template-areas: "one"
+                         "two";
     
     @media (min-width: 768px){
         grid-template-columns: 3fr 1fr;
@@ -37,20 +45,30 @@ const ContactContainer = styled(Box)`
     margin-top: "32px";
 `
 
+const TextArea = styled.label`
+    width: 100%;
+
+    textarea{
+        width: 100%;
+        padding: 1rem;
+    }
+`
+
 const ContactUs: FC = () => {
 
     return (
         <>
             <MetaData
-                title='Nqabanqaba | Contact Us'
+                title='Nqabanqaba B&B | Contact Us'
                 subtitle="If you have a question don't hasitate to drop us a text message, we are more than happy to clear your confusion."
+                path={`/contact-us`}
                 image='https://nqabanqaba.netlify.app/images/backyard.jpg' />
 
             <Box>
 
                 <Box
                     sx={{
-                        height: { xs: 256, md: 345 },
+                        height: '256px',
                         backgroundImage: "url(/images/backyard.jpg)",
                         backgroundRepeat: "no-repeat",
                         backgroundPosition: "center",
@@ -62,23 +80,28 @@ const ContactUs: FC = () => {
                         alignItems: 'center',
                         textAlign: 'center',
                     }}
+                    md={{ height: '345px' }}
                 >
 
-                    <Typography variant="caption"
+                    <Typography variant="h3"
                         sx={{
-                            fontSize: { xs: "16px", md: "24px" },
+                            fontSize: "16px",
                             fontFamily: projectFonts.secondary,
                             color: projectColors.secondary
                         }}
+                        md={{ fontSize: '24px' }}
                     >
-                        <Link href="/"><a style={{ color: projectColors.secondary }}>Home</a></Link> - Contact
+                        <Link href="/"><a style={{ color: projectColors.secondary }}>Home</a></Link>
+                        <span>&nbsp;- Contact</span>
                     </Typography>
-                    <Typography variant="h1"
+                    <Typography
+                        variant="h1"
                         sx={{
-                            fontSize: { xs: "32px", md: "48px" },
+                            fontSize: "32px",
                             fontFamily: projectFonts.secondary,
                             color: projectColors.light
                         }}
+                        md={{ fontSize: '48px' }}
                     >
                         How can we halp you?
                     </Typography>
@@ -87,32 +110,44 @@ const ContactUs: FC = () => {
                     <Box>
                         <Typography variant="h1"
                             sx={{
-                                fontSize: { xs: "24px", md: "32px" },
+                                fontSize: "24px",
                                 fontFamily: projectFonts.secondary,
                                 color: projectColors.primary,
                                 textAlign: 'center',
                                 marginTop: "48px",
                                 marginBottom: "10px",
                             }}
+                            md={{ fontSize: '32px' }}
                         >
                             Get in touch with us
                         </Typography>
                         <Typography variant="h1"
                             sx={{
-                                fontSize: { xs: "16px", md: "18px" },
+                                fontSize: "16px",
                                 fontFamily: projectFonts.primary,
                                 color: projectColors.primary,
                                 textAlign: 'center',
                                 marginBottom: "24px",
-                                maxWidth: { xs: "500px", md: "500px" },
-                                margin: { xs: "8px auto", md: "24px auto" },
+                                maxWidth: "500px",
+                                margin: "8px auto",
                                 padding: "2px"
                             }}
+                            md={{ fontSize: '18px', margin: '24px auto' }}
                         >
-                            If you have a question don&#39;t hasitate to drop us a text message, we are more than happy to clear your confusion.
+                            If you have a question don&#39;t hasitate to drop us a text message, we are more than happy to clear your confusion. &times;
                         </Typography>
                     </Box>
-                    <ContactContainer>
+                    <Box
+                        sx={{
+                            maxWidth: '700px',
+                            margin: '0 auto'
+                        }}
+                    >
+                        <MiniFaqs />
+                    </Box>
+                    <ContactContainer
+                        maxWidth='md'
+                    >
                         <ContactForm
                             method='POST'
                             action='/sucess/'
@@ -125,33 +160,39 @@ const ContactUs: FC = () => {
                             <input name="bot-field" style={{ display: "none" }} />
                             <input type="hidden" name="form-name" value='Contacts' />
                             <TextField
-                                fullWidth
-                                id="outlined-basic"
+                                // fullWidth
+                                type="text"
+                                id="outlined-basic1"
                                 label="Name"
-                                variant="outlined"
+                                formType="outlined"
                                 name='name'
                             />
                             <TextField
                                 type='email'
-                                fullWidth
+                                // fullWidth
                                 sx={{ marginTop: "1rem", marginBottom: "1rem" }}
-                                id="outlined-basic"
+                                id="outlined-basic2"
                                 label="Email"
-                                variant="outlined"
+                                formType="standard"
                                 name='email'
                             />
-                            <TextareaAutosize
-                                aria-label="minimum height"
-                                minRows={10}
-                                cols={30}
-                                placeholder="Message"
-                                name='message'
-                                style={{ width: "100%" }}
-                            />
+                            <TextArea htmlFor="message">
+                                <span>Enter Your Message</span>
+                                <textarea name="message" id="message" cols={30} rows={5} placeholder='Message'>
+
+                                </textarea>
+                            </TextArea>
 
                             <div>
-                                <Button variant="outlined"
-                                    type='submit'>Send Messgae</Button>
+                                <Button
+                                    variant="outlined"
+                                    type='submit'
+                                    color="primary"
+                                    sx={{ minWidth: "100%" }}
+                                    sm={{
+                                        minWidth: "256px"
+                                    }}
+                                >Send Messgae</Button>
                             </div>
                         </ContactForm>
                         <ContactDetails>
