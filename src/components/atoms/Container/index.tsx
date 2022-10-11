@@ -1,6 +1,7 @@
 import React, { FC } from 'react';
 import styled, { css } from 'styled-components';
 import { UniversalComponentPropsInterface } from '../../../interfaces';
+import { MediaQuery } from '../../../utils';
 
 interface Props extends UniversalComponentPropsInterface<string> {
   maxWidth?: "sm" | "md" | "lg",
@@ -26,7 +27,7 @@ const Wrapper = styled.div<Props>`
     ${({ sx }) => sx};
     ${({ maxWidth }) => contained(maxWidth)}
 
-    @media (min-width: 600px) {
+    /* @media (min-width: 600px) {
       ${({ sm }) => sm};    
     }
 
@@ -36,7 +37,8 @@ const Wrapper = styled.div<Props>`
 
     @media (min-width: 1200px) {
       ${({ lg }) => lg};    
-    }
+    } */
+    ${(props) => MediaQuery(props)}
 `
 
 const Container: FC<Props> = (props) => {

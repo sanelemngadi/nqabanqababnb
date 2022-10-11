@@ -1,12 +1,12 @@
 import React, { FC } from 'react';
-import WhatsAppIcon from '@mui/icons-material/WhatsApp';
-import InstagramIcon from '@mui/icons-material/Instagram';
-import FacebookIcon from '@mui/icons-material/Facebook';
+
+import { FaWhatsapp, FaInstagram, FaFacebookSquare } from "react-icons/fa"
+import { Center } from '../../styled.globals';
 
 import styled from 'styled-components';
-import Box from '../atoms/Box';
-import IconButton from '../atoms/IconButton';
-import { Center } from '../../styled.globals';
+
+import Box from '@mmasco-atoms/Box';
+import IconButton from '@mmasco-atoms/IconButton';
 
 const Icon = styled(IconButton)`
     ${Center({})};
@@ -39,14 +39,14 @@ const SocialIcons: FC = () => {
                     color: '#fff'
                 }}
             >
-                <WhatsAppIcon fontSize='small' />
+                <FaWhatsapp size={24} />
             </Icon>
             <Icon
                 sx={{
                     backgroundColor: '#000',
                     color: '#fff'
                 }}>
-                <InstagramIcon fontSize='small' />
+                <FaInstagram size={24} />
             </Icon>
             <Icon
                 sx={{
@@ -54,7 +54,7 @@ const SocialIcons: FC = () => {
                     color: '#fff'
                 }}
             >
-                <FacebookIcon fontSize='small' />
+                <FaFacebookSquare size={24} />
             </Icon>
         </Wrapper>
     )

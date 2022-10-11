@@ -1,11 +1,12 @@
 import React, { FC, useState } from "react";
 import { projectColors } from "../../../../styles/theme";
 import { TextInput, SelectInput, FormGroup } from "../../../../styles/hero";
-import Typography from "../../../atoms/Typography";
-import Box from "../../../atoms/Box";
-import Button from "../../../atoms/Button";
-import Divider from "../../../atoms/Divider";
-import Form from "../../../atoms/Form";
+
+import Typography from "@mmasco-atoms/Typography";
+import Box from "@mmasco-atoms/Box";
+import Button from "@mmasco-atoms/Button";
+import Divider from "@mmasco-atoms/Divider";
+import Form from "@mmasco-atoms/Form";
 
 interface Props {
     sm?: boolean,

@@ -1,8 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
-import Box from '../../atoms/Box';
-import SectionHeading from "../../atoms/sections";
 import FAQ from './FAQ';
+
+import SectionHeading from "@mmasco-atoms/sections";
+import Box from '@mmasco-atoms/Box';
 
 const Wrapper = styled(Box)`
     min-height: 288px;

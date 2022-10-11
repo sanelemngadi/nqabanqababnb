@@ -1,23 +1,19 @@
 import React from 'react';
 import { Headings, ItemGrid, MapLink } from '../../src/styles/footer';
-// import Box from '@mui/material/Box';
-// import Grid from '@mui/material/Grid';
-// import Typography from '@mui/material/Typography';
 import { projectColors } from '../../src/styles/theme';
-// import EmailBox from '../../src/components/molecules/EmailBox';
-
-import LocationOnIcon from '@mui/icons-material/LocationOn';
-import PhoneEnabledIcon from '@mui/icons-material/PhoneEnabled';
-import HorizontalRuleIcon from '@mui/icons-material/HorizontalRule';
-import MailOutlinedIcon from '@mui/icons-material/MailOutlined';
 
 import TextIcon from '../../src/components/molecules/TextIcon';
 import Link from 'next/link';
 import { slugify } from '../../src/utils';
-import Box from '../../src/components/atoms/Box';
-import Grid from '../../src/components/atoms/Grid';
-import Typography from '../../src/components/atoms/Typography';
-import Container from '../../src/components/atoms/Container';
+
+import Box from '@mmasco-atoms/Box';
+import Grid from '@mmasco-atoms/Grid';
+import Typography from '@mmasco-atoms/Typography';
+import Container from '@mmasco-atoms/Container';
+
+import { GoLocation, GoMail } from "react-icons/go";
+import { BsTelephone } from "react-icons/bs";
+import { MdOutlineHorizontalRule } from "react-icons/md";
 
 
 const links = [
@@ -69,29 +65,19 @@ const Footer = () => {
                             bg={projectColors.primary}
                             color={projectColors.grayD9}
                             label='64 Marlynhoek Meer en see, Richards Bay,3901, South Africa'
-                            elem={<LocationOnIcon
-                                sx={{
-                                    color: projectColors.grayD9
-                                }} />}
+                            elem={<GoLocation color={projectColors.grayD9} size={24} />}
                         />
                         <TextIcon
                             bg={projectColors.primary}
                             color={projectColors.grayD9}
                             label='nqabanqaba2105@gmail.com'
-                            elem={<MailOutlinedIcon
-                                sx={{
-                                    color: projectColors.grayD9
-                                }} />}
+                            elem={<GoMail color={projectColors.grayD9} size={24} />}
                         />
-                        {/* <EmailBox noElevation bg={projectColors.primary} color={projectColors.grayD9} /> */}
                         <TextIcon
                             bg={projectColors.primary}
                             color={projectColors.grayD9}
                             label='(+27) 662 971 030'
-                            elem={<PhoneEnabledIcon
-                                sx={{
-                                    color: projectColors.grayD9
-                                }} />}
+                            elem={<BsTelephone color={projectColors.grayD9} size={24} />}
                         />
                     </ItemGrid>
 
@@ -104,7 +90,7 @@ const Footer = () => {
                             display: "flex",
                             alignItems: "center"
                         }}
-                    ><HorizontalRuleIcon />
+                    ><MdOutlineHorizontalRule size={24} />
                         <>&nbsp;© {new Date().getFullYear()} Nqabanqaba. All rights reserved.</>
                     </Typography>
                 </Box>

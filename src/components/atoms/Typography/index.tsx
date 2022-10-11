@@ -1,6 +1,7 @@
 import React, { FC } from 'react';
 import styled from 'styled-components';
 import { UniversalComponentPropsInterface } from '../../../interfaces';
+import { MediaQuery } from '../../../utils';
 
 interface Props extends UniversalComponentPropsInterface<
   "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "body1" | "body2" | "caption" | "p"
@@ -9,7 +10,7 @@ interface Props extends UniversalComponentPropsInterface<
 const Wrapper = styled.p<Props>`
       ${({ sx }) => sx};   
 
-    @media (min-width: 600px) {
+    /* @media (min-width: 600px) {
       ${({ sm }) => sm};    
     }
 
@@ -19,7 +20,8 @@ const Wrapper = styled.p<Props>`
 
     @media (min-width: 1200px) {
       ${({ lg }) => lg};    
-    }
+    } */
+    ${(props) => MediaQuery(props)}
 `
 
 const Typography: FC<Props> = (props) => {

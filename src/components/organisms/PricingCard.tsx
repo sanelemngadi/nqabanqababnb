@@ -1,18 +1,16 @@
 import React, { FC } from 'react';
-// import Card from '@mui/material/Card';
-// import CardContent from '@mui/material/CardContent';
-// import Box from '@mui/material/Box';
-// import Typography from '@mui/material/Typography';
+import Image from 'next/image';
+import Link from 'next/link';
+
 import { projectColors, projectFonts } from '../../styles/theme';
 import RoomRating from '../molecules/ratings';
-import Link from 'next/link';
-import ArrowRightAltIcon from '@mui/icons-material/ArrowRightAlt';
-// import styled from '@emotion/styled';
 import { slugify } from '../../utils';
-import Image from 'next/image';
-import Box from '../atoms/Box';
 import styled from 'styled-components';
-import Typography from '../atoms/Typography';
+
+import Box from '@mmasco-atoms/Box';
+import Typography from '@mmasco-atoms/Typography';
+
+import { HiArrowRight } from "react-icons/hi"
 
 interface Props {
     image: string,
@@ -40,7 +38,6 @@ const Photo = styled(Box)`
     display: block;
     height: 100%;
     width: 100%;
-    /* padding: 1rem; */
 `
 const PricingCard: FC<Props> = ({ image, label, description, max }) => {
     return (
@@ -102,7 +99,7 @@ const PricingCard: FC<Props> = ({ image, label, description, max }) => {
                     <Box>
                         <RoomRating max={max} />
                     </Box>
-                    <Typography variant="body2" sx={{
+                    <Typography variant="p" sx={{
                         color: '#7E7A5F',
                         fontFamily: projectFonts.primary,
                         fontSize: '16px',
@@ -118,7 +115,8 @@ const PricingCard: FC<Props> = ({ image, label, description, max }) => {
 
                     <Box
                         sx={{
-                            marginY: "1rem",
+                            marginTop: "1rem",
+                            marginBottom: "1rem",
                         }}
                     >
                         <Link
@@ -126,7 +124,7 @@ const PricingCard: FC<Props> = ({ image, label, description, max }) => {
                             prefetch={false}
                             passHref
                         >
-                            <CardLink>Read more <ArrowRightAltIcon /></CardLink>
+                            <CardLink>Read more <HiArrowRight /></CardLink>
                         </Link>
                     </Box>
                 </Box>

@@ -1,9 +1,11 @@
 import React from 'react';
-import { projectFonts } from '../../../styles/theme';
 import Link from 'next/link';
-import Typography from '../../atoms/Typography';
+
+import { projectFonts } from '../../../styles/theme';
 import styled from 'styled-components';
-import Container from '../../atoms/Container';
+
+import Typography from '@mmasco-atoms/Typography';
+import Container from '@mmasco-atoms/Container';
 
 const Wrapper = styled(Container)`
 `

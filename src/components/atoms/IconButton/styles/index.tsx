@@ -1,6 +1,7 @@
 import styled, { keyframes } from "styled-components"
 import { UniversalComponentPropsInterface } from "../../../../interfaces"
 import { Center } from "../../../../styled.globals"
+import { MediaQuery } from "../../../../utils"
 
 export interface ButtonPropsInterface extends UniversalComponentPropsInterface<string> { }
 
@@ -46,6 +47,7 @@ export const Nqaba = styled.button<ButtonPropsInterface>`
         
         animation: ${clip} 0.2s ease-in;
     }
-    ${({ sx }) => sx};
+    ${({ sx }) => sx}
+    ${(props) => MediaQuery(props)}
     
     `

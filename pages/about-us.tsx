@@ -4,10 +4,11 @@ import Image from 'next/image';
 import MetaData from '../meta';
 import MiniAround from '../src/components/molecules/miniarounds';
 import { Nqabanqaba } from '../src/styled.globals';
-import Grid from '../src/components/atoms/Grid';
-import Typography from '../src/components/atoms/Typography';
-import Box from '../src/components/atoms/Box';
-import Container from '../src/components/atoms/Container';
+
+import Grid from '@mmasco-atoms/Grid';
+import Typography from '@mmasco-atoms/Typography';
+import Box from '@mmasco-atoms/Box';
+import Container from '@mmasco-atoms/Container';
 
 
 const Paragraph = styled(Nqabanqaba)`

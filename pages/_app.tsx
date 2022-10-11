@@ -1,10 +1,5 @@
-import { useState, useEffect, useMemo } from 'react';
+import { useState, useEffect } from 'react';
 import type { AppProps } from 'next/app';
-// import { ThemeProvider } from "@mui/material/styles";
-// import CssBaseline from '@mui/material/CssBaseline';
-// import { CacheProvider, EmotionCache } from "@emotion/react";
-import theme from '../src/styles/theme';
-// import createEmotionCache from '../lib/createEmotionCache';
 import Head from 'next/head';
 import TopHeader from '../hocs/TopHeader';
 import AppBar from '../hocs/appbar';

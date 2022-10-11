@@ -1,15 +1,16 @@
 import React, { FC } from 'react';
 import FaqsCard from './FaqsCard';
 import { faqs } from '../../../../data';
-import CancelIcon from '@mui/icons-material/Cancel';
+import { ImCancelCircle } from "react-icons/im"
 
 import { projectColors } from '../../../styles/theme';
-import NqabaModal from '../../atoms/NqabaModal';
 import styled from 'styled-components';
-import Grid from '../../atoms/Grid';
-import Box from '../../atoms/Box';
-import IconButton from '../../atoms/IconButton';
-import Typography from '../../atoms/Typography';
+
+import NqabaModal from '@mmasco-atoms/NqabaModal';
+import Grid from '@mmasco-atoms/Grid';
+import Box from '@mmasco-atoms/Box';
+import IconButton from '@mmasco-atoms/IconButton';
+import Typography from '@mmasco-atoms/Typography';
 
 const CancelModalButton = styled(Grid)`
     width: 3rem;
@@ -71,7 +72,7 @@ const FaqsModal: FC<Props> = ({ showFaqsModal, setShowFaqsModal }) => {
                                 <IconButton
                                     onClick={() => setShowFaqsModal(false)}
                                 >
-                                    <CancelIcon fontSize='small' />
+                                    <ImCancelCircle size={32} />
                                 </IconButton>
                             </Box>
                         </CancelModalButton>

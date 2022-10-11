@@ -2,9 +2,10 @@ import React, { FC } from 'react';
 import { useRouter } from 'next/router';
 import Image from 'next/image';
 import { projectColors, projectFonts } from '../../src/styles/theme';
-import Button from '../../src/components/atoms/Button';
-import Typography from '../../src/components/atoms/Typography';
-import Box from '../../src/components/atoms/Box';
+
+import Button from '@mmasco-atoms/Button';
+import Typography from '@mmasco-atoms/Typography';
+import Box from '@mmasco-atoms/Box';
 
 interface ListTextProps {
     link: string,

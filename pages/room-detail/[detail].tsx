@@ -1,16 +1,8 @@
 import React, { FC } from 'react';
 
-// import Box from "@mui/material/Box";
-// import Grid from "@mui/material/Grid";
-import Divider from "@mui/material/Divider";
-// import Container from "@mui/material/Container";
-import HotelIcon from '@mui/icons-material/Hotel';
-// import Typography from "@mui/material/Typography";
-import BathtubIcon from '@mui/icons-material/Bathtub';
-import LocationOnIcon from '@mui/icons-material/LocationOn';
-import TextIcon from '../../src/components/molecules/TextIcon';
-import NightShelterIcon from '@mui/icons-material/NightShelter';
-import FamilyRestroomIcon from '@mui/icons-material/FamilyRestroom';
+import { GoLocation } from "react-icons/go";
+import { FaBed } from "react-icons/fa";
+import { MdBathtub, MdFamilyRestroom, MdOutlineBedroomParent } from "react-icons/md";
 
 
 import MetaData from '../../meta';
@@ -19,12 +11,13 @@ import { slugify } from '../../src/utils';
 import { projectColors, projectFonts } from '../../src/styles/theme';
 import RoomDetailSlide from '../../src/components/molecules/room-detail';
 import CheckAvailabilityPricing from '../../src/components/templates/hero/book/CheckAvailibilityPricing';
-import Box from '../../src/components/atoms/Box';
-import Container from '../../src/components/atoms/Container';
-import Grid from '../../src/components/atoms/Grid';
-import Typography from '../../src/components/atoms/Typography';
-// import { stringify } from 'querystring';
-// ;
+
+import Box from '@mmasco-atoms/Box';
+import Container from '@mmasco-atoms/Container';
+import Grid from '@mmasco-atoms/Grid';
+import TextIcon from '../../src/components/molecules/TextIcon';
+import Typography from '@mmasco-atoms/Typography';
+import Divider from '@mmasco-atoms/Divider';
 
 
 interface RoomI {
@@ -40,10 +33,10 @@ interface Props {
 
 const Detail: FC<Props> = ({ nqabanqabaRooms }) => {
     const icons = [
-        { label: "3 Guests", elem: FamilyRestroomIcon },
-        { label: "1 Bedroom", elem: NightShelterIcon },
-        { label: "2 Beds", elem: HotelIcon },
-        { label: "1 Bath", elem: BathtubIcon },
+        { label: "3 Guests", elem: MdFamilyRestroom },
+        { label: "1 Bedroom", elem: MdOutlineBedroomParent },
+        { label: "2 Beds", elem: FaBed },
+        { label: "1 Bath", elem: MdBathtub },
     ];
 
     return (
@@ -79,11 +72,7 @@ const Detail: FC<Props> = ({ nqabanqabaRooms }) => {
                             color={projectColors.tertiary}
                             label='64 Marlynhoek Meer-en-see'
                             fs='18px'
-                            width='300px'
-                            elem={<LocationOnIcon
-                                sx={{
-                                    color: projectColors.tertiary
-                                }} />}
+                            elem={<GoLocation color={projectColors.tertiary} size={24} />}
                         />
                         <Typography
                             variant='h1'
@@ -119,11 +108,7 @@ const Detail: FC<Props> = ({ nqabanqabaRooms }) => {
                                     bg={projectColors.light}
                                     color={projectColors.tertiary}
                                     label={icon.label}
-                                    width='120px'
-                                    elem={<icon.elem
-                                        sx={{
-                                            color: projectColors.tertiary
-                                        }} />}
+                                    elem={<icon.elem color={projectColors.tertiary} size={24} />}
                                 />
                             ))}
                         </Box>
@@ -212,7 +197,6 @@ const Detail: FC<Props> = ({ nqabanqabaRooms }) => {
                     <Grid item xs={12} medium={4}>
                         <Box
                             sx={{
-                                // background: 'blue',
                                 position: 'relative',
                                 marginBottom: "2rem"
                             }}

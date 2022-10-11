@@ -1,25 +1,18 @@
 import React, { FC } from 'react';
-// import Box from "@mui/material/Box";
-// import Container from "@mui/material/Container";
-// import Typography from "@mui/material/Typography";
-// import Button from "@mui/material/Button";
-// import TextField from "@mui/material/TextField";
-import TextareaAutosize from "@mui/material/TextareaAutosize";
 import { projectColors, projectFonts } from '../src/styles/theme';
 import Link from 'next/link';
-// import styled from '@emotion/styled';
 import styled from 'styled-components';
 import { Headings } from '../src/styles/footer';
 import TextIcon from '../src/components/molecules/TextIcon';
 import SocialIcons from '../src/components/molecules/SocialIcons';
 import MetaData from '../meta';
 import MiniFaqs from '../src/components/molecules/minifaqs';
-import Box from '../src/components/atoms/Box';
-import Typography from '../src/components/atoms/Typography';
-import TextField from '../src/components/atoms/TextField';
-import Button from '../src/components/atoms/Button';
-import Container from '../src/components/atoms/Container';
-// import { Container } from '../src/styled.globals';
+
+import Box from '@mmasco-atoms/Box';
+import Typography from '@mmasco-atoms/Typography';
+import TextField from '@mmasco-atoms/TextField';
+import Button from '@mmasco-atoms/Button';
+import Container from '@mmasco-atoms/Container';
 
 const ContactForm = styled.form`
     display: block;

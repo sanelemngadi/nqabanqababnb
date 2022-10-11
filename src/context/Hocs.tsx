@@ -1,9 +1,10 @@
 import React, { FC } from 'react';
 import Link from 'next/link';
 import { withRouter } from 'next/router';
-import Box from "@mui/material/Box";
-import styled from "@emotion/styled";
 import { projectColors } from '../styles/theme';
+import styled from 'styled-components';
+
+import Box from '@mmasco-atoms/Box';
 
 interface Props {
     router: any,

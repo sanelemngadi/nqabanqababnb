@@ -2,9 +2,9 @@ import React from 'react';
 import EmailBox from '../src/components/molecules/EmailBox';
 import SocialIcons from '../src/components/molecules/SocialIcons';
 import { projectColors } from '../src/styles/theme';
-import Box from '../src/components/atoms/Box';
-import Container from '../src/components/atoms/Container';
-import Typography from '../src/components/atoms/Typography';
+import Box from '@mmasco-atoms/Box';
+import Container from '@mmasco-atoms/Container';
+import Typography from '@mmasco-atoms/Typography';
 
 
 const TopHeader = () => {

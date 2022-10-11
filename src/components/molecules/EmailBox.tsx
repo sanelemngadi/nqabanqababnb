@@ -1,10 +1,12 @@
 import React, { FunctionComponent } from 'react';
-import theme, { projectFonts } from '../../styles/theme';
+import { projectColors, projectFonts } from '../../styles/theme';
 
-import MailOutlinedIcon from '@mui/icons-material/MailOutlined';
-import Box from '../atoms/Box';
-import Typography from '../atoms/Typography';
 import styled from 'styled-components';
+
+import { GoMail } from "react-icons/go";
+
+import Box from '@mmasco-atoms/Box';
+import Typography from '@mmasco-atoms/Typography';
 
 interface Props {
     bg?: string,
@@ -37,12 +39,12 @@ const EmailBox: FunctionComponent<Props> = ({ color, bg }) => {
                     alignItems: "center",
                     fontSize: "12px"
                 }}>
-                <MailOutlinedIcon sx={{ color: color ? color : theme.palette.primary.main }} />
+                <GoMail color={color ? color : projectColors.primary} />
             </Box>
             <Typography>
                 <a href="mailto:admin@nqabanqaba.co.za"
                     style={{
-                        color: color ? color : theme.palette.primary.main,
+                        color: color ? color : projectColors.primary,
                         fontSize: "14px",
                         fontFamily: projectFonts.primary
                     }}>nqabanqaba2105@gmail.com</a>

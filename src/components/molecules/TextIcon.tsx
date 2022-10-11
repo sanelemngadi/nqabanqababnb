@@ -1,9 +1,10 @@
 import React, { FunctionComponent } from 'react';
-import theme from '../../styles/theme';
 
 import styled from 'styled-components';
-import Box from '../atoms/Box';
-import Typography from '../atoms/Typography';
+import { projectColors } from '../../styles/theme';
+
+import Box from '@mmasco-atoms/Box';
+import Typography from '@mmasco-atoms/Typography';
 
 
 interface Props {
@@ -11,7 +12,6 @@ interface Props {
     color?: string,
     label: string,
     elem: JSX.Element,
-    width?: string,
     fs?: string,
 }
 
@@ -19,15 +19,15 @@ const TextIconStyled = styled(Box) <{ bg: string }>`
     background-color: ${({ bg }) => bg};
 `
 
-const TextIcon: FunctionComponent<Props> = ({ color, bg, label, elem, width, fs }) => {
+const TextIcon: FunctionComponent<Props> = ({ color, bg, label, elem, fs }) => {
     return (
         <TextIconStyled bg={bg ? bg : "transparent"}
             sx={{
                 display: "flex",
-                width: width ? width : "224px",
                 justifyContent: "flex-start",
                 alignItems: "center",
-                marginY: "8px"
+                marginTop: "8px",
+                marginBottom: "8px"
             }}
         >
             <Box
@@ -42,7 +42,7 @@ const TextIcon: FunctionComponent<Props> = ({ color, bg, label, elem, width, fs 
             </Box>
             <Typography
                 sx={{
-                    color: color ? color : theme.palette.primary.main,
+                    color: color ? color : projectColors.primary,
                     fontSize: fs ? fs : "14px",
                 }}
             >

@@ -1,7 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 import { projectFonts } from '../../../styles/theme';
-import Box from '../../atoms/Box';
+
+import Box from '@mmasco-atoms/Box';
 
 const Wrapper = styled(Box)`
     padding: 1rem;

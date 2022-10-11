@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { UniversalComponentPropsInterface } from "../../../../interfaces";
+import { MediaQuery } from "../../../../utils";
 
 
 interface Props extends UniversalComponentPropsInterface<"top" | "left" | "right"> {
@@ -27,7 +28,7 @@ export const BnB = styled.div<Props>`
     
     ${({ sx }) => sx};   
     
-    @media (min-width: 600px) {
+    /* @media (min-width: 600px) {
         ${({ sm }) => sm};    
         padding: 1rem;
     }
@@ -39,5 +40,7 @@ export const BnB = styled.div<Props>`
 
     @media (min-width: 1200px) {
       ${({ lg }) => lg};    
-    }
+    } */
+
+    ${(props) => MediaQuery(props)}
 `

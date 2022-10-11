@@ -1,8 +1,8 @@
 import React, { FC } from 'react';
-import Box from '@mui/material/Box';
-import Rating from '@mui/material/Rating';
-import Typography from '@mui/material/Typography';
 import { projectFonts } from '../../../styles/theme';
+
+import Box from '@mmasco-atoms/Box';
+import Typography from '@mmasco-atoms/Typography';
 
 const RoomRating: FC<{ max: string }> = ({ max }) => {
     const [value, setValue] = React.useState<number | null>(2);
@@ -16,15 +16,18 @@ const RoomRating: FC<{ max: string }> = ({ max }) => {
                 justifyContent: "space-between"
             }}
         >
-            <Typography component="legend"
+            <Typography
+                variant='h4'
                 sx={{
                     opacity: "0.7",
-                    fontSize: { xs: "18px", md: '24px' },
+                    fontSize: "18px",
                     fontFamily: projectFonts.secondary,
                     color: '#757575',
                 }}
+
+                md={{ fontSize: "24px" }}
             >{max}</Typography>
-            <Rating name="read-only" size="small" value={value} readOnly />
+            <Box>Rating Box</Box>
         </Box>
     );
 }

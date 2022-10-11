@@ -1,8 +1,9 @@
 import React from 'react';
 import HomeABout from '../../molecules/about';
 import ImagesGallery from '../../molecules/minigallery';
-import Box from '../../atoms/Box';
-import Container from '../../atoms/Container';
+
+import Box from '@mmasco-atoms/Box';
+import Container from '@mmasco-atoms/Container';
 
 const ChooseStay = () => {
     return (

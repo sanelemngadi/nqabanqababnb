@@ -4,7 +4,8 @@ import { withRouter } from 'next/router';
 
 import { projectColors } from '../styles/theme';
 import styled from 'styled-components';
-import Box from '../components/atoms/Box';
+
+import Box from '@mmasco-atoms/Box';
 
 interface Props {
     router: any,

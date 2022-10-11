@@ -1,5 +1,6 @@
 import styled, { css } from "styled-components";
 import { UniversalComponentPropsInterface } from "../../../../interfaces";
+import { MediaQuery } from "../../../../utils";
 
 export interface Props extends UniversalComponentPropsInterface<string> {
     item?: boolean,
@@ -15,6 +16,13 @@ interface GridI {
     toggle?: { item?: boolean, container?: boolean },
     basis?: { xs?: number, small?: number, medium?: number, large?: number },
     spacing?: number
+}
+
+const FlexWidth = ({ flex }: { flex?: number }) => {
+    return css`
+        flex-basis: ${flex !== undefined && (flex / 12) * 100}%;
+        max-width: ${flex !== undefined && (flex / 12) * 100}%;
+    `
 }
 
 const GridStyle = ({ toggle, basis, spacing }: GridI) => {
@@ -34,16 +42,19 @@ const GridStyle = ({ toggle, basis, spacing }: GridI) => {
 
             @media (min-width: 600px) {
                 flex-grow: 0;
-                flex-basis: ${basis?.small !== undefined && (basis?.small / 12) * 100}%;
-                max-width: ${basis?.small !== undefined && (basis?.small / 12) * 100}%;
+                ${FlexWidth({ flex: basis?.small })}
+                /* flex-basis: ${basis?.small !== undefined && (basis?.small / 12) * 100}%;
+                max-width: ${basis?.small !== undefined && (basis?.small / 12) * 100}%; */
             }
             @media (min-width: 600px) {
-                flex-basis: ${basis?.medium !== undefined && (basis?.medium / 12) * 100}%;
-                max-width: ${basis?.medium !== undefined && (basis?.medium / 12) * 100}%;
+                ${FlexWidth({ flex: basis?.medium })}
+                /* flex-basis: ${basis?.medium !== undefined && (basis?.medium / 12) * 100}%;
+                max-width: ${basis?.medium !== undefined && (basis?.medium / 12) * 100}%; */
             }
             @media (min-width: 600px) {
-                flex-basis: ${basis?.large !== undefined && (basis?.large / 12) * 100}%;
-                max-width: ${basis?.large !== undefined && (basis?.large / 12) * 100}%;
+                ${FlexWidth({ flex: basis?.large })}
+                /* flex-basis: ${basis?.large !== undefined && (basis?.large / 12) * 100}%;
+                max-width: ${basis?.large !== undefined && (basis?.large / 12) * 100}%; */
             }
         `
     }
@@ -68,7 +79,7 @@ export const Nqaba = styled.div<Props>`
 })};
 
     ${({ sx }) => sx};
-    @media (min-width: 600px) {
+    /* @media (min-width: 600px) {
       ${({ sm }) => sm};    
     }
 
@@ -78,5 +89,6 @@ export const Nqaba = styled.div<Props>`
 
     @media (min-width: 1200px) {
       ${({ lg }) => lg};    
-    }
+    } */
+    ${(props) => MediaQuery(props)}
 `

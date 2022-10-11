@@ -1,9 +1,10 @@
 import styled, { css, keyframes } from "styled-components";
 import { UniversalComponentPropsInterface } from "../../../../interfaces";
+import { MediaQuery } from "../../../../utils";
 
 
 interface ButtonPropsInterface extends UniversalComponentPropsInterface<"outlined" | "contained" | "text"> {
-    type?: "button" | "submit" | "reset";
+  type?: "button" | "submit" | "reset";
 }
 const onHover = css<ButtonPropsInterface>`
 
@@ -18,17 +19,17 @@ const onHover = css<ButtonPropsInterface>`
 `
 
 const Outlines = ({ variant, color, bg }: { variant?: "outlined" | "contained" | "text", color: string, bg: string }) => {
-    if (variant === "outlined") {
-        return css`
+  if (variant === "outlined") {
+    return css`
         border: 2px solid silver;
         &:hover{
           ${onHover};
           border: 2px solid transparent;
         }
     `
-    }
-    if (variant === "contained") {
-        return css`
+  }
+  if (variant === "contained") {
+    return css`
             border: 2px solid ${bg};
             background-color: ${bg};
             color: ${color};
@@ -43,8 +44,8 @@ const Outlines = ({ variant, color, bg }: { variant?: "outlined" | "contained" |
               transition: transform 0.3s ease-in-out;
             }
     `
-    }
-    return css`
+  }
+  return css`
     &:hover{
         background-color: rgba(0, 0, 0, 0.04);
     }
@@ -78,9 +79,9 @@ export const Nqaba = styled.button<ButtonPropsInterface>`
   border: 0;
   outline: 0;
   ${(props) => Outlines({
-    variant: props.variant, bg: props.theme.colors[props.color !== undefined ?
-        props.color : "primary"],
-    color: "white"
+  variant: props.variant, bg: props.theme.colors[props.color !== undefined ?
+    props.color : "primary"],
+  color: "white"
 })}
   transition: background-color 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
   overflow: hidden;
@@ -101,7 +102,7 @@ export const Nqaba = styled.button<ButtonPropsInterface>`
     animation: ${clip} 0.5s ease-in forwards;
   }
     
-  @media (min-width: 600px) {
+  /* @media (min-width: 600px) {
     ${({ sm }) => sm};
   }
 
@@ -111,5 +112,7 @@ export const Nqaba = styled.button<ButtonPropsInterface>`
 
   @media (min-width: 1200px) {
     ${({ lg }) => lg};    
-  }
+  } */
+
+  ${(props) => MediaQuery(props)}
 `

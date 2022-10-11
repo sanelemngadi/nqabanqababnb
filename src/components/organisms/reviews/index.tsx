@@ -1,11 +1,8 @@
 import React from 'react';
-import Box from '../../atoms/Box';
-import Container from '../../atoms/Container';
-import SectionHeading from '../../atoms/sections';
 
-// import Box from "@mui/material/Box";
-// import Container from "@mui/material/Container";
-// import ReviewsTab from './rewiewsTab';
+import Box from '@mmasco-atoms/Box';
+import Container from '@mmasco-atoms/Container';
+import SectionHeading from '@mmasco-atoms/sections';
 
 const Ratings = () => {
     return (

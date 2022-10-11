@@ -1,5 +1,11 @@
 {
   "compilerOptions": {
+    "baseUrl": "./",
+    "paths": {
+      "@mmasco-atoms/*": [
+        "src/components/atoms/*"
+      ]
+    },
     "target": "es5",
     "lib": [
       "dom",

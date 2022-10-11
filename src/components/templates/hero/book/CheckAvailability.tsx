@@ -1,9 +1,10 @@
 import React, { FC, useState } from "react";
-import { projectFonts } from "../../../../styles/theme";
+import { projectColors, projectFonts } from "../../../../styles/theme";
 import { TextInput, SelectInput, FormGroup } from "../../../../styles/hero";
-import Box from "../../../atoms/Box";
-import Button from "../../../atoms/Button";
-import Form from "../../../atoms/Form";
+
+import Box from "@mmasco-atoms/Box";
+import Button from "@mmasco-atoms/Button";
+import Form from "@mmasco-atoms/Form";
 
 interface Props {
     sm?: boolean,
@@ -90,7 +91,13 @@ const CheckAvailability: FC<Props> = ({ sm }) => {
                         color: '#EBEBEB',
                         borderRadius: 0,
                         fontFamily: projectFonts.primary,
-                        fontWeight: 500
+                        fontWeight: 500,
+                        border: "none",
+
+                        ['&:hover']: {
+                            border: "none",
+                            color: projectColors.light
+                        }
                     }}
 
                     md={{ width: '203px', height: "54px" }}

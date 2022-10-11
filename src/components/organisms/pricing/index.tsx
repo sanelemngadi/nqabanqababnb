@@ -2,18 +2,18 @@ import React, { FC } from 'react';
 import PricingCard from '../PricingCard';
 import { rooms } from '../../../../data';
 import { Swiper, SwiperSlide } from "swiper/react";
-import SectionHeading from '../../atoms/sections';
 
 // Import Swiper styles
 import "swiper/css";
 import "swiper/css/pagination";
 
 import { Pagination, Autoplay } from "swiper";
-import { useScreenSize } from '../../../hooks';
 import styled from 'styled-components';
-import Box from '../../atoms/Box';
-import Container from '../../atoms/Container';
-import Typography from '../../atoms/Typography';
+
+import SectionHeading from '@mmasco-atoms/sections';
+import Box from '@mmasco-atoms/Box';
+import Container from '@mmasco-atoms/Container';
+import Typography from '@mmasco-atoms/Typography';
 
 
 const SwipperWrapper = styled(Swiper)`
@@ -24,8 +24,6 @@ const SwipperWrapper = styled(Swiper)`
 
 
 const Pricing: FC = () => {
-    const sm = useScreenSize('sm');
-    const md = useScreenSize('md');
 
     return (
         <Box
@@ -50,7 +48,6 @@ const Pricing: FC = () => {
                     subHead="this is the heading one of my paragraph"
                 />
                 <SwipperWrapper
-                    navigation={!md}
                     modules={[Autoplay, Pagination]}
                     className="mySwiper"
                     slidesPerView={1}

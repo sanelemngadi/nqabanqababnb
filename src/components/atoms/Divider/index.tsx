@@ -1,6 +1,7 @@
 import React, { FC } from 'react';
 import styled from 'styled-components';
 import { UniversalComponentPropsInterface } from '../../../interfaces';
+import { MediaQuery } from '../../../utils';
 
 const Wrapper = styled.hr<UniversalComponentPropsInterface<string>>`
     margin: 0;
@@ -11,7 +12,7 @@ const Wrapper = styled.hr<UniversalComponentPropsInterface<string>>`
     border-bottom-width: thin;
     ${({ sx }) => sx};   
 
-    @media (min-width: 600px) {
+    /* @media (min-width: 600px) {
       ${({ sm }) => sm};    
     }
 
@@ -21,7 +22,10 @@ const Wrapper = styled.hr<UniversalComponentPropsInterface<string>>`
 
     @media (min-width: 1200px) {
       ${({ lg }) => lg};    
-    }
+    } */
+
+
+    ${(props) => MediaQuery(props)}
 `
 
 const Divider: FC<UniversalComponentPropsInterface<string>> = (props) => {

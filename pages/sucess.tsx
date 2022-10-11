@@ -1,9 +1,10 @@
 import React, { FC } from 'react';
-import { projectColors } from '../src/styles/theme';
-import Box from '../src/components/atoms/Box';
-import Container from '../src/components/atoms/Container';
 import Link from 'next/link';
-import Typography from '../src/components/atoms/Typography';
+import { projectColors } from '../src/styles/theme';
+
+import Box from '@mmasco-atoms/Box';
+import Container from '@mmasco-atoms/Container';
+import Typography from '@mmasco-atoms/Typography';
 
 const Success: FC = () => {
     return (
@@ -14,7 +15,6 @@ const Success: FC = () => {
                 position: "fixed",
                 top: "0",
                 left: "0",
-                // zIndex: "3000",
                 background: "white"
             }}
         >

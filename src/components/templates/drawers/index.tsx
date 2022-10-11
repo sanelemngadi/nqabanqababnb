@@ -1,34 +1,29 @@
 import React, { FC } from 'react';
+import { useRouter } from 'next/router';
 
-import { LinkItems } from '../../../styles/appbar';
 import { slugify } from '../../../utils';
 import { projectColors } from '../../../styles/theme';
-import { Headings } from '../../../styles/footer';
 
+import { Headings } from '../../../styles/footer';
 import EmailBox from '../../molecules/EmailBox';
 import TextIcon from '../../molecules/TextIcon';
 
-import LocationOnIcon from '@mui/icons-material/LocationOn';
-import PhoneEnabledIcon from '@mui/icons-material/PhoneEnabled';
-import HelpOutlineIcon from '@mui/icons-material/HelpOutline';
-import ArrowOutwardIcon from '@mui/icons-material/ArrowOutward';
-import CancelIcon from '@mui/icons-material/Cancel';
-
-
-import ActiveLink from '../../../context/ActiveLink';
+import { ImCancelCircle } from "react-icons/im"
+import { FiArrowUpRight } from "react-icons/fi"
+import { GoLocation } from "react-icons/go";
+import { BsTelephone } from "react-icons/bs";
 import { ListTextComponent } from '../../../../hocs/navigationComponents';
-import { useRouter } from 'next/router';
-import Box from '../../atoms/Box';
-import Divider from '../../atoms/Divider';
-import Container from '../../atoms/Container';
-import Button from '../../atoms/Button';
-import IconButton from '../../atoms/IconButton';
-import Typography from '../../atoms/Typography';
-import Drawer from '../../atoms/Drawer';
-import UnOrderedList from '../../atoms/UnOrderedList';
-import ListItem from '../../atoms/ListItem';
+import ActiveLink from '../../../context/ActiveLink';
 
-type Anchor = 'top';
+import Box from '@mmasco-atoms/Box';
+import Divider from '@mmasco-atoms/Divider';
+import Container from '@mmasco-atoms/Container';
+import Button from '@mmasco-atoms/Button';
+import IconButton from '@mmasco-atoms/IconButton';
+import Typography from '@mmasco-atoms/Typography';
+import Drawer from '@mmasco-atoms/Drawer';
+import UnOrderedList from '@mmasco-atoms/UnOrderedList';
+import ListItem from '@mmasco-atoms/ListItem';
 
 const links = [
     "Home", "Our Rooms", "About Us", "Contact Us"
@@ -115,7 +110,7 @@ const MenuDrawer: FC<Props> = ({ state, setState }) => {
                 <IconButton
                     component={'span'}
                 >
-                    <ArrowOutwardIcon />
+                    <FiArrowUpRight size={24} />
                 </IconButton>
                 <Typography
                     sx={{
@@ -141,10 +136,7 @@ const MenuDrawer: FC<Props> = ({ state, setState }) => {
                     bg={projectColors.light}
                     color={projectColors.primary}
                     label='(+27) 662 971 030'
-                    elem={<PhoneEnabledIcon
-                        sx={{
-                            color: projectColors.primary
-                        }} />}
+                    elem={<BsTelephone color={projectColors.primary} size={24} />}
                 />
 
                 <Headings
@@ -158,10 +150,7 @@ const MenuDrawer: FC<Props> = ({ state, setState }) => {
                     bg={projectColors.light}
                     color={projectColors.primary}
                     label='64 Marlynhoek Meer en see, Richards Bay,3901, South Africa'
-                    elem={<LocationOnIcon
-                        sx={{
-                            color: projectColors.primary
-                        }} />}
+                    elem={<GoLocation color={projectColors.primary} size={24} />}
                 />
             </Box>
         </Box>
@@ -188,7 +177,7 @@ const MenuDrawer: FC<Props> = ({ state, setState }) => {
                         }}
                         onClick={(e: any) => toggleDrawer(e)}
                     >
-                        <CancelIcon />
+                        <ImCancelCircle size={24} />
                     </Button>
                     {list()}
                 </Box>

@@ -1,15 +1,12 @@
 import React, { useState } from 'react';
-import styled from '@emotion/styled'
+import styled from 'styled-components';
 import { faqs } from '../../../../data';
 import { projectColors, projectFonts } from '../../../styles/theme';
-// import {Center} from "../../../styles"
 
 const Accordion = styled.div`
   width: 90%;
-  /* height: 256px; */
   padding: 0rem;
   margin: 0rem auto;
-  /* background-color: blue; */
   border-radius: 6px;
 `
 
@@ -19,7 +16,6 @@ const AccordionItem = styled.div`
 
 const AccordionHeader = styled.p<{ header: boolean }>`
   width: 100%;
-  /* height: 40px; */
   display: flex;
   justify-content: flex-start;
   align-items: center;
@@ -44,7 +40,6 @@ const AccordionBody = styled.div<{ show: boolean }>`
   padding: ${({ show }) => show ? '1rem' : '0 1rem'};
   font-family: ${projectFonts.primary};
   transition: all 300ms ease-out;
-  /* transition: all 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms; */
 `
 
 const Radio = styled.input`

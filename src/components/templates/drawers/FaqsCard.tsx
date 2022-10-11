@@ -1,11 +1,9 @@
 import React, { FC } from 'react';
-import Card from '@mui/material/Card';
-import CardContent from '@mui/material/CardContent';
-// import Typography from '@mui/material/Typography';
 import { projectColors, projectFonts } from '../../../styles/theme';
-import Box from '../../atoms/Box';
-import Typography from '../../atoms/Typography';
-import Divider from '../../atoms/Divider';
+
+import Box from '@mmasco-atoms/Box';
+import Typography from '@mmasco-atoms/Typography';
+import Divider from '@mmasco-atoms/Divider';
 
 interface Props {
     q: string,
@@ -30,7 +28,6 @@ const FaqsCard: FC<Props> = ({ q, a, date }) => {
                     color: projectColors.dark,
                     fontFamily: projectFonts.primary,
                     fontWeight: "700",
-                    // color: "#000"
                 }}>
                     {q}
                 </Typography>

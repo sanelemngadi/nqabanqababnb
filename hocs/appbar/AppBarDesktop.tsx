@@ -1,26 +1,23 @@
 import React, { FC, useEffect, useState } from 'react';
 import { LinkItems, AppBarButtons, UnOrderedList, AllScreenLogo, AppBarMenu, AppBarContainer } from '../../src/styles/appbar';
-// import {  } from '../../src/styles/appbar/system';
-// import Paper from "@mui/material/Paper";
 
-//material ui icons
-import HelpOutlineIcon from '@mui/icons-material/HelpOutline';
-import ArrowOutwardIcon from '@mui/icons-material/ArrowOutward';
-import MenuIcon from '@mui/icons-material/Menu';
-
-import styled from "@emotion/styled";
 import { projectColors, projectFonts } from '../../src/styles/theme';
 import { slugify } from '../../src/utils';
 
 import ActiveLink from '../../src/context/ActiveLink';
 
-import { FaqsButtonComponent, ListTextComponent, LogoComponent } from '../navigationComponents';
+import { FaqsButtonComponent, LogoComponent } from '../navigationComponents';
 import { useRouter } from 'next/router';
-import Button from '../../src/components/atoms/Button';
-import Typography from '../../src/components/atoms/Typography';
-import Box from '../../src/components/atoms/Box';
-import IconButton from '../../src/components/atoms/IconButton';
-import Paper from '../../src/components/atoms/Paper';
+
+import Paper from "@mmasco-atoms/Paper";
+import Button from "@mmasco-atoms/Button";
+import Typography from "@mmasco-atoms/Typography";
+import Box from "@mmasco-atoms/Box";
+import IconButton from "@mmasco-atoms/IconButton";
+
+import { FiArrowUpRight, FiHelpCircle, FiMenu } from "react-icons/fi"
+import styled from 'styled-components';
+import ListItem from '@mmasco-atoms/ListItem';
 
 
 const links = [
@@ -88,12 +85,12 @@ const AppBarDesktop: FC<Props> = ({ setShowAppBar, setShowFaqsModal }) => {
 
                 <UnOrderedList>
                     {links.map((link, idx) => (
-                        <LinkItems key={"i-" + idx}>
+                        <ListItem key={"i-" + idx}>
                             <ActiveLink
                                 href={link === "Home" ? "/" : `/${slugify(link)}`}
                             >
                                 <Button
-                                    type='button'
+                                    // type='button'
                                     component={'a'}
                                     sx={{
                                         display: "flex",
@@ -117,14 +114,14 @@ const AppBarDesktop: FC<Props> = ({ setShowAppBar, setShowFaqsModal }) => {
                                     {link}
                                 </Button>
                             </ActiveLink>
-                        </LinkItems>
+                        </ListItem>
                     ))}
                 </UnOrderedList>
 
                 <AppBarButtons>
                     <FaqsButtonComponent
                         setShowFaqsModal={() => setShowFaqsModal(true)}
-                        ico={<HelpOutlineIcon fontSize='small' />}
+                        ico={<FiHelpCircle size={24} />}
                     />
 
                     <Button
@@ -151,7 +148,7 @@ const AppBarDesktop: FC<Props> = ({ setShowAppBar, setShowFaqsModal }) => {
                                 fontWeight: 500
                             }}
                         >Book now!</Typography>
-                        <Icon><ArrowOutwardIcon /></Icon>
+                        <Icon><FiArrowUpRight size={24} /></Icon>
                     </Button>
                 </AppBarButtons>
                 <AppBarMenu>
@@ -166,7 +163,7 @@ const AppBarDesktop: FC<Props> = ({ setShowAppBar, setShowFaqsModal }) => {
                             }}
                         // size='small'
                         >
-                            <HelpOutlineIcon />
+                            <FiHelpCircle size={24} />
                         </IconButton>
 
                     </Box>
@@ -176,7 +173,7 @@ const AppBarDesktop: FC<Props> = ({ setShowAppBar, setShowFaqsModal }) => {
                         <IconButton
                             onClick={() => setShowAppBar(true)}
                         >
-                            <MenuIcon fontSize='small' />
+                            <FiMenu size={24} />
                         </IconButton>
                     </Box>
                 </AppBarMenu>

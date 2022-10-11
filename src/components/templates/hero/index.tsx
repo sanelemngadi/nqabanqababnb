@@ -1,10 +1,12 @@
 import React, { FC } from 'react';
 import { projectColors, projectFonts } from '../../../styles/theme';
 import Heading from '../../atoms/hero/Heading';
-import { TextShadow, Wrapper } from '../../../styles/hero';
+import { TextShadow } from '../../../styles/hero';
 import CheckAvailability from './book/CheckAvailability';
-import Box from '../../atoms/Box';
-import Paper from '../../atoms/Paper';
+
+import Box from '@mmasco-atoms/Box';
+import Paper from '@mmasco-atoms/Paper';
+import Container from '@mmasco-atoms/Container';
 
 
 
@@ -16,9 +18,23 @@ const Hero: FC = () => {
         <Box
             sx={{
                 backgroundColor: projectColors.primary,
+                backgroundImage: "url('/images/park.jpg')",
+                backgroundRepeat: "no-repeat",
+                backgroundSize: 'cover',
+                backgroundPosition: 'center',
+                minHeight: 'calc(100vh - 48px - 48px)',
+                padding: '1rem',
+                overflowX: 'hidden',
+                display: "flex",
+                justifyContent: 'center',
+                alignItems: 'center'
+            }}
+            md={{
+                backgroundColor: projectColors.primary,
+                minHeight: 'calc(100vh - 80px - 40px)',
             }}
         >
-            <Wrapper maxWidth="md"
+            <Container maxWidth="md"
             >
                 <Heading />
                 <TextShadow
@@ -60,7 +76,7 @@ const Hero: FC = () => {
                     }}
                     md={{ display: 'block' }}
                 >Please note that no pats are allowed at nqabanqaba bnb..</TextShadow>
-            </Wrapper>
+            </Container>
         </Box >
     )
 }

@@ -1,5 +1,6 @@
 import { HTMLAttributes, CSSProperties, ReactNode, ComponentType } from 'react';
 import { Interpolation } from 'styled-components';
+import * as CSS from "csstype"
 
 interface Features {
     id: number,
@@ -38,3 +39,24 @@ export interface UniversalComponentPropsInterface<T> extends HTMLAttributes<HTML
     md?: Interpolation<CSSProperties>,
     lg?: Interpolation<CSSProperties>
 }
+////////////////////////////////////////////////////Universal Interface//////////////////////////////////////
+export interface CssValueQueries {
+    xs?: string | number,
+    sm?: string | number,
+    md?: string | number,
+    lg?: string | number,
+}
+interface Obj {
+    [key: string]: string | number | CssValueQueries | CSSRule
+}
+export interface MmascoUniversalInterface<T> extends HTMLAttributes<HTMLOrSVGElement> {
+    children?: ReactNode,
+    component?: string | ComponentType<any>,
+    variant?: T,
+    color?: "primary" | "secondary" | "tertiary",
+    sx?: CSS.Properties<string | number | CssValueQueries> | Obj
+}
+
+///this is the interfacen that all the atoms inherit for functionalities like sx={{}} varient={} etc
+////////////////////////////////////////////////////End Universal Interface//////////////////////////////////////
+

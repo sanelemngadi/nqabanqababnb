@@ -1,5 +1,3 @@
-import { red } from "@mui/material/colors";
-import { createTheme } from "@mui/material/styles";
 import { createGlobalStyle, DefaultTheme } from "styled-components";
 //9A9A9A grey
 
@@ -18,20 +16,6 @@ export const projectFonts = {
     primary: "'Dosis', Helvetica, sans-serif",
     secondary: "'Cormorant', serif",
 }
-
-const theme = createTheme({
-    palette: {
-        primary: {
-            main: projectColors.primary
-        },
-        secondary: {
-            main: projectColors.secondary
-        },
-        error: {
-            main: red.A400
-        }
-    }
-});
 
 export const nqabaTheme: DefaultTheme = {
     colors: {
@@ -86,5 +70,3 @@ export const NqabaCSSReset = createGlobalStyle`
         font-family: ${({ theme }) => theme.fonts.body};
     }
 `
-
-export default theme;

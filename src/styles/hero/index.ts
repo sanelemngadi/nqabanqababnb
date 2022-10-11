@@ -1,12 +1,8 @@
-// import styled from "@emotion/styled";
-// import Typography from "@mui/material/Typography";
-// import Container from "@mui/material/Container";
 import styled from "styled-components";
-import Box from "../../components/atoms/Box";
-import Container from "../../components/atoms/Container";
-import Typography from "../../components/atoms/Typography";
-// import { Container } from "../../styled.globals";
-// import Box from "@mui/material/Box";
+
+import Box from "@mmasco-atoms/Box";
+import Typography from "@mmasco-atoms/Typography";
+
 import { projectColors, projectFonts } from "../theme";
 
 
@@ -64,22 +60,6 @@ export const SelectInput = styled.select<{ pricing?: number }>`
         
     }
 `
-
-export const Wrapper = styled(Container)`
-    background-image: url('/images/park.jpg') !important;
-    background-repeat: no-repeat !important;
-    background-size: cover !important;
-    background-position: center !important;        
-    min-height:calc(100vh - 80px - 40px) !important;
-    padding: 1rem !important;
-    overflow-x: hidden !important;
-    
-    @media (min-width: 992px) {
-        background-image: unset !important;
-        background-color: ${projectColors.primary} !important;
-    }
-    `
-
 
 export const FormGroup = styled(Box)`
     width: 100%;

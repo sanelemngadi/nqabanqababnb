@@ -2,6 +2,7 @@ import React, { FC } from 'react';
 import styled, { css } from 'styled-components';
 import { UniversalComponentPropsInterface } from '../../../interfaces';
 import { Nqabanqaba, SSROnly } from "../../../styled.globals"
+import { MediaQuery } from '../../../utils';
 
 interface Props extends UniversalComponentPropsInterface<string> {
     type?: string,
@@ -46,7 +47,7 @@ const Variant = ({ formType }: { formType: "outlined" | "contained" | "standard"
 }
 const Wrapper = styled.div<Props>`
     ${({ sx }) => sx};
-    @media (min-width: 600px) {
+    /* @media (min-width: 600px) {
     ${({ sm }) => sm};
     }
 
@@ -56,7 +57,9 @@ const Wrapper = styled.div<Props>`
 
     @media (min-width: 1200px) {
       ${({ lg }) => lg};
-    }
+    } */
+
+    ${(props) => MediaQuery(props)}
 `
 const Label = styled.label<{ formType: "outlined" | "contained" | "standard" }>`
     input{

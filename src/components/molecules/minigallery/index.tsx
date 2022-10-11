@@ -1,36 +1,26 @@
 import React from 'react';
-import { styled } from "@mui/material/styles";
-import Box from "@mui/material/Box";
 import Image from 'next/image';
+import styled from 'styled-components';
 
-const Wrapper = styled(Box)(({ theme }) => ({
-    width: '100%',
-    display: 'flex',
-    flexDirection: 'column',
-    gap: '1rem',
+import Box from '@mmasco-atoms/Box';
 
-    [theme.breakpoints.up('sm')]: {
-        flexDirection: 'row',
-        padding: '1rem',
-        // paddingRight: "2rem"
-        // maxWidth: '764px',
-        maxWidth: '768px'
+const Wrapper = styled(Box)`
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+
+    @media (min-width: 600px) {
+        flex-direction: row;
+        padding: 1rem;
+        max-width: 768px
     }
-}))
+`
 
-const Photo = styled(Box)(({ theme }) => ({
-    width: '100%',
-    // height: '232px',
-    // border: '1px solid black',
-    // background: '#000',
-    // flex: 1,
-    flex: 1,
-
-    [theme.breakpoints.up('md')]: {
-        // width: '244px',
-        // minHeight: '232px',
-    }
-}))
+const Photo = styled(Box)`
+    width: 100%;
+    flex: 1;
+`
 const ImagesGallery = () => {
     return (
         <Wrapper>
@@ -39,15 +29,11 @@ const ImagesGallery = () => {
             </Photo>
             <Photo>
                 <Image src='/images/room2.jpg' width={256} height={232} layout="responsive" alt="room1" />
-                {/* <div>ImagesGallery</div> */}
             </Photo>
             <Photo
-                sx={{
-                    display: { md: 'block', lg: 'block' }
-                }}
+                md={{ display: "block" }}
             >
                 <Image src='/images/room3.jpg' width={256} height={232} layout="responsive" alt="room1" />
-                {/* <div>ImagesGallery</div> */}
             </Photo>
         </Wrapper>
     )

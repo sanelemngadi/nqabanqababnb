@@ -1,6 +1,7 @@
 import React, { FC, useEffect, useState } from 'react';
-import Box from '../../atoms/Box';
-import Container from '../../atoms/Container';
+
+import Box from '@mmasco-atoms/Box';
+import Container from '@mmasco-atoms/Container';
 
 const Loading: FC = () => {
     const [count, setCount] = useState(0);
@@ -10,7 +11,6 @@ const Loading: FC = () => {
 
 
     useEffect(() => {
-        // if () {
         document.body.style.height = '100vh';
         document.body.style.overflow = 'hidden';
 
