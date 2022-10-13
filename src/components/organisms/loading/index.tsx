@@ -10,16 +10,16 @@ const Loading: FC = () => {
     ]
 
 
-    useEffect(() => {
-        document.body.style.height = '100vh';
-        document.body.style.overflow = 'hidden';
+    // useEffect(() => {
+    //     document.body.style.height = '100vh';
+    //     document.body.style.overflow = 'hidden';
 
-        return () => {
-            document.body.style.height = 'unset';
-            document.body.style.overflow = 'unset';
-        }
+    //     return () => {
+    //         document.body.style.height = 'unset';
+    //         document.body.style.overflow = 'unset';
+    //     }
 
-    }, []);
+    // }, []);
     useEffect(() => {
         const timer = setInterval(() => {
             if (count < 3) {
@@ -60,7 +60,6 @@ const Loading: FC = () => {
                     }
                 }}
             >
-                {/* <CircularProgress color='secondary' /> */}
                 Loading<div>
                     {dots.slice(0, count).map((dot, idx) => (
                         <span key={"dot-" + idx}>{dot}</span>

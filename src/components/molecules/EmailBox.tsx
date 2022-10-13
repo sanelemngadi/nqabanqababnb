@@ -29,7 +29,8 @@ const EmailBox: FunctionComponent<Props> = ({ color, bg }) => {
                 minWidth: "224px",
                 justifyContent: "space-around",
                 alignItems: "center",
-                px: "8px",
+                paddingLeft: "8px",
+                paddingRight: "8px",
             }}
         >
             <Box

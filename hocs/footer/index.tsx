@@ -19,14 +19,29 @@ import { MdOutlineHorizontalRule } from "react-icons/md";
 const links = [
     "Home", "Our Room", "About Us", "Contact Us"
 ]
+
+const contacts = [
+    {
+        label: "64 Marlynhoek Meer en see, Richards Bay,3901, South Africa.",
+        elem: < GoLocation color={projectColors.grayD9} size={24} />
+    },
+    {
+        label: "nqabanqaba2105@gmail.com",
+        elem: < GoMail color={projectColors.grayD9} size={24} />
+    },
+    {
+        label: "'(+27) 662 971 030",
+        elem: < BsTelephone color={projectColors.grayD9} size={24} />
+    },
+]
 const Footer = () => {
     return (
         <Box
             sx={{
-                padding: "48px 0 16px 0",
-                backgroundColor: projectColors.primary
+                padding: { xs: "48px 0 16px 0", md: "96px 0 16px 0" },
+                // background: "black",
+                backgroundColor: projectColors.primary,
             }}
-            md={{ padding: "96px 0 16px 0" }}
         >
             <Container
                 sx={{
@@ -61,13 +76,16 @@ const Footer = () => {
                     </ItemGrid>
                     <ItemGrid item xs={12} medium={4}>
                         <Headings>Contact info</Headings>
-                        <TextIcon
-                            bg={projectColors.primary}
-                            color={projectColors.grayD9}
-                            label='64 Marlynhoek Meer en see, Richards Bay,3901, South Africa'
-                            elem={<GoLocation color={projectColors.grayD9} size={24} />}
-                        />
-                        <TextIcon
+                        {contacts.map(({ label, elem }, idx) => (
+                            <TextIcon
+                                key={"contact-" + idx}
+                                bg={projectColors.primary}
+                                color={projectColors.grayD9}
+                                label={label}
+                                elem={elem}
+                            />
+                        ))}
+                        {/* <TextIcon
                             bg={projectColors.primary}
                             color={projectColors.grayD9}
                             label='nqabanqaba2105@gmail.com'
@@ -78,7 +96,7 @@ const Footer = () => {
                             color={projectColors.grayD9}
                             label='(+27) 662 971 030'
                             elem={<BsTelephone color={projectColors.grayD9} size={24} />}
-                        />
+                        /> */}
                     </ItemGrid>
 
                 </Grid>

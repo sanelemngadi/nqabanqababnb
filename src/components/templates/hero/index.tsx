@@ -22,16 +22,12 @@ const Hero: FC = () => {
                 backgroundRepeat: "no-repeat",
                 backgroundSize: 'cover',
                 backgroundPosition: 'center',
-                minHeight: 'calc(100vh - 48px - 48px)',
+                minHeight: { xs: 'calc(100vh - 48px - 48px)', md: 'calc(100vh - 80px - 40px)' },
                 padding: '1rem',
                 overflowX: 'hidden',
                 display: "flex",
                 justifyContent: 'center',
                 alignItems: 'center'
-            }}
-            md={{
-                backgroundColor: projectColors.primary,
-                minHeight: 'calc(100vh - 80px - 40px)',
             }}
         >
             <Container maxWidth="md"
@@ -46,7 +42,7 @@ const Hero: FC = () => {
                         margin: "0 auto",
                         fontSize: "30px",
                         fontWeight: 400,
-                        marginTop: "0px",
+                        marginTop: 0,
                         marginBottom: '3rem'
                     }}
                 >
@@ -56,12 +52,10 @@ const Hero: FC = () => {
                     elevation={3}
                     sx={{
                         backgroundColor: "#EFEFEF",
-                        padding: "4px",
+                        padding: { xs: "4px", md: "2rem" },
                         borderRadius: 0,
                         overflow: "hidden",
                     }}
-
-                    md={{ padding: "2rem" }}
                 >
                     <CheckAvailability />
                 </Paper>
@@ -71,10 +65,9 @@ const Hero: FC = () => {
                         color: projectColors.bgsecondary,
                         fontSize: "14px",
                         fontFamily: projectFonts.primary,
-                        display: "none",
+                        display: { xs: "none", md: "block" },
                         marginTop: "32px"
                     }}
-                    md={{ display: 'block' }}
                 >Please note that no pats are allowed at nqabanqaba bnb..</TextShadow>
             </Container>
         </Box >

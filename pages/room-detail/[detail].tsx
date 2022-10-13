@@ -9,7 +9,7 @@ import MetaData from '../../meta';
 import { rooms } from '../../data';
 import { slugify } from '../../src/utils';
 import { projectColors, projectFonts } from '../../src/styles/theme';
-import RoomDetailSlide from '../../src/components/molecules/room-detail';
+// import RoomDetailSlide from '../../src/components/molecules/room-detail';
 import CheckAvailabilityPricing from '../../src/components/templates/hero/book/CheckAvailibilityPricing';
 
 import Box from '@mmasco-atoms/Box';
@@ -52,7 +52,7 @@ const Detail: FC<Props> = ({ nqabanqabaRooms }) => {
                     marginBottom: "1rem"
                 }}
             >
-                <RoomDetailSlide />
+                {/* <RoomDetailSlide /> */}
             </Box>
             <Container
                 maxWidth="lg"
@@ -63,8 +63,8 @@ const Detail: FC<Props> = ({ nqabanqabaRooms }) => {
             >
                 <Grid container spacing={0}>
                     <Grid item xs={12} medium={8}
-                        md={{
-                            paddingRight: '2rem'
+                        sx={{
+                            paddingRight: { md: '2rem' }
                         }}
                     >
                         <TextIcon
@@ -95,11 +95,8 @@ const Detail: FC<Props> = ({ nqabanqabaRooms }) => {
                         <Box
                             sx={{
                                 display: 'flex',
-                                gap: "8px",
+                                gap: { xs: "8px", md: "1rem" },
                                 flexWrap: 'wrap'
-                            }}
-                            md={{
-                                gap: '1rem'
                             }}
                         >
                             {icons.map((icon, idx) => (
@@ -160,14 +157,10 @@ const Detail: FC<Props> = ({ nqabanqabaRooms }) => {
                                 display: 'flex',
                                 gap: '1rem',
                                 ['ul']: {
-                                    padding: '1rem',
+                                    // padding: { xs: '1rem', md: "40px" },
+                                    padding: "1rem",
                                     flex: 1,
                                     margin: 0,
-                                }
-                            }}
-                            md={{
-                                ['ul']: {
-                                    padding: '40px',
                                 }
                             }}
                         >
@@ -197,13 +190,9 @@ const Detail: FC<Props> = ({ nqabanqabaRooms }) => {
                     <Grid item xs={12} medium={4}>
                         <Box
                             sx={{
-                                position: 'relative',
-                                marginBottom: "2rem"
-                            }}
-
-                            md={{
-                                position: "sticky",
-                                top: '128px'
+                                position: { xs: 'relative', md: "sticky" },
+                                marginBottom: "2rem",
+                                top: { md: "128px" }
                             }}
                         >
                             <CheckAvailabilityPricing sm />

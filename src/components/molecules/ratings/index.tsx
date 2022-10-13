@@ -20,12 +20,10 @@ const RoomRating: FC<{ max: string }> = ({ max }) => {
                 variant='h4'
                 sx={{
                     opacity: "0.7",
-                    fontSize: "18px",
+                    fontSize: { xs: "18px", md: "24px" },
                     fontFamily: projectFonts.secondary,
                     color: '#757575',
                 }}
-
-                md={{ fontSize: "24px" }}
             >{max}</Typography>
             <Box>Rating Box</Box>
         </Box>

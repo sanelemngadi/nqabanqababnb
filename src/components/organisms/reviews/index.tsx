@@ -10,10 +10,9 @@ const Ratings = () => {
         >
             <Container
                 sx={{
-                    paddingTop: "32px",
+                    paddingTop: { xs: "32px", md: "64px" },
                     px: 0,
                 }}
-                md={{ marginTop: "64px" }}
             >
                 <SectionHeading
                     head='What our guest says about Us!'

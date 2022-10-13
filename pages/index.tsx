@@ -3,7 +3,7 @@ import Hero from '../src/components/templates/hero';
 import MetaData from '../meta';
 
 import dynamic from 'next/dynamic';
-import Box from '../src/components/atoms/Box';
+import Carousel from 'src/components/molecules/Carousel';
 
 const ChooseStay = dynamic(() => import(/* webpackChunkName: 'choseyourstay' */ '../src/components/templates/chooseStay'), {
   suspense: true,
@@ -11,28 +11,6 @@ const ChooseStay = dynamic(() => import(/* webpackChunkName: 'choseyourstay' */ 
 const Pricing = dynamic(() => import(/* webpackChunkName: 'pricing' */ '../src/components/organisms/pricing'));
 
 const Home: NextPage = () => {
-
-  // const names = {
-  //   names: { xs: "Sanele", sm: "Mngadi" },
-  //   grades: { xs: 80, sm: '100%' },
-  //   age: 20,
-  //   status: "unemployed"
-  // }
-
-  // const newObj = Object.entries(names).reduce<any>(({ xs: newObj, sm: newObj2 }: any, [key, val]) => {
-  //   if (typeof val === 'object') {
-  //     newObj[key] = val.xs;
-  //     newObj2[key] = val.sm;
-  //   }
-  //   else {
-  //     newObj[key] = val;
-  //   }
-
-  //   return { xs: newObj, sm: newObj2 };
-
-  // }, { xs: {}, sm: {} });
-
-  // console.log("Object: ", newObj);
 
   return (
     <>
@@ -46,28 +24,8 @@ const Home: NextPage = () => {
       <main>
         <Hero />
         <ChooseStay />
-        <Pricing />
-        {/* <Box
-          sx={{
-            height: "500px",
-            display: "flex",
-            alignItems: 'center',
-            justifyContent: 'center',
-            background: "blue",
-            color: "#fff",
-            fontSize: "54px"
-          }}
-          sm={{ color: "red" }}
-
-          md={{ background: "blueviolet" }}
-
-          ls={{
-            color: "black",
-            width: { xs: "blue", sm: "black" }
-          }}
-        >
-          heelo
-        </Box> */}
+        <Carousel />
+        {/* <Pricing /> */}
       </main>
     </>
   )

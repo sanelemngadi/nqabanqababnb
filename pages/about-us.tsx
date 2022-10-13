@@ -3,7 +3,6 @@ import styled from "styled-components";
 import Image from 'next/image';
 import MetaData from '../meta';
 import MiniAround from '../src/components/molecules/miniarounds';
-import { Nqabanqaba } from '../src/styled.globals';
 
 import Grid from '@mmasco-atoms/Grid';
 import Typography from '@mmasco-atoms/Typography';
@@ -11,13 +10,13 @@ import Box from '@mmasco-atoms/Box';
 import Container from '@mmasco-atoms/Container';
 
 
-const Paragraph = styled(Nqabanqaba)`
+const Paragraph = styled(Typography)`
     margin: 1.5rem 0;
     font-size: 16px;
     font-weight: 500;
 `
 
-const RuleHeading = styled(Nqabanqaba)`
+const RuleHeading = styled(Typography)`
     margin: 1.5rem 0;
     font-size: 20px;
     color: red;
@@ -61,20 +60,19 @@ const AboutUs: FC = () => {
                         display: 'flex',
                         justifyContent: "flex-start",
                         alignItems: "start",
-                        flexDirection: 'column',
+                        flexDirection: { xs: 'column', md: "row" },
                         margin: "0 auto",
                         paddingLeft: '0px',
                         paddingRight: '0px',
-                        padding: '1rem 1rem',
+                        padding: '1rem',
                     }}
-                    md={{ flexDirection: 'row', padding: '1rem' }}
                 >
                     <Box
-                        md={{ flex: 3 }}
+                        sx={{ flex: { md: 3 } }}
                     >
                         <Container maxWidth="md">
                             <Typography variant="h1"
-                                md={{ fontSize: "48px" }}
+                                sx={{ fontSize: { md: "48px" } }}
                             >
                                 About Us
                             </Typography>
@@ -87,7 +85,7 @@ const AboutUs: FC = () => {
                             </>
                             <Typography
                                 variant="h1"
-                                md={{ fontSize: "48px" }}
+                                sx={{ fontSize: { md: "48px" } }}
                             >
                                 House rules
                             </Typography>
@@ -126,9 +124,9 @@ const AboutUs: FC = () => {
                     <Box
                         sx={{
                             position: 'sticky',
-                            top: '96px'
+                            top: '96px',
+                            flex: { md: 1 }
                         }}
-                        md={{ flex: 1 }}
                     >
                         <MiniAround />
                     </Box>

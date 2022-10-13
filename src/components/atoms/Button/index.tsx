@@ -1,10 +1,10 @@
 import React, { FC } from 'react';
-import { UniversalComponentPropsInterface } from '../../../interfaces';
+import { MmascoUniversalInterface } from '../../../interfaces';
 import { Nqaba } from './styles';
 
 //this is the universal components and all the other components will inherit from this component
 
-interface ButtonPropsInterface extends UniversalComponentPropsInterface<"outlined" | "contained" | "text"> {
+interface ButtonPropsInterface extends MmascoUniversalInterface<"outlined" | "contained" | "text"> {
   type?: "button" | "submit" | "reset";
 }
 

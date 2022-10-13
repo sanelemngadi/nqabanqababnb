@@ -1,8 +1,8 @@
 import styled from "styled-components"
-import { UniversalComponentPropsInterface } from "../../../../interfaces"
-import { MediaQuery } from "../../../../utils"
+import { MmascoUniversalInterface } from "../../../../interfaces"
+import { SxQueries } from "../../../../utils"
 
-export interface Props extends UniversalComponentPropsInterface<string> {
+export interface Props extends MmascoUniversalInterface<string> {
     open: boolean
 }
 
@@ -22,20 +22,5 @@ export const BnB = styled.div<Props>`
     padding: 1rem;
     
     
-    ${({ sx }) => sx};   
-    
-    /* @media (min-width: 600px) {
-        ${({ sm }) => sm};    
-        padding: 1rem;
-    } */
-    
-    /* @media (min-width: 900px) {
-        ${({ md }) => md};    
-        padding: 2rem;
-    }
-
-    @media (min-width: 1200px) {
-      ${({ lg }) => lg};    
-    } */
-    ${(props) => MediaQuery(props)}
+    ${SxQueries}
 `

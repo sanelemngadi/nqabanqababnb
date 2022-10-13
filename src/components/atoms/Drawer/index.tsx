@@ -1,8 +1,8 @@
 import React, { FC, useEffect } from 'react';
-import { UniversalComponentPropsInterface } from '../../../interfaces';
+import { MmascoUniversalInterface } from '../../../interfaces';
 import { BnB } from './styles';
 
-interface Props extends UniversalComponentPropsInterface<"top" | "left" | "right"> {
+interface Props extends MmascoUniversalInterface<"top" | "left" | "right"> {
     open: boolean,
 }
 

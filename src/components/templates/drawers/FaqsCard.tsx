@@ -14,8 +14,13 @@ interface Props {
 const FaqsCard: FC<Props> = ({ q, a, date }) => {
     return (
         <Box
-            sx={{ maxWidth: "100%", margin: "1rem", backgroundColor: "#fff", color: "#000", border: '1px solid silver' }}
-            md={{ maxWidth: "275px" }}
+            sx={{
+                maxWidth: { xs: "100%", md: "275px" },
+                margin: "1rem",
+                backgroundColor: "#fff",
+                color: "#000",
+                border: '1px solid silver'
+            }}
         >
             <Box
                 sx={{ padding: "1rem" }}

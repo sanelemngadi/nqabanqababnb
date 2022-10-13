@@ -35,12 +35,10 @@ const FaqsModal: FC<Props> = ({ showFaqsModal, setShowFaqsModal }) => {
                     position: 'relative',
                     width: '100%',
                     height: '100%',
-                    padding: "0rem",
+                    padding: { xs: 0, sm: "1rem", md: "2rem" },
                     overflow: "auto",
                     zIndex: 400
                 }}
-                    sm={{ padding: "1rem" }}
-                    md={{ padding: "2rem" }}
                 >
                     <Typography
                         variant="h5"

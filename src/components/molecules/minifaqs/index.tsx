@@ -5,27 +5,26 @@ import FAQ from './FAQ';
 import SectionHeading from "@mmasco-atoms/sections";
 import Box from '@mmasco-atoms/Box';
 
-const Wrapper = styled(Box)`
+const Mmasco = styled(Box)`
     min-height: 288px;
 `
 
 const MiniFaqs = () => {
     return (
-        <Wrapper
+        <Mmasco
             sx={{
-                margin: '2rem 0 0 0',
+                margin: { xs: '2rem 0 0 0', md: "1rem" },
                 marginBottom: '0px',
                 paddingTop: "1rem",
                 paddingBottom: "1rem",
             }}
-            md={{ margin: "1rem" }}
         >
             <SectionHeading
                 head='Frequently Asked Questions'
                 subHead='Before dropping us a line please read the frequently Asked Questions.'
             />
             <FAQ />
-        </Wrapper>
+        </Mmasco>
     )
 }
 

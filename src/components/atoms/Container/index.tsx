@@ -1,9 +1,9 @@
 import React, { FC } from 'react';
 import styled, { css } from 'styled-components';
-import { UniversalComponentPropsInterface } from '../../../interfaces';
-import { MediaQuery } from '../../../utils';
+import { MmascoUniversalInterface } from '../../../interfaces';
+import { SxQueries } from '../../../utils';
 
-interface Props extends UniversalComponentPropsInterface<string> {
+interface Props extends MmascoUniversalInterface<string> {
   maxWidth?: "sm" | "md" | "lg",
 }
 
@@ -24,21 +24,8 @@ const Wrapper = styled.div<Props>`
     margin: 0 auto;
     padding: 1px 0.5rem ;
     
-    ${({ sx }) => sx};
     ${({ maxWidth }) => contained(maxWidth)}
-
-    /* @media (min-width: 600px) {
-      ${({ sm }) => sm};    
-    }
-
-    @media (min-width: 900px) {
-      ${({ md }) => md};    
-    }
-
-    @media (min-width: 1200px) {
-      ${({ lg }) => lg};    
-    } */
-    ${(props) => MediaQuery(props)}
+    ${SxQueries}
 `
 
 const Container: FC<Props> = (props) => {

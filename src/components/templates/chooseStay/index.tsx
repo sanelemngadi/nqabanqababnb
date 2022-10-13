@@ -9,24 +9,17 @@ const ChooseStay = () => {
     return (
         <Box
             sx={{
-                margin: "2rem auto",
+                margin: { xs: "2rem auto", md: "96px auto" },
             }}
-            md={{ margin: "96px auto" }}
         >
             <Container
                 maxWidth="lg"
                 sx={{
-                    margin: "0rem auto",
+                    margin: "1rem auto",
                     paddingTop: '1rem',
                     paddingBottom: '1rem',
-                }}
-                sm={{
-                    paddingLeft: '0px',
-                    paddingRight: '0px',
-                }}
-                md={{
-                    paddingLeft: '1rem',
-                    paddingRight: '1rem',
+                    paddingLeft: { xs: 0, md: "1rem" },
+                    paddingRight: { xs: 0, md: "1rem" },
                 }}
             >
                 <HomeABout />

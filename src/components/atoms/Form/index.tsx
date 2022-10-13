@@ -1,29 +1,15 @@
 import React, { FC } from 'react';
 import styled from 'styled-components';
-import { UniversalComponentPropsInterface } from '../../../interfaces';
-import { MediaQuery } from '../../../utils';
+import { MmascoUniversalInterface } from '../../../interfaces';
+import { SxQueries } from '../../../utils';
 
-interface Props extends UniversalComponentPropsInterface<string> {
+interface Props extends MmascoUniversalInterface<string> {
   target?: string,
   action?: string,
 }
 
 const Wrapper = styled.form<Props>`
-      ${({ sx }) => sx};   
-
-    /* @media (min-width: 600px) {
-      ${({ sm }) => sm};    
-    }
-
-    @media (min-width: 900px) {
-      ${({ md }) => md};    
-    }
-
-    @media (min-width: 1200px) {
-      ${({ lg }) => lg};    
-    } */
-
-    ${(props) => MediaQuery(props)}
+    ${SxQueries}
 `
 
 const Form: FC<Props> = (props) => {

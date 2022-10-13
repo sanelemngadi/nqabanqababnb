@@ -1,9 +1,10 @@
-import styled, { css, keyframes } from "styled-components";
-import { UniversalComponentPropsInterface } from "../../../../interfaces";
-import { MediaQuery } from "../../../../utils";
+import { CircleOnAnimation } from "src/animations/keyframes";
+import styled, { css } from "styled-components";
+import { MmascoUniversalInterface } from "../../../../interfaces";
+import { SxQueries } from "../../../../utils";
 
 
-interface ButtonPropsInterface extends UniversalComponentPropsInterface<"outlined" | "contained" | "text"> {
+interface ButtonPropsInterface extends MmascoUniversalInterface<"outlined" | "contained" | "text"> {
   type?: "button" | "submit" | "reset";
 }
 const onHover = css<ButtonPropsInterface>`
@@ -56,16 +57,6 @@ const Outlines = ({ variant, color, bg }: { variant?: "outlined" | "contained" |
     `
 }
 
-const clip = keyframes`
-  from{
-    clip-path: circle(0% at 50% 50%);
-    background-color: rgba(0 0 0 / 15%);
-  }
-  to{
-    clip-path: circle(100.0% at 50% 50%);
-    background-color: rgba(0 0 0 / 15%);
-  }
-`
 
 export const Nqaba = styled.button<ButtonPropsInterface>`
   height: 40px;
@@ -86,7 +77,6 @@ export const Nqaba = styled.button<ButtonPropsInterface>`
   transition: background-color 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
   overflow: hidden;
   position: relative;
-  ${({ sx }) => sx};
 
   &:hover::after{
     content: '';
@@ -99,20 +89,8 @@ export const Nqaba = styled.button<ButtonPropsInterface>`
     right: 0;
     bottom: 0;
     user-select: none;
-    animation: ${clip} 0.5s ease-in forwards;
-  }
-    
-  /* @media (min-width: 600px) {
-    ${({ sm }) => sm};
+    animation: ${CircleOnAnimation} 0.5s ease-in forwards;
   }
 
-  @media (min-width: 900px) {
-    ${({ md }) => md};    
-  }
-
-  @media (min-width: 1200px) {
-    ${({ lg }) => lg};    
-  } */
-
-  ${(props) => MediaQuery(props)}
+  ${SxQueries}
 `

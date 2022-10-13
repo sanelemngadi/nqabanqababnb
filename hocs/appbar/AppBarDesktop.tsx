@@ -1,5 +1,5 @@
 import React, { FC, useEffect, useState } from 'react';
-import { LinkItems, AppBarButtons, UnOrderedList, AllScreenLogo, AppBarMenu, AppBarContainer } from '../../src/styles/appbar';
+import { AppBarButtons, UnOrderedList, AllScreenLogo, AppBarMenu, AppBarContainer } from '../../src/styles/appbar';
 
 import { projectColors, projectFonts } from '../../src/styles/theme';
 import { slugify } from '../../src/utils';
@@ -75,45 +75,14 @@ const AppBarDesktop: FC<Props> = ({ setShowAppBar, setShowFaqsModal }) => {
             }}
         >
             <AppBarContainer>
-                <AllScreenLogo
-                >
-                    <LogoComponent />
-                </AllScreenLogo>
-
-
-
-
+                <AllScreenLogo><LogoComponent /></AllScreenLogo>
                 <UnOrderedList>
                     {links.map((link, idx) => (
                         <ListItem key={"i-" + idx}>
                             <ActiveLink
                                 href={link === "Home" ? "/" : `/${slugify(link)}`}
-                            >
-                                <Button
-                                    // type='button'
-                                    component={'a'}
-                                    sx={{
-                                        display: "flex",
-                                        fontWeight: 500,
-                                        minWidth: '96px',
-                                        alignItems: "center",
-                                        padding: ".3rem 1rem",
-                                        textDecoration: 'none',
-                                        justifyContent: "center",
-                                        color: projectColors.primary,
-                                        fontFamily: projectFonts.primary,
-                                        transitiom: 'transform 0.2s ease-in-out',
-
-                                        ['&:active']: {
-                                            transform: 'scale(0.95)',
-                                            transitiom: 'transform 0.2s ease-in-out',
-                                        }
-                                    }}
-
-                                >
-                                    {link}
-                                </Button>
-                            </ActiveLink>
+                                link={link}
+                            />
                         </ListItem>
                     ))}
                 </UnOrderedList>

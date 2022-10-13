@@ -1,31 +1,18 @@
 import React, { FC } from 'react';
 import styled from 'styled-components';
-import { UniversalComponentPropsInterface } from '../../../interfaces';
-import { MediaQuery } from '../../../utils';
+import { MmascoUniversalInterface } from '../../../interfaces';
+import { SxQueries } from '../../../utils';
 
-const Wrapper = styled.ul<UniversalComponentPropsInterface<string>>`
-      ${({ sx }) => sx};   
-
-    /* @media (min-width: 600px) {
-      ${({ sm }) => sm};    
-    }
-
-    @media (min-width: 900px) {
-      ${({ md }) => md};    
-    }
-
-    @media (min-width: 1200px) {
-      ${({ lg }) => lg};    
-    } */
-    ${(props) => MediaQuery(props)}
+const Mmasco = styled.ul<MmascoUniversalInterface<string>>`
+    ${SxQueries}
 `
 
-const UnOrderedList: FC<UniversalComponentPropsInterface<string>> = (props) => {
+const UnOrderedList: FC<MmascoUniversalInterface<string>> = (props) => {
   return (
-    <Wrapper {...props}
+    <Mmasco {...props}
     >
       {props.children}
-    </Wrapper>
+    </Mmasco>
   )
 }
 

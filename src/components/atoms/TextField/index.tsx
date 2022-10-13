@@ -1,10 +1,10 @@
 import React, { FC } from 'react';
 import styled, { css } from 'styled-components';
-import { UniversalComponentPropsInterface } from '../../../interfaces';
-import { Nqabanqaba, SSROnly } from "../../../styled.globals"
-import { MediaQuery } from '../../../utils';
+import { MmascoUniversalInterface } from '../../../interfaces';
+import { SSROnly } from "../../../styled.globals"
+import { SxQueries } from '../../../utils';
 
-interface Props extends UniversalComponentPropsInterface<string> {
+interface Props extends MmascoUniversalInterface<string> {
     type?: string,
     label?: string,
     formType: "outlined" | "contained" | "standard",
@@ -45,21 +45,8 @@ const Variant = ({ formType }: { formType: "outlined" | "contained" | "standard"
         `
     }
 }
-const Wrapper = styled.div<Props>`
-    ${({ sx }) => sx};
-    /* @media (min-width: 600px) {
-    ${({ sm }) => sm};
-    }
-
-    @media (min-width: 900px) {
-      ${({ md }) => md};    
-    }
-
-    @media (min-width: 1200px) {
-      ${({ lg }) => lg};
-    } */
-
-    ${(props) => MediaQuery(props)}
+const Mmasco = styled.div<Props>`
+    ${SxQueries}
 `
 const Label = styled.label<{ formType: "outlined" | "contained" | "standard" }>`
     input{
@@ -76,10 +63,10 @@ const Label = styled.label<{ formType: "outlined" | "contained" | "standard" }>`
 `
 
 
-const TextField: FC<Props> = ({ sx, sm, md, lg, formType, label, type, name, id }) => {
+const TextField: FC<Props> = ({ sx, formType, label, type, name, id }) => {
     return (
-        <Wrapper
-            sx={sx} sm={sm} md={md} lg={lg}
+        <Mmasco
+            sx={sx}
             formType={formType} variant="div"
         >
             <Label
@@ -90,7 +77,7 @@ const TextField: FC<Props> = ({ sx, sm, md, lg, formType, label, type, name, id 
                 <input aria-invalid="false" type={type} name={name}
                     placeholder={label} id={id} />
             </Label>
-        </Wrapper>
+        </Mmasco>
     )
 }
 

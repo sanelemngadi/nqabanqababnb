@@ -1,38 +1,54 @@
 import { CSSProperties } from "react";
-import { css, Interpolation } from "styled-components";
+import { CssValueQueries, MmascoUniversalInterface } from "src/interfaces";
+import { css, FlattenSimpleInterpolation, Interpolation } from "styled-components";
+import * as CSS from "csstype";
 
 export const slugify = (word: string): string => {
   return word.trim().toLowerCase().replaceAll(" ", '-');
 };
 
-interface MediaQueries {
-  sm?: Interpolation<CSSProperties>,
-  md?: Interpolation<CSSProperties>,
-  lg?: Interpolation<CSSProperties>,
+interface Props extends MmascoUniversalInterface<string> { } // extending the universal interface
+
+export const MediaQuerys = (
+  sx?: CSS.Properties<string | number | CssValueQueries> | Interpolation<CSSProperties>
+) => {
+  return Object.entries(sx ? sx : {}).reduce<any>(
+    ({
+      xs: XS, sm: SM, md: MD, lg: LG }: any,
+      [property, value]
+    ) => {
+      if (typeof value === "object") {
+        if (value?.xs) { XS[property] = value?.xs; }
+        if (value?.sm) { SM[property] = value?.sm; }
+        if (value?.md) { MD[property] = value?.md; }
+        if (value?.lg) { LG[property] = value?.lg; }
+      } else { XS[property] = value; }
+
+      return { xs: XS, sm: SM, md: MD, lg: LG };
+
+    }, { xs: {}, sm: {}, md: {}, lg: {} });
 }
 
-export const MediaQuery = (props: MediaQueries) => {
-  if (props.sm) {
+const InnerQuery = (
+  px: number,
+  len: string,
+  sx?: CSS.Properties<string | number | CssValueQueries>
+): FlattenSimpleInterpolation => {
+
+
+  if (Object.keys(MediaQuerys(sx)[len]).length > 0) {
     return css`
-      @media (min-width: 600px) {
-        ${props.sm};    
+      @media (min-width: ${px}px){
+        ${MediaQuerys(sx)[len]}
       }
-    `
+      `
   }
-  if (props.md) {
-    return css`
-      @media (min-width: 900px) {
-        ${props.md};    
-      }
-    `
-  }
-  if (props.lg) {
-    return css`
-      @media (min-width: 1200px) {
-        ${props.lg};    
-      }
-    `
-  }
-  return;
+  return css``;
 }
 
+export const SxQueries = css<Props>`
+  ${(props) => InnerQuery(0, "xs", props?.sx)}
+  ${(props) => InnerQuery(600, "sm", props?.sx)}
+  ${(props) => InnerQuery(900, "md", props?.sx)}
+  ${(props) => InnerQuery(1200, "lg", props?.sx)}
+`

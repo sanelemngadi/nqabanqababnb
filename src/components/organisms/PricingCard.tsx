@@ -44,20 +44,15 @@ const PricingCard: FC<Props> = ({ image, label, description, max }) => {
         <Box
             sx={{
                 margin: '1rem',
-            }}
-            md={{
-                display: 'flex',
-                margin: '1rem',
+                display: { md: 'flex' }
             }}
         >
             <Photo
                 sx={{
                     background: 'blue',
-                    overflow: 'hidden'
-                }}
-                md={{
-                    width: '427px',
-                    height: '430px',
+                    overflow: 'hidden',
+                    width: { md: '427px' },
+                    height: { md: '430px' },
                 }}
             >
                 <Image
@@ -70,18 +65,17 @@ const PricingCard: FC<Props> = ({ image, label, description, max }) => {
             </Photo>
             <Box
                 sx={{
-                    backgroundColor: projectColors.light,
+                    backgroundColor: projectColors.dark,
                     display: 'flex',
                     alignItems: 'center',
-                    justifyContent: 'center'
+                    justifyContent: 'center',
+                    maxWidth: { md: '427px' }
                 }}
-
-                md={{ width: '427px', }}
             >
                 <Box
-                    md={{
-                        maxWidth: "356px",
-                        margin: '0 auto',
+                    sx={{
+                        maxWidth: { md: "356px" },
+                        margin: { md: '0 auto' },
                     }}
                 >
                     <Typography variant="h6"
@@ -89,25 +83,23 @@ const PricingCard: FC<Props> = ({ image, label, description, max }) => {
                             color: projectColors.dark,
                             fontFamily: projectFonts.secondary,
                             fontWeight: "700",
-                            fontSize: '24px',
+                            fontSize: { xs: '24px', md: "36px" },
                             margiBottom: '1rem'
                         }}
-                        md={{ fontSize: "36px" }}
                     >
                         {label}
                     </Typography>
                     <Box>
                         <RoomRating max={max} />
                     </Box>
-                    <Typography variant="p" sx={{
-                        color: '#7E7A5F',
-                        fontFamily: projectFonts.primary,
-                        fontSize: '16px',
-                        fontWeight: '500',
+                    <Typography variant="p"
+                        sx={{
+                            color: '#7E7A5F',
+                            fontFamily: projectFonts.primary,
+                            fontSize: '16px',
+                            fontWeight: '500',
+                            maxWidth: { md: '281px' }
 
-                    }}
-                        md={{
-                            maxWidth: '281px',
                         }}
                     >
                         {description}
@@ -129,7 +121,7 @@ const PricingCard: FC<Props> = ({ image, label, description, max }) => {
                     </Box>
                 </Box>
             </Box>
-        </Box>
+        </Box >
     )
 }
 

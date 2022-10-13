@@ -30,22 +30,20 @@ const TopHeader = () => {
                     sx={{
                         color: "#D9D9D9",
                         width: "100%",
-                        textAlign: "center",
-                        fontSize: "13px"
+                        textAlign: { xs: "center", md: "left" },
+                        fontSize: "13px",
+                        paddingLeft: { md: '2rem' }
                     }}
-
-                    md={{ paddingLeft: '2rem', textAlign: 'left' }}
                 >
                     Check in at 14h00 and check out at 9h00
                 </Typography>
                 <Box
                     sx={{
-                        display: "none",
+                        display: { sx: "none", md: "block" },
                         marginLeft: "auto",
                         width: "104px",
+                        backgroundColor: "blue"
                     }}
-
-                    md={{ display: 'block' }}
                 >
                     <SocialIcons />
                 </Box>

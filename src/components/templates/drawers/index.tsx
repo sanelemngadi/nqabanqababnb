@@ -77,22 +77,8 @@ const MenuDrawer: FC<Props> = ({ state, setState }) => {
                         key={"i-" + idx}>
                         <ActiveLink
                             href={link === "Home" ? "/" : `/${slugify(link)}`}
-                        >
-                            <Button
-                                type="button"
-                                sx={{
-                                    paddingLeft: "0px",
-                                    paddingRight: "0px",
-                                    width: "100%"
-                                }}
-                            >
-                                <ListTextComponent
-                                    link={link}
-                                    sm
-                                />
-                            </Button>
-
-                        </ActiveLink>
+                            link={link}
+                        />
                     </ListItem>
                 ))}
             </UnOrderedList>

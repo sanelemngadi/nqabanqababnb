@@ -22,10 +22,9 @@ const SectionHeading: FC<Props> = ({ head, subHead }) => {
                     padding: "0 1rem",
                     fontWeight: "500",
                     fontFamily: projectFonts.secondary,
-                    fontSize: "24px",
+                    fontSize: { xs: "24px", sm: "36px" },
                     textAlign: "center"
                 }}
-                sm={{ fontSize: "36px" }}
             >
                 {head}
             </Typography>
@@ -35,12 +34,10 @@ const SectionHeading: FC<Props> = ({ head, subHead }) => {
                     padding: "0 1rem",
                     color: "#6A6A6A",
                     fontFamily: projectFonts.secondary,
-                    fontSize: "16px",
+                    fontSize: { xs: "16px", sm: "24px" },
                     textAlign: "center",
-                    marginTop: "8px",
+                    marginTop: { xs: "8px", md: "16px" },
                 }}
-                sm={{ fontSize: "24px" }}
-                md={{ marginTop: "16px" }}
             >
                 {subHead}
             </Typography>

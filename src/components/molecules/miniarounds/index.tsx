@@ -4,7 +4,7 @@ import { projectFonts } from '../../../styles/theme';
 
 import Box from '@mmasco-atoms/Box';
 
-const Wrapper = styled(Box)`
+const Mmasco = styled(Box)`
     padding: 1rem;
     display: flex;
     justify-content: center;
@@ -33,15 +33,17 @@ const Wrapper = styled(Box)`
 
 const MiniAround = () => {
     return (
-        <Wrapper
+        <Mmasco
             sx={{
                 width: '100%',
-                margin: '1rem auto',
+                margin: { xs: '1rem auto', md: 0 },
                 border: '1px solid black',
-                padding: '1rem'
+                padding: '1rem',
+                maxWidth: { sm: '100%', md: "392px" },
+                minWidth: { md: "392px" },
+                boxShadow: { md: '1px 2px 2px 0px rgba(0 0 0 / 15%)' }
+
             }}
-            sm={{ maxWidth: '100%' }}
-            md={{ boxShadow: '1px 2px 2px 0px rgba(0 0 0 / 15%)', minWidth: '392px', maxWidth: '392px', margin: "0" }}
         >
             <Box>
                 <h4>The Nqabanqaba guesthouse offers the followin facilities and Amenities out of the box:</h4>
@@ -61,7 +63,7 @@ const MiniAround = () => {
                     <li>Within a walkable distance to Meerensee Mall</li>
                 </ul>
             </Box>
-        </Wrapper>
+        </Mmasco>
     )
 }
 

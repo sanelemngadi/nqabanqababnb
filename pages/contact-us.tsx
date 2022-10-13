@@ -61,7 +61,7 @@ const ContactUs: FC = () => {
 
                 <Box
                     sx={{
-                        height: '256px',
+                        height: { xs: '256px', md: "345px" },
                         backgroundImage: "url(/images/backyard.jpg)",
                         backgroundRepeat: "no-repeat",
                         backgroundPosition: "center",
@@ -73,16 +73,14 @@ const ContactUs: FC = () => {
                         alignItems: 'center',
                         textAlign: 'center',
                     }}
-                    md={{ height: '345px' }}
                 >
 
                     <Typography variant="h3"
                         sx={{
-                            fontSize: "16px",
+                            fontSize: { xs: "16px", md: "24px" },
                             fontFamily: projectFonts.secondary,
                             color: projectColors.secondary
                         }}
-                        md={{ fontSize: '24px' }}
                     >
                         <Link href="/"><a style={{ color: projectColors.secondary }}>Home</a></Link>
                         <span>&nbsp;- Contact</span>
@@ -90,42 +88,41 @@ const ContactUs: FC = () => {
                     <Typography
                         variant="h1"
                         sx={{
-                            fontSize: "32px",
+                            fontSize: { xs: "32px", md: "48px" },
                             fontFamily: projectFonts.secondary,
                             color: projectColors.light
                         }}
-                        md={{ fontSize: '48px' }}
                     >
                         How can we halp you?
                     </Typography>
                 </Box>
                 <Container maxWidth="lg">
                     <Box>
-                        <Typography variant="h1"
+                        <Typography
+                            variant="h1"
                             sx={{
-                                fontSize: "24px",
+                                fontSize: { xs: "24px", md: "32px" },
                                 fontFamily: projectFonts.secondary,
                                 color: projectColors.primary,
                                 textAlign: 'center',
                                 marginTop: "48px",
                                 marginBottom: "10px",
                             }}
-                            md={{ fontSize: '32px' }}
                         >
                             Get in touch with us
                         </Typography>
-                        <Typography variant="h1"
+                        <Typography
+                            variant="h1"
                             sx={{
-                                fontSize: "16px",
+                                fontSize: { xs: "16px", md: "18px" },
                                 fontFamily: projectFonts.primary,
                                 color: projectColors.primary,
                                 textAlign: 'center',
                                 marginBottom: "24px",
                                 maxWidth: "500px",
-                                margin: "8px auto",
+                                margin: { xs: "8px auto", md: "24px auto" },
                                 padding: "2px"
                             }}
-                            md={{ fontSize: '18px', margin: '24px auto' }}
                         >
                             If you have a question don&#39;t hasitate to drop us a text message, we are more than happy to clear your confusion. &times;
                         </Typography>
@@ -153,7 +150,6 @@ const ContactUs: FC = () => {
                             <input name="bot-field" style={{ display: "none" }} />
                             <input type="hidden" name="form-name" value='Contacts' />
                             <TextField
-                                // fullWidth
                                 type="text"
                                 id="outlined-basic1"
                                 label="Name"
@@ -162,7 +158,6 @@ const ContactUs: FC = () => {
                             />
                             <TextField
                                 type='email'
-                                // fullWidth
                                 sx={{ marginTop: "1rem", marginBottom: "1rem" }}
                                 id="outlined-basic2"
                                 label="Email"
@@ -181,10 +176,7 @@ const ContactUs: FC = () => {
                                     variant="outlined"
                                     type='submit'
                                     color="primary"
-                                    sx={{ minWidth: "100%" }}
-                                    sm={{
-                                        minWidth: "256px"
-                                    }}
+                                    sx={{ minWidth: { xs: "100%", sm: "256px" } }}
                                 >Send Messgae</Button>
                             </div>
                         </ContactForm>

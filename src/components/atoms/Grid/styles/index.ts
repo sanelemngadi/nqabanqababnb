@@ -1,8 +1,8 @@
 import styled, { css } from "styled-components";
-import { UniversalComponentPropsInterface } from "../../../../interfaces";
-import { MediaQuery } from "../../../../utils";
+import { MmascoUniversalInterface } from "../../../../interfaces";
+import { SxQueries } from "../../../../utils";
 
-export interface Props extends UniversalComponentPropsInterface<string> {
+export interface Props extends MmascoUniversalInterface<string> {
     item?: boolean,
     container?: boolean,
     xs?: number,
@@ -43,18 +43,12 @@ const GridStyle = ({ toggle, basis, spacing }: GridI) => {
             @media (min-width: 600px) {
                 flex-grow: 0;
                 ${FlexWidth({ flex: basis?.small })}
-                /* flex-basis: ${basis?.small !== undefined && (basis?.small / 12) * 100}%;
-                max-width: ${basis?.small !== undefined && (basis?.small / 12) * 100}%; */
             }
             @media (min-width: 600px) {
                 ${FlexWidth({ flex: basis?.medium })}
-                /* flex-basis: ${basis?.medium !== undefined && (basis?.medium / 12) * 100}%;
-                max-width: ${basis?.medium !== undefined && (basis?.medium / 12) * 100}%; */
             }
             @media (min-width: 600px) {
                 ${FlexWidth({ flex: basis?.large })}
-                /* flex-basis: ${basis?.large !== undefined && (basis?.large / 12) * 100}%;
-                max-width: ${basis?.large !== undefined && (basis?.large / 12) * 100}%; */
             }
         `
     }
@@ -78,17 +72,5 @@ export const Nqaba = styled.div<Props>`
     spacing: props.spacing
 })};
 
-    ${({ sx }) => sx};
-    /* @media (min-width: 600px) {
-      ${({ sm }) => sm};    
-    }
-
-    @media (min-width: 900px) {
-      ${({ md }) => md};    
-    }
-
-    @media (min-width: 1200px) {
-      ${({ lg }) => lg};    
-    } */
-    ${(props) => MediaQuery(props)}
+    ${SxQueries}
 `

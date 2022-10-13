@@ -15,7 +15,6 @@ const Paragraph = styled(Typography)`
     color: #6A6A6A;
     font-family: ${projectFonts.primary};
     text-align: center;
-    /* padding: ; */
 `
 
 const HomeABout = () => {
@@ -23,31 +22,27 @@ const HomeABout = () => {
         <Wrapper
             maxWidth='md'
             sx={{
-                padding: 0,
+                padding: { xs: 0, sm: "1rem" },
+                paddingRight: { md: '2rem' }
             }}
-            sm={{ padding: "1rem" }}
-            md={{ paddingRight: '2rem' }}
         >
             <Typography
                 variant='h1'
                 sx={{
                     fontFamily: projectFonts.secondary,
-                    fontSize: '24px',
+                    fontSize: { xs: '24px', sm: "32px", md: "40px" },
                     textTransform: 'uppercase',
                     marginBottom: '1rem',
                     textAlign: 'center',
                     fontWeight: '400'
                 }}
-                sm={{ fontSize: "32px" }}
-                md={{ fontSize: "40px" }}
             >
                 Softern your night with Nqabanqaba bnb, the bed and breakfast in richards bay meerensee.
             </Typography>
             <Paragraph
                 sx={{
-                    padding: 0,
+                    padding: { xs: 0, md: "0 2rem" },
                 }}
-                md={{ padding: "0 2rem" }}
             >
                 We are situated 2.7 km from Alkantstrand Beach, Nqabanqaba features accommodation with a shared lounge, a casino and room service for your convenience. The bed and breakfast features both WiFi and private parking free of charge. N.qabanqaba provides guests with a terrace, a seating area, satellite flat-screen TV. We have a fully equipped kitchenette with a microwave and a fridge, and a private bathroom with shower and a hairdryer.The accommodation offers a à la carte or Full English/Irish breakfast.
             </Paragraph>

@@ -47,7 +47,7 @@ export interface CssValueQueries {
     lg?: string | number,
 }
 interface Obj {
-    [key: string]: string | number | CssValueQueries | CSSRule
+    [key: string]: string | number | CssValueQueries | CSSRule | Interpolation<CSSProperties>
 }
 export interface MmascoUniversalInterface<T> extends HTMLAttributes<HTMLOrSVGElement> {
     children?: ReactNode,

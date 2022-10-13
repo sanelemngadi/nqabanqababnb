@@ -1,20 +1,11 @@
-import styled, { keyframes } from "styled-components"
-import { UniversalComponentPropsInterface } from "../../../../interfaces"
+import { CircleOnAnimation } from "src/animations/keyframes"
+import styled from "styled-components"
+import { MmascoUniversalInterface } from "../../../../interfaces"
 import { Center } from "../../../../styled.globals"
-import { MediaQuery } from "../../../../utils"
+import { SxQueries } from "../../../../utils"
 
-export interface ButtonPropsInterface extends UniversalComponentPropsInterface<string> { }
+export interface ButtonPropsInterface extends MmascoUniversalInterface<string> { }
 
-const clip = keyframes`
-  from{
-    clip-path: circle(0% at 50% 50%);
-    background-color: rgba(0 0 0 / 15%);
-  }
-  to{
-    clip-path: circle(100.0% at 50% 50%);
-    background-color: rgba(0 0 0 / 15%);
-  }
-`
 
 export const Nqaba = styled.button<ButtonPropsInterface>`
     width: 36px;
@@ -45,9 +36,9 @@ export const Nqaba = styled.button<ButtonPropsInterface>`
         bottom: 0;
         user-select: none;
         
-        animation: ${clip} 0.2s ease-in;
+        animation: ${CircleOnAnimation} 0.2s ease-in;
     }
-    ${({ sx }) => sx}
-    ${(props) => MediaQuery(props)}
+
+    ${SxQueries}
     
     `

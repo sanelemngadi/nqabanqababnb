@@ -1,22 +1,25 @@
-import React, { FC } from 'react';
+import React, { FC, forwardRef } from 'react';
 import styled from 'styled-components';
-import { UniversalComponentPropsInterface } from '../../../interfaces';
-import { MediaQuery } from '../../../utils';
-// import * as CSS from "csstype"
+import { MmascoUniversalInterface } from '../../../interfaces';
+import { SxQueries } from 'src/utils';
 
-const Wrapper = styled.div<UniversalComponentPropsInterface<string>>`
-    ${({ sx }) => sx};  
-    ${(props) => MediaQuery(props)}
+
+const Mmasco = styled.div<MmascoUniversalInterface<string>>`
+    ${SxQueries}
 `
 
-const Box: FC<UniversalComponentPropsInterface<string>> = (props) => {
+const Box = forwardRef<React.MutableRefObject<any>, MmascoUniversalInterface<string>>((props, ref) => {
+
   return (
-    <Wrapper {...props}
+    <Mmasco {...props}
+      ref={ref}
       as={props.component !== undefined ? props.component : "div"}
     >
       {props.children}
-    </Wrapper>
+    </Mmasco>
   )
-}
+})
 
-export default Box
+Box.displayName = 'Box';
+
+export default Box;

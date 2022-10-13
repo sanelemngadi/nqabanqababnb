@@ -32,11 +32,9 @@ const CheckAvailability: FC<Props> = ({ sm }) => {
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "space-around",
-                flexDirection: "column",
+                flexDirection: { xs: "column", md: sm ? 'column' : "row" },
                 margin: "0.1rem auto",
             }}
-
-            md={{ flexDirection: sm ? 'column' : "row" }}
         >
             <input type="hidden" name="action" value="2" />
             <input type="hidden" name="bbid" value="32135" />
@@ -85,8 +83,8 @@ const CheckAvailability: FC<Props> = ({ sm }) => {
                     color="secondary"
                     type='submit'
                     sx={{
-                        width: "100%",
-                        height: "40px",
+                        width: { xs: "100%", md: '203px' },
+                        height: { xs: "40px", md: "54px" },
                         backgroundColor: '#2E3AA5',
                         color: '#EBEBEB',
                         borderRadius: 0,
@@ -99,8 +97,6 @@ const CheckAvailability: FC<Props> = ({ sm }) => {
                             color: projectColors.light
                         }
                     }}
-
-                    md={{ width: '203px', height: "54px" }}
                 >
                     Check Availability
                 </Button>
