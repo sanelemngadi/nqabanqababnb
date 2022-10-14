@@ -2,13 +2,13 @@ import Box from "@mmasco-atoms/Box"
 import { Center } from "src/styled.globals"
 import styled from "styled-components"
 
-export const CarouselItem = styled(Box)`
+export const CarouselItem = styled(Box) <{ end: boolean }>`
   width: 100%;
   height: 100%;
   background-color: #efefef;
   display: inline-block;
   margin-right: 2%;
-  transition: all 500ms ease-out;
+  transition: ${({ end }) => end && 'all 200ms ease-out'};
   user-select: none;
 
   /* div{

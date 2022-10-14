@@ -4,6 +4,9 @@
     "paths": {
       "@mmasco-atoms/*": [
         "src/components/atoms/*"
+      ],
+      "@mmasco-molecules/*": [
+        "src/components/molecules/*"
       ]
     },
     "target": "es5",

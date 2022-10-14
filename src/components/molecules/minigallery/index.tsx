@@ -59,13 +59,14 @@ const ImagesGallery = () => {
     return (
         <Mmasco>
             <Photo>
-                <Image src='/images/room1.jpg' width={256} height={232} layout="fill" objectFit='cover' alt="room1" />
+                <Image src='/images/room1.jpg' layout="fill" objectFit='cover' alt="room1" />
             </Photo>
             <Photo>
-                <Image src='/images/room2.jpg' width={256} height={232} layout="fill" objectFit='cover' alt="room1" />
+                <Image src='/images/room2.jpg' layout="fill" objectFit='cover' alt="room1" />
             </Photo>
             <Photo>
-                <Image src='/images/room3.jpg' width={256} height={232} layout="fill" objectFit='cover' alt="room1" />
+                <Image src='/images/room3.jpg' layout="fill" objectFit='cover' alt="room1" />
+                {/* <Image src='/images/room3.jpg' width={256} height={232} layout="fill" objectFit='cover' alt="room1" /> */}
             </Photo>
         </Mmasco>
     )

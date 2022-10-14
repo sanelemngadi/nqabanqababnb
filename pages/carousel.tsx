@@ -8,9 +8,6 @@ import { BsArrowRight, BsArrowLeft } from "react-icons/bs"
 import Image from 'next/image';
 import Link from 'next/link';
 import { projectColors } from 'src/styles/theme';
-import Typography from '@mmasco-atoms/Typography';
-import { rooms } from 'data';
-import { slugify } from 'src/utils';
 
 const CarouselContainer = styled(Box)`
     display: flex;
@@ -18,7 +15,6 @@ const CarouselContainer = styled(Box)`
     position: relative;
     overflow: hidden;
     margin: 1rem auto;
-    /* margin-top: 256px; */
 `
 const CarouselScrollerContainer = styled(Box) <{ h: number }>`
     width: 100%;
@@ -140,7 +136,7 @@ const CarouselPrevButton = styled(Button)`
     background-color: transparent;
 `
 
-// const items = [1, 2, 3, 4, 5]
+const items = [1, 2, 3, 4, 5]
 
 const Carousel = () => {
     // const widthSpan = 880 + 16; // width of the div and the right margin for spacing
@@ -155,8 +151,12 @@ const Carousel = () => {
     const [widthSpan, setWidthSpan] = useState(0);
 
     const scrollerRef = useRef<any>(null);
+    const carouselItemRef = useRef<any>([]);
+    carouselItemRef.current = items.map((_, idx) => carouselItemRef.current[idx] ?? createRef());
+    const scrollerContainerRef = useRef<any>(null);
     const width = scrollerRef;
     const handleScreenSize = () => {
+        // console.log("screen: ", width.current?.clientWidth + 16);
         setWidthSpan(width.current?.clientWidth + 16);
         setCurrentIndex(0);
         handleJumpToSlide(0);
@@ -176,7 +176,7 @@ const Carousel = () => {
         if (makeTimer) {
             const timer = setInterval(() => {
                 let newPosition = currentIndex;
-                if (newPosition < rooms.length - 1) {
+                if (newPosition < items.length - 1) {
                     newPosition += 1;
                 } else {
                     newPosition = 0;
@@ -193,7 +193,7 @@ const Carousel = () => {
 
     const handleScrollNextSlide = () => {
         let newPosition = currentIndex;
-        if (newPosition < rooms.length - 1) {
+        if (newPosition < items.length - 1) {
             newPosition += 1;
         }
 
@@ -237,7 +237,7 @@ const Carousel = () => {
         }
 
         setMouseDown(true);
-        // console.log("toch: ", e.type);
+        console.log("toch: ", e.type);
 
     }
     const handleMouseMove = (e: any) => {
@@ -277,21 +277,8 @@ const Carousel = () => {
                 minHeight: "100vh",
                 backgroundColor: "#F5F5F5",
                 overflow: "hidden",
-                paddingTop: "64px",
-                paddingBottom: "96px",
             }}
         >
-            <Box>
-                <Typography
-                    variant='h1'
-                    sx={{
-                        textAlign: 'center',
-                        marginBottom: "34px",
-                        fontSize: "48px",
-                        fontWeight: 400
-                    }}
-                >Our Rooms</Typography>
-            </Box>
             <Container
                 maxWidth="md"
                 sx={{
@@ -326,20 +313,20 @@ const Carousel = () => {
                             onTouchEnd={handleMouseUp}
                             onTouchCancel={handleMouseUp}
                         >
-                            {rooms.map((room, indx) => (
+                            {items.map((item, indx) => (
                                 <CarouselItem
                                     key={indx}
                                 >
                                     <section>
                                         <div>
-                                            <Image src={room.image} layout='fill' objectFit='cover' alt={room.label} />
+                                            <Image src={'/images/im300.jpg'} layout='fill' objectFit='cover' alt={'hekko'} />
                                         </div>
                                         <div>
-                                            <h1>{room.label}</h1>
+                                            <h1>Comfort Room</h1>
                                             <h3>This comfort and elagant room excepts 3 max adults</h3>
-                                            <p>{room.description.length > 200 ? room.description.substring(0, 200) + "..." : room.description}</p>
+                                            <p>{'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eum harum illum optio expedita adipisci voluptatem excepturi nulla debitis inventore corrupti veritatis accusantium, tempora velit quam ullam, fuga aliquam iure. Dicta earum natus corrupti porro impedit mollitia neque, illo ducimus itaque officiis error cupiditate sequi voluptatibus consectetur necessitatibus iure blanditiis doloremque!'.substring(0, 200) + "..."}</p>
                                             <article>
-                                                <Link href={`/room-detail/${slugify(room.label)}`}>Ream more</Link>
+                                                <Link href={'#'}>Ream more</Link>
                                             </article>
                                         </div>
                                     </section>
@@ -367,7 +354,7 @@ const Carousel = () => {
                     <CarouselPrevButton
                         onClick={handleScrollPrevSlide}
                     ><BsArrowLeft size={24} /></CarouselPrevButton>
-                    {rooms.map((items, idx) => (
+                    {items.map((items, idx) => (
                         <div key={idx}
                             style={{
                                 display: "inline-block",
@@ -388,4 +375,4 @@ const Carousel = () => {
     )
 }
 
-export default Carousel;
+export default Carousel

@@ -27,7 +27,8 @@ const TextIcon: FunctionComponent<Props> = ({ color, bg, label, elem, fs }) => {
                 justifyContent: "flex-start",
                 alignItems: "center",
                 marginTop: "8px",
-                marginBottom: "8px"
+                marginBottom: "8px",
+                flexWrap: "wrap"
             }}
         >
             <Box
